@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFRow.h"
+#import "AFSection.h"
 
-@interface AForm : NSObject
+@protocol AForm <NSObject>
+
+- (NSUInteger) numberOfSections;
+
+- (NSUInteger) numberOfRowsInSection:(NSUInteger)section;
+
+- (AFRow *) getRowAtIndex:(NSUInteger)row inSection:(NSUInteger)seciton;
+
+- (AFSection *) getSection:(NSUInteger)section;
 
 @end

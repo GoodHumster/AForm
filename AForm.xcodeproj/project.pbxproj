@@ -7,7 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3FD5C532236A61300FD6789 /* AForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FD5C522236A61300FD6789 /* AForm.m */; };
+		C37E31EE2237DF160021FB1E /* AFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31ED2237DF160021FB1E /* AFormView.m */; };
+		C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */; };
+		C37E31F62237E5D40021FB1E /* AFSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F52237E5D40021FB1E /* AFSection.m */; };
+		C37E31F92237E5F10021FB1E /* AFRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F82237E5F10021FB1E /* AFRow.m */; };
+		C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31FC2237ED610021FB1E /* AFRowConfig.m */; };
+		C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32022237ED870021FB1E /* AFLayoutConfig.m */; };
+		C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E3206223814B90021FB1E /* AFResourceManager.m */; };
+		C37E320B2238210D0021FB1E /* AFBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */; };
+		C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E3212223825000021FB1E /* AFTextFieldCollectionViewCell.m */; };
+		C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E321622382BB30021FB1E /* AFFormLayoutAttributes.m */; };
+		C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E3221223912A70021FB1E /* AFLayoutAttributesDictionary.m */; };
+		C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32AA223A9A810021FB1E /* AFBaseHeaderSectionView.m */; };
+		C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32B0223A9BB20021FB1E /* AFDefaultHeaderSectionView.m */; };
+		C37E32B4223AC7420021FB1E /* AFTextFieldConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */; };
+		C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */; };
+		C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */; };
+		C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */; };
+		C37E32D9223B9CFE0021FB1E /* AFEmailNumberVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */; };
+		C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */; };
+		C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */; };
 		C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AForm.h */; };
 /* End PBXBuildFile section */
 
@@ -25,9 +44,57 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C37E31EC2237DF160021FB1E /* AFormView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormView.h; sourceTree = "<group>"; };
+		C37E31ED2237DF160021FB1E /* AFormView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFormView.m; sourceTree = "<group>"; };
+		C37E31EF2237DFCA0021FB1E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		C37E31F42237E5D40021FB1E /* AFSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFSection.h; sourceTree = "<group>"; };
+		C37E31F52237E5D40021FB1E /* AFSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFSection.m; sourceTree = "<group>"; };
+		C37E31F72237E5F10021FB1E /* AFRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRow.h; sourceTree = "<group>"; };
+		C37E31F82237E5F10021FB1E /* AFRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRow.m; sourceTree = "<group>"; };
+		C37E31FB2237ED610021FB1E /* AFRowConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRowConfig.h; sourceTree = "<group>"; };
+		C37E31FC2237ED610021FB1E /* AFRowConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRowConfig.m; sourceTree = "<group>"; };
+		C37E31FE2237ED770021FB1E /* AFInputViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFInputViewConfig.h; sourceTree = "<group>"; };
+		C37E32012237ED870021FB1E /* AFLayoutConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLayoutConfig.h; sourceTree = "<group>"; };
+		C37E32022237ED870021FB1E /* AFLayoutConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLayoutConfig.m; sourceTree = "<group>"; };
+		C37E3205223814B90021FB1E /* AFResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFResourceManager.h; sourceTree = "<group>"; };
+		C37E3206223814B90021FB1E /* AFResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFResourceManager.m; sourceTree = "<group>"; };
+		C37E3208223818C90021FB1E /* AFResourceManager_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFResourceManager_Private.h; sourceTree = "<group>"; };
+		C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		C37E320C2238217D0021FB1E /* AFRow_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRow_Private.h; sourceTree = "<group>"; };
+		C37E3211223825000021FB1E /* AFTextFieldCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldCollectionViewCell.h; sourceTree = "<group>"; };
+		C37E3212223825000021FB1E /* AFTextFieldCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextFieldCollectionViewCell.m; sourceTree = "<group>"; };
+		C37E321522382BB30021FB1E /* AFFormLayoutAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFFormLayoutAttributes.h; sourceTree = "<group>"; };
+		C37E321622382BB30021FB1E /* AFFormLayoutAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFFormLayoutAttributes.m; sourceTree = "<group>"; };
+		C37E3220223912A70021FB1E /* AFLayoutAttributesDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLayoutAttributesDictionary.h; sourceTree = "<group>"; };
+		C37E3221223912A70021FB1E /* AFLayoutAttributesDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLayoutAttributesDictionary.m; sourceTree = "<group>"; };
+		C37E32A5223A94360021FB1E /* AFHeaderViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHeaderViewConfig.h; sourceTree = "<group>"; };
+		C37E32A9223A9A810021FB1E /* AFBaseHeaderSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseHeaderSectionView.h; sourceTree = "<group>"; };
+		C37E32AA223A9A810021FB1E /* AFBaseHeaderSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseHeaderSectionView.m; sourceTree = "<group>"; };
+		C37E32AC223A9AA10021FB1E /* AFHeaderSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHeaderSectionView.h; sourceTree = "<group>"; };
+		C37E32AF223A9BB20021FB1E /* AFDefaultHeaderSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDefaultHeaderSectionView.h; sourceTree = "<group>"; };
+		C37E32B0223A9BB20021FB1E /* AFDefaultHeaderSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDefaultHeaderSectionView.m; sourceTree = "<group>"; };
+		C37E32B2223AC7420021FB1E /* AFTextFieldConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldConfig.h; sourceTree = "<group>"; };
+		C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextFieldConfig.m; sourceTree = "<group>"; };
+		C37E32B6223ACA810021FB1E /* AFTextVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextVerifier.h; sourceTree = "<group>"; };
+		C37E32BB223AD61D0021FB1E /* AFAutocompleteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFAutocompleteView.h; sourceTree = "<group>"; };
+		C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFAutocompleteViewAttributes.h; sourceTree = "<group>"; };
+		C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFAutocompleteViewAttributes.m; sourceTree = "<group>"; };
+		C37E32CB223B963F0021FB1E /* AFTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextField.h; sourceTree = "<group>"; };
+		C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldInputView.h; sourceTree = "<group>"; };
+		C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDatePickerConfig.h; sourceTree = "<group>"; };
+		C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDatePickerConfig.m; sourceTree = "<group>"; };
+		C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPhoneNumberVerifier.h; sourceTree = "<group>"; };
+		C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFPhoneNumberVerifier.m; sourceTree = "<group>"; };
+		C37E32D7223B9CFE0021FB1E /* AFEmailNumberVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFEmailNumberVerifier.h; sourceTree = "<group>"; };
+		C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFEmailNumberVerifier.m; sourceTree = "<group>"; };
+		C37E32DB223B9D380021FB1E /* AFRussianPassportVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRussianPassportVerifier.h; sourceTree = "<group>"; };
+		C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRussianPassportVerifier.m; sourceTree = "<group>"; };
+		C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDefaultVerifier.h; sourceTree = "<group>"; };
+		C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDefaultVerifier.m; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
-		C3FD5C522236A61300FD6789 /* AForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AForm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +108,177 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C37E32042238148B0021FB1E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C37E3205223814B90021FB1E /* AFResourceManager.h */,
+				C37E3208223818C90021FB1E /* AFResourceManager_Private.h */,
+				C37E3206223814B90021FB1E /* AFResourceManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		C37E320D2238225D0021FB1E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				C37E3211223825000021FB1E /* AFTextFieldCollectionViewCell.h */,
+				C37E3212223825000021FB1E /* AFTextFieldCollectionViewCell.m */,
+			);
+			name = TextField;
+			sourceTree = "<group>";
+		};
+		C37E321422382B950021FB1E /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				C37E31EF2237DFCA0021FB1E /* AFCollectionViewFlowLayout.h */,
+				C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */,
+				C37E321522382BB30021FB1E /* AFFormLayoutAttributes.h */,
+				C37E321622382BB30021FB1E /* AFFormLayoutAttributes.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		C37E321F223908300021FB1E /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				C37E3220223912A70021FB1E /* AFLayoutAttributesDictionary.h */,
+				C37E3221223912A70021FB1E /* AFLayoutAttributesDictionary.m */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		C37E32A8223A9A670021FB1E /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32A5223A94360021FB1E /* AFHeaderViewConfig.h */,
+				C37E32AE223A9B930021FB1E /* Default */,
+				C37E32A9223A9A810021FB1E /* AFBaseHeaderSectionView.h */,
+				C37E32AA223A9A810021FB1E /* AFBaseHeaderSectionView.m */,
+				C37E32AC223A9AA10021FB1E /* AFHeaderSectionView.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		C37E32AE223A9B930021FB1E /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32AF223A9BB20021FB1E /* AFDefaultHeaderSectionView.h */,
+				C37E32B0223A9BB20021FB1E /* AFDefaultHeaderSectionView.m */,
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		C37E32C3223B95810021FB1E /* Verifier */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32DA223B9D230021FB1E /* Passport */,
+				C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */,
+				C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */,
+				C37E32D7223B9CFE0021FB1E /* AFEmailNumberVerifier.h */,
+				C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */,
+				C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */,
+				C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */,
+			);
+			path = Verifier;
+			sourceTree = "<group>";
+		};
+		C37E32C4223B95880021FB1E /* Autocomplete */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */,
+				C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */,
+			);
+			path = Autocomplete;
+			sourceTree = "<group>";
+		};
+		C37E32C5223B95970021FB1E /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				C37E31FB2237ED610021FB1E /* AFRowConfig.h */,
+				C37E31FC2237ED610021FB1E /* AFRowConfig.m */,
+				C37E32012237ED870021FB1E /* AFLayoutConfig.h */,
+				C37E32022237ED870021FB1E /* AFLayoutConfig.m */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		C37E32C6223B95A70021FB1E /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				C37E31F72237E5F10021FB1E /* AFRow.h */,
+				C37E320C2238217D0021FB1E /* AFRow_Private.h */,
+				C37E31F82237E5F10021FB1E /* AFRow.m */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
+		C37E32C7223B95B40021FB1E /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C37E31F42237E5D40021FB1E /* AFSection.h */,
+				C37E31F52237E5D40021FB1E /* AFSection.m */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C37E32C8223B95EA0021FB1E /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
+		C37E32C9223B95F20021FB1E /* Button */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Button;
+			sourceTree = "<group>";
+		};
+		C37E32CA223B95FA0021FB1E /* Selector */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Selector;
+			sourceTree = "<group>";
+		};
+		C37E32D0223B989B0021FB1E /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32D1223B9C810021FB1E /* TextField */,
+				C37E32D3223B9C9F0021FB1E /* Other */,
+				C37E31FE2237ED770021FB1E /* AFInputViewConfig.h */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		C37E32D1223B9C810021FB1E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32B2223AC7420021FB1E /* AFTextFieldConfig.h */,
+				C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		C37E32D3223B9C9F0021FB1E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */,
+				C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		C37E32DA223B9D230021FB1E /* Passport */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32DB223B9D380021FB1E /* AFRussianPassportVerifier.h */,
+				C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */,
+			);
+			path = Passport;
+			sourceTree = "<group>";
+		};
 		C3FD5C452236A61300FD6789 = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +298,55 @@
 		C3FD5C502236A61300FD6789 /* AForm */ = {
 			isa = PBXGroup;
 			children = (
+				C37E32D0223B989B0021FB1E /* Configs */,
+				C37E32042238148B0021FB1E /* Manager */,
+				C37E321F223908300021FB1E /* Wrappers */,
+				C3FD5C6E2236B1DC00FD6789 /* Views */,
+				C37E32A8223A9A670021FB1E /* Headers */,
+				C3FD5C6D2236B1D600FD6789 /* Cells */,
+				C3FD5C5A2236A61B00FD6789 /* Models */,
 				C3FD5C512236A61300FD6789 /* AForm.h */,
-				C3FD5C522236A61300FD6789 /* AForm.m */,
+				C37E32B6223ACA810021FB1E /* AFTextVerifier.h */,
+				C37E32BB223AD61D0021FB1E /* AFAutocompleteView.h */,
+				C37E32CB223B963F0021FB1E /* AFTextField.h */,
+				C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */,
 			);
 			path = AForm;
+			sourceTree = "<group>";
+		};
+		C3FD5C5A2236A61B00FD6789 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32C7223B95B40021FB1E /* Section */,
+				C37E32C6223B95A70021FB1E /* Row */,
+				C37E32C5223B95970021FB1E /* Configs */,
+				C37E32C4223B95880021FB1E /* Autocomplete */,
+				C37E32C3223B95810021FB1E /* Verifier */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C3FD5C6D2236B1D600FD6789 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C37E320D2238225D0021FB1E /* TextField */,
+				C37E32C8223B95EA0021FB1E /* TextView */,
+				C37E32C9223B95F20021FB1E /* Button */,
+				C37E32CA223B95FA0021FB1E /* Selector */,
+				C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */,
+				C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C3FD5C6E2236B1DC00FD6789 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C37E321422382B950021FB1E /* Layout */,
+				C37E31EC2237DF160021FB1E /* AFormView.h */,
+				C37E31ED2237DF160021FB1E /* AFormView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +405,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3FD5C532236A61300FD6789 /* AForm.m in Sources */,
+				C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */,
+				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
+				C37E32D9223B9CFE0021FB1E /* AFEmailNumberVerifier.m in Sources */,
+				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
+				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
+				C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */,
+				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
+				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
+				C37E32B4223AC7420021FB1E /* AFTextFieldConfig.m in Sources */,
+				C37E31EE2237DF160021FB1E /* AFormView.m in Sources */,
+				C37E320B2238210D0021FB1E /* AFBaseCollectionViewCell.m in Sources */,
+				C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */,
+				C37E31F62237E5D40021FB1E /* AFSection.m in Sources */,
+				C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */,
+				C37E31F92237E5F10021FB1E /* AFRow.m in Sources */,
+				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
+				C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */,
+				C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */,
+				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,
+				C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

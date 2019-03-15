@@ -1,0 +1,34 @@
+//
+//  AFRow.m
+//  AForm
+//
+//  Created by Administrator on 12/03/2019.
+//  Copyright © 2019 Administrator. All rights reserved.
+//
+
+#import "AFRow_Private.h"
+
+#import "AFRowConfig.h"
+#import "AFInputViewConfig.h"
+#import "AFLayoutConfig.h"
+
+@interface AFRow()
+
+@property (nonatomic, strong) NSString *key;
+
+@end
+
+@implementation AFRow
+
++ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFInputViewConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
+{
+    AFRow *row = [AFRow new];
+    row.key = rowConfig.key;
+    row.value = rowConfig.value;
+    row.inputViewConfig = ivConfig;
+    row.layoutConfig = layoutConfig;
+    
+    return row;
+}
+
+@end
