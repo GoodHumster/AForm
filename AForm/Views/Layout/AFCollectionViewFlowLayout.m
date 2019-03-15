@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 @property (nonatomic, strong) AFLayoutAttributesDictionary *cachedLayoutAttributes;
 
+@property (nonatomic, assign) CGSize contentSize;
+
 @end
 
 @implementation AFCollectionViewFlowLayout
@@ -39,6 +41,8 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     {
         return nil;
     }
+    
+    _contentSize = CGSizeZero;
     self.scrollDirection = UICollectionViewScrollDirectionVertical;
     self.cachedLayoutAttributes = [AFLayoutAttributesDictionary new];
     return self;
@@ -49,6 +53,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray<AFFormLayoutAttributes *> *attributes = [self.cachedLayoutAttributes getFormAttributeInRect:rect];
+    AFFormLayoutAttributes *layoutAttributes = attributes.lastObject;
     
     if (attributes && [self.cachedLayoutAttributes isFilledRect:rect])
     {
@@ -56,14 +61,13 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     }
     
     NSMutableArray<AFFormLayoutAttributes *> *mAttributes = [attributes mutableCopy];
+    NSIndexPath *indexPath = layoutAttributes.indexPath;
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    
-    if (mAttributes)
+    if (!mAttributes)
     {
-        AFFormLayoutAttributes *layoutAttributes = mAttributes.lastObject;
-        indexPath = layoutAttributes.indexPath;
+          mAttributes = [NSMutableArray new];
     }
+    
     
     AFLayoutAttributesDictionary *cachedAttributes = self.cachedLayoutAttributes;
     
@@ -80,20 +84,32 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         [mAttributes addObject:attr];
     };
     
-    while (![cachedAttributes isFilledRect:rect])
-    {
-        [self enumerateIndexPathsFromIndexPath:indexPath withBlock:^(NSIndexPath *indexPath) {
+   [self enumerateIndexPathsFromIndexPath:indexPath withBlock:^(NSIndexPath *indexPath, BOOL *stop) {
            
-            if (indexPath.row == 0)
-            {
-                createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Header);
-            }
+        if (indexPath.row == 0)
+        {
+            createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Header);
+        }
+       
+        createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Cell);
+       
+       if ([cachedAttributes isFilledRect:rect])
+       {
+           *stop = YES;
+       }
             
-            createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Cell);
-        }];
+    }];
+   
+    NSArray<UICollectionViewLayoutAttributes *> *layoutesAttibutes = [mAttributes valueForKey:@"collectionLayoutAttributes"];
+    UICollectionViewLayoutAttributes *lastLayoutAttribute = layoutesAttibutes.lastObject;
+    
+    if (CGRectGetMaxY(lastLayoutAttribute.frame) > _contentSize.height)
+    {
+        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + 10;
+        _contentSize.width = CGRectGetWidth(self.collectionView.frame);
     }
-
-    return [mAttributes valueForKey:@"collectionLayoutAttributes"];
+    
+    return layoutesAttibutes;
 }
 
 - (void)invalidateLayout
@@ -102,7 +118,17 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     [super invalidateLayout];
 }
 
-#pragma mark - Public API
+- (CGSize)collectionViewContentSize
+{
+    if (CGSizeEqualToSize(CGSizeZero, _contentSize))
+    {
+        return [super collectionViewContentSize];
+    }
+    
+    return _contentSize;
+}
+
+#pragma mark - Public API methods
 
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,6 +170,9 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     {
         x = minimumInteritemSpacing;
         y = CGRectGetMaxY(fromFrame) + self.minimumLineSpacing;
+        size.width -= minimumInteritemSpacing*2;
+    } else {
+        size.width -= minimumInteritemSpacing*1.5f;
     }
     
     CGRect frame = attributes.frame;
@@ -160,7 +189,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 {
     CGSize size = [self sizeForElementKind:kind atIndexPath:indexPath];
     
-    if (!CGSizeEqualToSize(size, CGSizeZero))
+    if (CGSizeEqualToSize(size, CGSizeZero))
     {
         return nil;
     }
@@ -175,6 +204,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     switch (kind) {
         case AFCollectionViewElementKind_Header:
             elementKind = UICollectionElementKindSectionHeader;
+            break;
         case AFCollectionViewElementKind_Footer:
             elementKind = UICollectionElementKindSectionFooter;
             layoutAttributes = [self layoutAttributesForSupplementaryViewOfKind:elementKind atIndexPath:indexPath];
@@ -193,18 +223,19 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     AFFormLayoutAttributes *formLayoutAttribute = [AFFormLayoutAttributes new];
     
     formLayoutAttribute.collectionLayoutAttributes = layoutAttributes;
-    formLayoutAttribute.uuid = lastFromLayoutAttribute.uuid+=1;
+    formLayoutAttribute.uuid = lastFromLayoutAttribute.uuid+1;
     formLayoutAttribute.indexPath = indexPath;
     formLayoutAttribute.flowLayout = self;
     
     return formLayoutAttribute;
 }
 
-- (void) enumerateIndexPathsFromIndexPath:(NSIndexPath *)indexPath withBlock:(void(^)(NSIndexPath *indexPath))enumerationBlock
+- (void) enumerateIndexPathsFromIndexPath:(NSIndexPath *)indexPath withBlock:(void(^)(NSIndexPath *indexPath, BOOL *stop))enumerationBlock
 {
     NSInteger sectionCounts = [self.collectionView numberOfSections];
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row +1;
+    NSInteger section = indexPath ? indexPath.section : 0;
+    NSInteger row = indexPath ? indexPath.row+1 : 0;
+    BOOL stop = NO;
     
     if (sectionCounts <= section)
     {
@@ -224,7 +255,12 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         
         while (row < rowCounts) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-            enumerationBlock(indexPath);
+            enumerationBlock(indexPath,&stop);
+            
+            if (stop)
+            {
+                return;
+            }
             row += 1;
         }
         
@@ -247,24 +283,35 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 - (CGSize) sizeForHeaderAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(layoutConfigForHeaderAtSection:)])
+    if (![self.delegate respondsToSelector:@selector(layoutConfigForHeaderAtSection:)])
     {
         return CGSizeZero;
     }
     
     AFLayoutConfig *config = [self.delegate layoutConfigForHeaderAtSection:indexPath.section];
+    
+    if (!config)
+    {
+        return CGSizeZero;
+    }
+    
     return [self sizeForLayoutConfig:config wihtSectionInsets:UIEdgeInsetsZero];
 }
 
 - (CGSize) sizeForCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(layoutConfigForItemAtIndexPath:)])
+    if (![self.delegate respondsToSelector:@selector(layoutConfigForItemAtIndexPath:)])
     {
         return CGSizeZero;
     }
     
     UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:indexPath.section];
     AFLayoutConfig *config = [self.delegate layoutConfigForItemAtIndexPath:indexPath];
+    
+    if (!config)
+    {
+        return CGSizeZero;
+    }
     
     return [self sizeForLayoutConfig:config wihtSectionInsets:sectionInsets];
 }
@@ -274,19 +321,26 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     CGFloat parentWidth = CGRectGetWidth(self.collectionView.frame);
     CGFloat parentHeight = CGRectGetHeight(self.collectionView.frame);
     
+    AFLayoutConstraint *heightConstraint = config.height;
+    AFLayoutConstraint *widthConstraint = config.width;
     
-    CGFloat height = config.height.constant + config.height.multiplie * parentHeight;
-    CGFloat width = config.width.constant + config.width.multiplie * parentWidth;
+    CGFloat height = heightConstraint.constant == AFLayoutConstraintAutomaticDimension ?
+                                                  config.height.multiplie * parentHeight : config.height.constant;
     
-    if (height == AFLayoutConstraintAutomaticDimension)
-    {
-        height = config.height.estimate;
-    }
     
-    if (width == AFLayoutConstraintAutomaticDimension)
-    {
-        width = config.width.estimate;
-    }
+    
+    CGFloat width = widthConstraint.constant == AFLayoutConstraintAutomaticDimension ?
+                                                config.width.multiplie * parentWidth : config.width.constant;
+    
+//    if (height == AFLayoutConstraintAutomaticDimension)
+//    {
+//        height = config.height.estimate;
+//    }
+//
+//    if (width == AFLayoutConstraintAutomaticDimension)
+//    {
+//        width = config.width.estimate;
+//    }
     
     CGRect frame = {.origin = CGPointZero, .size = CGSizeMake(width, height)};
     return UIEdgeInsetsInsetRect(frame, insets).size;

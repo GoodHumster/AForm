@@ -12,15 +12,13 @@
 @interface AFLayoutAttributesDictionary()
 
 @property (nonatomic, strong) NSMutableDictionary *cachedAttributesById;
-
 @property (nonatomic, strong) NSMutableDictionary *cachedIdBySquare;
-
 @property (nonatomic, strong) NSMutableDictionary *cachedIdByIndexPath;
 
 @property (nonatomic, assign) CGFloat maxSquare;
-
 @property (nonatomic, assign) CGFloat sumSquare;
 
+@property (nonatomic, assign) NSInteger lastUUID;
 
 @end
 
@@ -48,19 +46,40 @@
         return nil;
     }
     
-    CGFloat count = (CGFloat)self.cachedIdBySquare.count;
-    CGFloat neededSquare = CGRectGetMaxX(rect) * CGRectGetMaxY(rect);
+    CGFloat count = (CGFloat)self.cachedIdBySquare.count - 1;
+    CGFloat maxY = CGRectGetMaxY(rect) == 0 ? CGRectGetHeight(rect) : CGRectGetMaxY(rect);
+    CGFloat minY = CGRectGetMinY(rect) < 0 ? 0 : CGRectGetMinY(rect);
+    
+    CGFloat maxNeededSquare = fabs(CGRectGetMaxX(rect) * maxY);
+    CGFloat minNeededSquare = fabs(CGRectGetMaxX(rect) * minY);
     CGFloat middleSquare = self.maxSquare / count;
     
-    NSInteger minIdx = roundf(neededSquare / middleSquare);
-    NSInteger maxIdx = roundf(neededSquare*count/self.sumSquare) + minIdx;
+    NSInteger minIdx = roundf(minNeededSquare / middleSquare);
+    NSInteger maxIdx = roundf(maxNeededSquare / middleSquare) + minIdx;
     
-    NSArray<NSNumber *> *cachedIdxs = [self.cachedIdBySquare.allValues subarrayWithRange:NSMakeRange(minIdx, maxIdx-minIdx)];
+    NSInteger neededCount = maxIdx - minIdx;
+    
+    if (minIdx >= self.cachedIdBySquare.count)
+    {
+        return @[[self lastFormAttribute]];
+    }
+    
+    if (maxIdx >= self.cachedIdBySquare.count)
+    {
+        neededCount = self.cachedIdBySquare.count - minIdx;
+        maxIdx = minIdx+neededCount;
+    }
     
     NSMutableArray *mAttibutes = [NSMutableArray new];
-    for (NSNumber *idx in cachedIdxs)
+    for (NSInteger idx = minIdx; idx <= maxIdx; idx++)
     {
-        [mAttibutes addObject:[self.cachedAttributesById objectForKey:idx]];
+        id value = [self.cachedAttributesById objectForKey:@(idx)];
+        
+        if (!value)
+        {
+            continue;
+        }
+        [mAttibutes addObject:value];
     }
     
     return [mAttibutes copy];
@@ -91,18 +110,20 @@
     [self.cachedIdBySquare setObject:@(uuid) forKey:@(square)];
     [self.cachedIdByIndexPath setObject:@(uuid) forKey:attribute.indexPath];
     
+    self.lastUUID = uuid;
+    
     self.maxSquare = square;
     self.sumSquare += square;
 }
 
 - (AFFormLayoutAttributes *)lastFormAttribute
 {
-    return [self.cachedAttributesById.allValues lastObject];
+    return [self.cachedAttributesById objectForKey:@(self.lastUUID)];
 }
 
 - (AFFormLayoutAttributes *)firtFormAttribute
 {
-    return [self.cachedAttributesById.allKeys firstObject];
+    return [self.cachedAttributesById objectForKey:@0];
 }
 
 - (void)enumerateFormAttributeStartFrom:(NSUInteger)uuid wihtBlock:(void (^)(AFFormLayoutAttributes *))enumerationBlock

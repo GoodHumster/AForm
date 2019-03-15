@@ -63,6 +63,8 @@
 - (void) commonInit
 {
     AFCollectionViewFlowLayout *flowLayout = [AFCollectionViewFlowLayout new];
+    flowLayout.delegate = self;
+    
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     collectionView.backgroundColor = [UIColor clearColor];
@@ -138,12 +140,24 @@
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section
 {
     AFSection *sc = [self.formModel getSection:section];
+    
+    if (!sc)
+    {
+        return nil;
+    }
+    
     return sc.layoutConfig;
 }
 
-- (AFLayoutConfig *)layoutConfigForHeaderAtIndexPath:(NSIndexPath *)indexPath
+- (AFLayoutConfig *)layoutConfigForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
+    
+    if (!row)
+    {
+        return nil;
+    }
+    
     return row.layoutConfig;
 }
 

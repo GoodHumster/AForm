@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AForm.xcscheme_^#shared#^_</key>
+		<key>AFormSample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>C3FD5C4D2236A61300FD6789</key>
+		<key>C37E330D223BC8DC0021FB1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

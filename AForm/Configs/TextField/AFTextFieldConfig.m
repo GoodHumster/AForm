@@ -69,7 +69,7 @@
     config.verifier = [(id)self.verifier copy];
     config.datePickerConfig = [self.datePickerConfig copy];
     
-    return config;s
+    return config;
 }
 
 

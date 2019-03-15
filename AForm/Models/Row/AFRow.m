@@ -25,8 +25,8 @@
     AFRow *row = [AFRow new];
     row.key = rowConfig.key;
     row.value = rowConfig.value;
-    row.inputViewConfig = ivConfig;
-    row.layoutConfig = layoutConfig;
+    row.inputViewConfig = [(id)ivConfig copy];
+    row.layoutConfig = [(id)layoutConfig copy];
     
     return row;
 }

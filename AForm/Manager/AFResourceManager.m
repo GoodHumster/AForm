@@ -69,7 +69,7 @@
         NSLog(@"AForm: [WARNING!] you tried registrate resource on idetifier:%@ which alrady registrated, old resource was removed \n",identifier);
     }
     
-    NSMutableDictionary *map = [self getMapNibsResourceForKind:kind];
+    NSMutableDictionary *map = [self getMapClassesResourceForKind:kind];
     [map setObject:cls forKey:identifier];
 }
 

@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-const CGFloat AFLayoutConstraintAutomaticDimension = CGFLOAT_MAX;
+static CGFloat const AFLayoutConstraintAutomaticDimension = CGFLOAT_MAX;
 
-@interface AFLayoutConstraint: NSObject
+@interface AFLayoutConstraint: NSObject<NSCopying>
 
 @property (nonatomic, assign) CGFloat multiplie;
 
@@ -23,23 +23,11 @@ const CGFloat AFLayoutConstraintAutomaticDimension = CGFLOAT_MAX;
 
 @end
 
-@implementation AFLayoutConstraint
 
-+ (id) constrainWithMultiplie:(CGFloat)multiplie andConstant:(CGFloat)constant
-{
-    AFLayoutConstraint *constraint = [AFLayoutConstraint new];
-    constraint.multiplie = multiplie;
-    constraint.constant = constant;
-    
-    return constraint;
-}
+@interface AFLayoutConfig : NSObject<NSCopying>
 
-@end
-
-@interface AFLayoutConfig : NSObject
-
-@property (nonatomic, assign) AFLayoutConstraint *height;
-@property (nonatomic, assign) AFLayoutConstraint *width;
+@property (nonatomic, strong) AFLayoutConstraint *height;
+@property (nonatomic, strong) AFLayoutConstraint *width;
 
 + (id) layoutConfigWithHeightConstrain:(AFLayoutConstraint *)heightConstraint
                andWidthConstrain:(AFLayoutConstraint *)widthConstraint;

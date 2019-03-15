@@ -45,6 +45,26 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if ( (self = [super initWithFrame:frame]) == nil )
+    {
+        return nil;
+    }
+    [self commonInit];
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    if ( (self = [super initWithCoder:coder]) == nil )
+    {
+        return nil;
+    }
+    [self commonInit];
+    return self;
+}
+
 - (void) commonInit
 {
     self.contentView.clipsToBounds = YES;

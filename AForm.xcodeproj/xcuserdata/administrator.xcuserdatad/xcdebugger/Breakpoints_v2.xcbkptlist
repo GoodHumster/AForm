@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Manager/AFResourceManager.m"
-            timestampString = "574267962.75877"
+            timestampString = "574357065.059311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
-            landmarkName = "-unregisterClassWithIdentifier:withKind:"
+            landmarkName = "-enumerateMap:withElementKind:withBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
