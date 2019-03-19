@@ -35,6 +35,8 @@
     self.font = [UIFont systemFontOfSize:15];
     self.backgroundColor = [UIColor whiteColor];
     self.textColor = [UIColor blackColor];
+    self.borderColor = [UIColor lightGrayColor];
+    self.borderWidth = 1;
     return self;
 }
 

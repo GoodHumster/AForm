@@ -119,6 +119,7 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
         default:
             break;
     }
+    tfConfig.borderStyle = AFTextFieldBorderUnderline;
     
     AFLayoutConfig *config = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
     return [AFRow rowWithConfig:nil inputViewConfig:tfConfig layoutConfig:config];

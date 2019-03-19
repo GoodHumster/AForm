@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) UIColor *borderColor;
+@property (nonatomic, assign) CGFloat borderWidth;
 
 @property (nonatomic, strong) id<AFTextVerifier> verifier;
 @property (nonatomic, strong) id<AFTextFieldInputViewConfig> inputViewConfig;

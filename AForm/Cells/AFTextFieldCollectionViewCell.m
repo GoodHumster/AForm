@@ -27,7 +27,8 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIView<AFAutocompleteView> *autocompleteView;
 
-@property (nonatomic, strong) NSLayoutConstraint *underlinViewBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *underlineViewBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *underlineViewHeightConstraint;
 
 @property (nonatomic, assign) BOOL canEditing;
 @property (nonatomic, assign) CGFloat autocompleteHeight;
@@ -93,11 +94,12 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     self.underlineView = underlineView;
     [self addSubview:underlineView];
     
-    [underlineView.heightAnchor constraintEqualToConstant:1].active = YES;
     [underlineView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
     [self.contentView.trailingAnchor constraintEqualToAnchor:underlineView.trailingAnchor].active = YES;
-    self.underlinViewBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:underlineView.bottomAnchor];
-    self.underlinViewBottomConstraint.active = YES;
+    self.underlineViewBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:underlineView.bottomAnchor];
+    self.underlineViewBottomConstraint.active = YES;
+    self.underlineViewHeightConstraint = [underlineView.heightAnchor constraintEqualToConstant:1];
+    self.underlineViewHeightConstraint.active = YES;
 }
 
 #pragma mark - UICollectionViewCell override methods
@@ -284,6 +286,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     self.backgroundColor = config.backgroundColor;
     self.underlineView.hidden = config.borderStyle != AFTextFieldBorderUnderline;
     self.underlineView.backgroundColor = config.borderColor;
+    self.underlineViewHeightConstraint.constant = config.borderWidth;
     
     UITextField *textField = self.textField;
     if (config.textFieldClass)
@@ -351,7 +354,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     autocompleteView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.contentView addSubview:autocompleteView];
-    [self.contentView removeConstraint:self.underlinViewBottomConstraint];
+    [self.contentView removeConstraint:self.underlineViewBottomConstraint];
     
     [self.underlineView.bottomAnchor constraintEqualToAnchor:autocompleteView.topAnchor].active = YES;
     [autocompleteView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
