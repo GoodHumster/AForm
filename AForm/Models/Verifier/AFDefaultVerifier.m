@@ -40,18 +40,6 @@
 
 #pragma mark - AFTextVerifier protocol methods
 
-- (void) willBeginEditingText
-{}
-
-- (void) didBeginEditingText
-{}
-
-- (void) willEndEditingText
-{}
-
-- (void) didEndEditingText
-{}
-
 - (BOOL) text:(id<AFTextOwner>)textOwner shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *text = [textOwner getOwnerText];

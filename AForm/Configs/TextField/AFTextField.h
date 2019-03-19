@@ -10,9 +10,14 @@
 #import <Foundation/Foundation.h>
 
 @class AFTextFieldConfig;
+@class AFTextFieldCollectionViewCell;
 
 @protocol AFTextField <NSObject>
 
+@property (nonatomic, weak) AFTextFieldCollectionViewCell *parentCell;
+
 + (UITextField<AFTextField> *) textFieldWithConfig:(AFTextFieldConfig *)config andSetDelegate:(id<UITextFieldDelegate>)delegate;
+
+- (void) textFieldChangeTextVereficationState:(BOOL)state;
 
 @end

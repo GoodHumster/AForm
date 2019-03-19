@@ -18,16 +18,8 @@
 
 @protocol AFTextVerifier <NSObject,NSCopying>
 
-- (void) willBeginEditingText;
-
-- (void) didBeginEditingText;
-
-- (void) willEndEditingText;
-
-- (void) didEndEditingText;
-
 - (BOOL) text:(id<AFTextOwner>)textOwner shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
-- (BOOL) isValidText;
+- (BOOL) isValidText:(NSString *)text;
 
 @end

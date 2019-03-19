@@ -192,8 +192,6 @@ static CFStringRef __classAsKeyCopyDescriptionCallBack( const void *value )
         NSKeyedUnarchiver *keyUnarchive = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:&error];
         keyUnarchive.requiresSecureCoding = NO;
         keyUnarchive.decodingFailurePolicy = NSDecodingFailurePolicySetErrorAndReturn;
-//        [keyUnarchive setClass:cls forClassName:NSStringFromClass(cls)];
-//        [NSKeyedUnarchiver setClass:cls forClassName:NSStringFromClass(cls)];
         v = [keyUnarchive decodeObjectForKey:NSKeyedArchiveRootObjectKey];
         [keyUnarchive finishDecoding];
     }

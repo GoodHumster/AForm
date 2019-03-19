@@ -100,7 +100,8 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             tfConfig.placeholder = @"Фамилия";
             break;
         case kExampleFieldsType_Email:
-            tfConfig.placeholder = @"email";
+            tfConfig = [AFTextFieldConfig emailTextFieldConfig];
+            tfConfig.placeholder = @"Email";
             break;
         case kExampleFieldsType_Phone:
             tfConfig.placeholder = @"phone";

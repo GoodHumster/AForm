@@ -25,7 +25,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
                                             AFTextFieldInputViewOutput >
 
 @property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UIView *underlineView;
 @property (nonatomic, strong) UIView<AFAutocompleteView> *autocompleteView;
 
 @property (nonatomic, strong) NSLayoutConstraint *underlinViewBottomConstraint;
@@ -181,8 +180,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [[self getVerifier] willBeginEditingText];
-    
     AFTextFieldConfig *config = [self getConfig];
     Class<AFTextFieldInputView> inputViewClass = config.inputViewConfig.inputViewClass;
     AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
@@ -198,63 +195,32 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     
     self.textField.inputView = inputView;
 
-    
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    self.canEditing = YES;
-    [[self getVerifier] didBeginEditingText];
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    [[self getVerifier] willEndEditingText];
     return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [[self getVerifier] didBeginEditingText];
+    BOOL isValid = [[self getVerifier] isValidText:textField.text];
+    [self textFieldChanageState:isValid];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    BOOL valid = [[self getVerifier] text:self shouldChangeCharactersInRange:range replacementString:string];
+    BOOL shouldChange = [[self getVerifier] text:self shouldChangeCharactersInRange:range replacementString:string];
     
-    if (valid)
+    if (shouldChange)
     {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+      
         [self.output textFieldCell:self didChangeValue:text inRow:self.row];
-        
-        if ([self getConfig].haveAutocomplete)
-        {
-            __weak typeof(self) weakSelf = self;
-            [self.output textFieldCell:self shouldShowAutocomplete:self.autocompleteView withControllBlock:^(BOOL show) {
-                __strong typeof(weakSelf) blockSelf = weakSelf;
-                
-                if (!blockSelf)
-                {
-                    return;
-                }
-                
-                if (show)
-                {
-                    [blockSelf showAutocompleteView];
-                } else {
-                    [blockSelf hideAutocompleteView];
-                }
-            }];
-        }
+        [self textFieldShowAutocompleteIfNeeded];
     }
     
-    return valid;
+    return shouldChange;
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    self.canEditing = NO;
     [self.output textFieldDidPressReturnKey:self];
     return YES;
 }
@@ -330,8 +296,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
         [self setupTextFieldWithConfig:config];
     }
     
- //   [self.textField addTarget:self action:@selector(textFieldPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self addAutocompleteViewWithConfig:config];
     [self addInputViewFromConfig:config];
 }
@@ -360,6 +324,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
         return;
     }
     
+    view.parentCell = self;
     self.textField = view;
     [self addTextField:view];
 }
@@ -417,6 +382,42 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     self.textField.inputView = inputView;
 }
 
+- (void) textFieldChanageState:(BOOL)state
+{
+    if ([self isUsedCustomTextField])
+    {
+        UITextField<AFTextField> *textField = (UITextField<AFTextField> *)self.textField;
+        [textField textFieldChangeTextVereficationState:state];
+        return;
+    }
+    self.textField.tintColor = state ? [UIColor blackColor] : [UIColor redColor];
+}
+
+- (void) textFieldShowAutocompleteIfNeeded
+{
+    if (![self getConfig].haveAutocomplete)
+    {
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [self.output textFieldCell:self shouldShowAutocomplete:self.autocompleteView withControllBlock:^(BOOL show) {
+        __strong typeof(weakSelf) blockSelf = weakSelf;
+        
+        if (!blockSelf)
+        {
+            return;
+        }
+        
+        if (show)
+        {
+            [blockSelf showAutocompleteView];
+        } else {
+            [blockSelf hideAutocompleteView];
+        }
+    }];
+}
+
 - (void) showAutocompleteView
 {
     CGFloat height = [self.autocompleteView preferredAutocompleteViewHeight];
@@ -454,10 +455,9 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     return config.verifier;
 }
 
-#pragma mark - Action methods
-
-- (void) textFieldPressed:(id)sender
+- (BOOL) isUsedCustomTextField
 {
+    return [self getConfig].textFieldClass != nil;
 }
 
 @end

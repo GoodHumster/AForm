@@ -24,7 +24,7 @@
 		C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */; };
 		C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */; };
 		C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */; };
-		C37E32D9223B9CFE0021FB1E /* AFEmailNumberVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */; };
+		C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D8223B9CFE0021FB1E /* AFEmailVerifier.m */; };
 		C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */; };
 		C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */; };
 		C37E332A223BC9AF0021FB1E /* AFTextFieldInputView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */; };
@@ -32,7 +32,7 @@
 		C37E332C223BC9B60021FB1E /* AFTextVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32B6223ACA810021FB1E /* AFTextVerifier.h */; };
 		C37E332D223BC9BA0021FB1E /* AFTextField.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32CB223B963F0021FB1E /* AFTextField.h */; };
 		C37E332E223BC9CB0021FB1E /* AFDefaultVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */; };
-		C37E332F223BC9CE0021FB1E /* AFEmailNumberVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D7223B9CFE0021FB1E /* AFEmailNumberVerifier.h */; };
+		C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D7223B9CFE0021FB1E /* AFEmailVerifier.h */; };
 		C37E3330223BC9D00021FB1E /* AFPhoneNumberVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */; };
 		C37E3331223BC9D40021FB1E /* AFAutocompleteViewAttributes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */; };
 		C37E3332223BC9D70021FB1E /* AFLayoutConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32012237ED870021FB1E /* AFLayoutConfig.h */; };
@@ -79,7 +79,7 @@
 				C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */,
 				C37E3330223BC9D00021FB1E /* AFPhoneNumberVerifier.h in CopyFiles */,
 				C37E3331223BC9D40021FB1E /* AFAutocompleteViewAttributes.h in CopyFiles */,
-				C37E332F223BC9CE0021FB1E /* AFEmailNumberVerifier.h in CopyFiles */,
+				C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +129,8 @@
 		C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDatePickerConfig.m; sourceTree = "<group>"; };
 		C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPhoneNumberVerifier.h; sourceTree = "<group>"; };
 		C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFPhoneNumberVerifier.m; sourceTree = "<group>"; };
-		C37E32D7223B9CFE0021FB1E /* AFEmailNumberVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFEmailNumberVerifier.h; sourceTree = "<group>"; };
-		C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFEmailNumberVerifier.m; sourceTree = "<group>"; };
+		C37E32D7223B9CFE0021FB1E /* AFEmailVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFEmailVerifier.h; sourceTree = "<group>"; };
+		C37E32D8223B9CFE0021FB1E /* AFEmailVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFEmailVerifier.m; sourceTree = "<group>"; };
 		C37E32DB223B9D380021FB1E /* AFRussianPassportVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRussianPassportVerifier.h; sourceTree = "<group>"; };
 		C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRussianPassportVerifier.m; sourceTree = "<group>"; };
 		C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDefaultVerifier.h; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 				C37E32DA223B9D230021FB1E /* Passport */,
 				C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */,
 				C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */,
-				C37E32D7223B9CFE0021FB1E /* AFEmailNumberVerifier.h */,
-				C37E32D8223B9CFE0021FB1E /* AFEmailNumberVerifier.m */,
+				C37E32D7223B9CFE0021FB1E /* AFEmailVerifier.h */,
+				C37E32D8223B9CFE0021FB1E /* AFEmailVerifier.m */,
 				C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */,
 				C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */,
 			);
@@ -467,7 +467,7 @@
 			files = (
 				C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */,
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
-				C37E32D9223B9CFE0021FB1E /* AFEmailNumberVerifier.m in Sources */,
+				C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */,
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,

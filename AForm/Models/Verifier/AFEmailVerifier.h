@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AFTextVerifier.h"
 
-@interface AFEmailNumberVerifier : NSObject<AFTextVerifier>
+@interface AFEmailVerifier : NSObject<AFTextVerifier>
+
+@property (nonatomic, assign, readonly) BOOL valid;
 
 @end
 

@@ -10,7 +10,7 @@
 #import "AFTextFieldCollectionViewCell.h"
 
 #import "AFDefaultVerifier.h"
-#import "AFEmailNumberVerifier.h"
+#import "AFEmailVerifier.h"
 #import "AFPhoneNumberVerifier.h"
 #import "AFRussianPassportVerifier.h"
 
@@ -62,6 +62,16 @@
     config.keyboardKeyType = UIKeyboardTypeDefault;
     config.borderStyle = AFTextFieldBorderLine;
     config.inputViewConfig = datePickerConfig;
+    
+    return config;
+}
+
++ (id) emailTextFieldConfig
+{
+    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    config.verifier = [AFEmailVerifier new];
+    config.keyboardKeyType = UIKeyboardTypeDefault;
+    config.borderStyle = AFTextFieldBorderLine;
     
     return config;
 }

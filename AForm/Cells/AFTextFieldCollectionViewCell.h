@@ -26,6 +26,7 @@
 @interface AFTextFieldCollectionViewCell : AFBaseCollectionViewCell
 
 @property (nonatomic, weak) id<AFTextFieldCollectionViewCellOutput> output;
+@property (nonatomic, strong) UIView *underlineView;
 
 @end
 
