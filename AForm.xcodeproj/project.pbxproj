@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C37E3447224101A30021FB1E /* AFormFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C37E3448224101A30021FB1E /* Build configuration list for PBXAggregateTarget "AFormFramework" */;
+			buildPhases = (
+				C37E344B224101B10021FB1E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = AFormFramework;
+			productName = AFormFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		C37E31EE2237DF160021FB1E /* AFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31ED2237DF160021FB1E /* AFormView.m */; };
 		C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */; };
@@ -438,6 +452,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Administrator;
 				TargetAttributes = {
+					C37E3447224101A30021FB1E = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					C3FD5C4D2236A61300FD6789 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -456,9 +473,30 @@
 			projectRoot = "";
 			targets = (
 				C3FD5C4D2236A61300FD6789 /* AForm */,
+				C37E3447224101A30021FB1E /* AFormFramework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C37E344B224101B10021FB1E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ x\"${EXTERNALFRAMEWORKSPATH}\" = \"x\" ]; then\nEXTERNALFRAMEWORKSPATH=\"${SRCROOT}\"\nfi\n\nFMK_NAME=\"${TARGET_NAME}\"\nFMK_VERSION=\"A\"\n\nINSTALL_DIR=\"${EXTERNALFRAMEWORKSPATH}/${CONFIGURATION}/iOS/${FMK_NAME}.framework\"\nFMK_DIR=\"${INSTALL_DIR}/${FMK_NAME}.framework\"\n\nWRK_DIR=build\nrm -rf \"${WRK_DIR}\"\nDEVICE_DIR=${WRK_DIR}/${CONFIGURATION}-iphoneos\nSIMULATOR_DIR=${WRK_DIR}/${CONFIGURATION}-iphonesimulator\n\nif [ x\"${ENABLE_BITCODE}\" != \"x\" ]; then\nBITCODEOPT=\"ENABLE_BITCODE=${ENABLE_BITCODE}\"\nfembed_bitcode=`echo \"${ENABLE_BITCODE}\" | tr '[:upper]' '[:lower]'`\n[ \"${fembed_bitcode}\" = 1 -o \"${fembed_bitxode}\" = \"yes\" -o \"${fembed_bitcode}\" = \"true\" ] && {\nOTHER_CFLAGS=\"${OTHER_CFLAGS} -fembed-bitcode\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS} -fembed-bitcode\"\n}\nfi\n\n#Building\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphoneos ARCHS='armv7 arm64'\nVALID_ARCHS='armv7 arm64' ONLY_ACTIVE_ARCH=0 ${BITCODEOPT} OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphonesimulator ARCHS='i386 x86_64'\nVALID_ARCHS='i386 x86_64' ${BITCODEOPT} ONLY_ACTIVE_ARCH=0 OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]; then\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# Copies the header files to the final product folder.\ncp \"${DEVICE_DIR}/include/AFormFramework/\"*.h \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\n\n# Copy frameworks\n# Install dir (in the root folder of the current project) will be the final output to the framework.\nlibtool -static -o \"${DEVICE_DIR}/${FMK_NAME}\" `find \"${DEVICE_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${SIMULATOR_DIR}/${FMK_NAME}\" `find \"${SIMULATOR_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\" \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\"\n\n# Creates the internal links.\n# It MUST use relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Clean up\nrm -rf \"${WRK_DIR}\"\n\n# Set the build revision mark for the frmework.\n{\n    cd \"${SRCROOT}\"\n    h=`git rev-list --full-history --all --max-count=1 -- \"../../..\" 2> /dev/null | head -1`\n    [ -z \"${h}\" ] || { echo \"Seting framework build revision mark ${h}\"; echo \"${h}\" > \"${INSTALL_DIR}/.build-revision\"; }\n}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3FD5C4A2236A61300FD6789 /* Sources */ = {
@@ -493,6 +531,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C37E3449224101A30021FB1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C37E344A224101A30021FB1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C3FD5C552236A61300FD6789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -639,6 +693,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C37E3448224101A30021FB1E /* Build configuration list for PBXAggregateTarget "AFormFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37E3449224101A30021FB1E /* Debug */,
+				C37E344A224101A30021FB1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C3FD5C492236A61300FD6789 /* Build configuration list for PBXProject "AForm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
