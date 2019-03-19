@@ -9,20 +9,30 @@
 #import "AFormView.h"
 
 #import "AFResourceManager_Private.h"
+#import "AFCacheManager.h"
 
 #import "AFCollectionViewFlowLayout.h"
+
 #import "AFBaseCollectionViewCell.h"
+#import "AFTextFieldCollectionViewCell.h"
 #import "AFHeaderSectionView.h"
+
+#import "AFFormLayoutAttributes.h"
 
 #import "AFHeaderViewConfig.h"
 #import "AFInputViewConfig.h"
 
-@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate>
+
+@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFTextFieldCollectionViewCellOutput>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) AFCollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, strong) id<AForm> formModel;
+
+@property (nonatomic, strong) AFBaseCollectionViewCell *currentFocusedCell;
+
+@property (nonatomic, strong) NSLayoutConstraint *collectionViewBottom;
 
 @end
 
@@ -76,12 +86,47 @@
     [collectionView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
     [collectionView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
     [self.trailingAnchor constraintEqualToAnchor:collectionView.trailingAnchor].active = YES;
-    [self.bottomAnchor constraintEqualToAnchor:collectionView.bottomAnchor].active = YES;
+    self.collectionViewBottom = [self.bottomAnchor constraintEqualToAnchor:collectionView.bottomAnchor];
+    self.collectionViewBottom.active = YES;
     
     self.collectionView = collectionView;
     self.flowLayout = flowLayout;
     
     [self prepareCollectionView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) dealloc
+{
+    AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
+    
+    NSLog(@"%@ deallcated",NSStringFromClass(self.class));
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [cacheManager clearAll];
+}
+
+#pragma mark - Notification handlers
+
+- (void) keyboardWillShowNotification:(NSNotification *)aNotif
+{
+    NSDictionary *info = [aNotif userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    self.collectionViewBottom.constant = kbSize.height;
+    [UIView animateWithDuration:0.4f animations:^{
+        [self layoutIfNeeded];
+    }];
+    
+}
+
+- (void) keyboardWillHideNotification:(NSNotification *)aNotif
+{
+    self.collectionViewBottom.constant = 0.0f;
+    [UIView animateWithDuration:0.4f animations:^{
+        [self layoutIfNeeded];
+    }];
 }
 
 #pragma mark - Public API methods
@@ -188,7 +233,7 @@
     id<AFInputViewConfig> inputViewConig = row.inputViewConfig;
     
     UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
-    
+    cell.output = self;
     AFFormLayoutAttributes *formAttribute = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
     [cell configWithRow:row layoutAttributes:formAttribute];
     
@@ -203,6 +248,81 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.formModel numberOfRowsInSection:section];
+}
+
+#pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
+
+- (void) textFieldDidBecomFirstResponder:(AFTextFieldCollectionViewCell *)cell
+{
+    self.currentFocusedCell = cell;
+}
+
+- (void) textFieldDidResignFirstResponder:(AFTextFieldCollectionViewCell *)cell
+{
+    self.currentFocusedCell = nil;
+}
+
+- (void)textFieldDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSIndexPath *nextIndexPath = [self getNextIndexPath:indexPath];
+    
+    if (!nextIndexPath)
+    {
+        return;
+    }
+    
+    UICollectionViewCell *nextCell = [self.collectionView cellForItemAtIndexPath:nextIndexPath];
+    
+    if (!nextCell)
+    {
+        [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self textFieldDidPressReturnKey:cell];
+        });
+        return;
+    }
+    
+    [cell resignFirstResponder];
+    [nextCell becomeFirstResponder];
+}
+
+- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValue:(NSString *)value inRow:(AFRow *)row
+{
+    row.value = value;
+}
+
+- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void (^)(BOOL))controllBlock
+{
+    AFRow *row = cell.row;
+    
+    if (![self.textFieldDelegate respondsToSelector:@selector(fromView:forRow:shouldShowAutocomplete:withControllBlock:)])
+    {
+        return;
+    }
+    
+    [self.textFieldDelegate fromView:self forRow:row shouldShowAutocomplete:view withControllBlock:controllBlock];
+}
+
+#pragma mark - utils methods
+
+- (NSIndexPath *) getNextIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger numOfRows = [self.collectionView numberOfItemsInSection:indexPath.section];
+    NSUInteger section = indexPath.section;
+    NSUInteger row = indexPath.row + 1;
+    
+    if (numOfRows <= row)
+    {
+        row = 0;
+        section += 1;
+        if ([self.collectionView numberOfSections] <= section)
+        {
+            return nil;
+        }
+    }
+    
+    return [NSIndexPath indexPathForRow:row inSection:section];
 }
 
 @end

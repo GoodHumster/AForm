@@ -17,9 +17,9 @@
     self.collectionLayoutAttributes.frame = frame;
 }
 
-- (void)invalidateFlowLayoutWithNewSize:(CGSize)size
+- (void)invalidateFlowLayoutWithNewHeight:(CGFloat)height
 {
-    [self.flowLayout invalidateLayout:self withNewSize:size];
+    [self.flowLayout invalidateLayout:self withNewHeight:height];
 }
 
 @end

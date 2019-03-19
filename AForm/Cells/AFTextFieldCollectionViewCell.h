@@ -8,7 +8,24 @@
 
 #import "AFBaseCollectionViewCell.h"
 
+
+@class AFTextFieldCollectionViewCell;
+@protocol AFAutocompleteView;
+
+@protocol AFTextFieldCollectionViewCellOutput <AFCollectionViewCellOutput>
+
+- (void) textFieldDidBecomFirstResponder:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldDidResignFirstResponder:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell;
+
+- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValue:(NSString *)value inRow:(AFRow *)row;
+- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void(^)(BOOL show))controllBlock;
+
+@end
+
 @interface AFTextFieldCollectionViewCell : AFBaseCollectionViewCell
+
+@property (nonatomic, weak) id<AFTextFieldCollectionViewCellOutput> output;
 
 @end
 

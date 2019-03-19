@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface AFDatePickerConfig : NSObject<NSCopying>
+#import "AFTextFieldInputViewConfig.h"
+
+@interface AFDatePickerConfig : NSObject<AFTextFieldInputViewConfig>
+
+@property (nonatomic, assign) UIDatePickerMode pickerMode;
 
 @property (nonatomic, strong) NSDate *minDate;
 

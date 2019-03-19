@@ -25,7 +25,7 @@
 
 @property (nonatomic, weak) id<AFCollectionViewFlowLayoutDelegate> delegate;
 
-- (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewSize:(CGSize)size;
+- (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewHeight:(CGFloat)height;
 
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath;
 

@@ -8,6 +8,7 @@
 
 #import "AFormExample.h"
 #import <AForm/AFTextFieldConfig.h>
+#import <AForm/AFDatePickerConfig.h>
 #import <AForm/AFLayoutConfig.h>
 
 typedef NS_ENUM(NSInteger, kExampleFieldsType)
@@ -16,6 +17,8 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
     kExampleFieldsType_Surename,
     kExampleFieldsType_Phone,
     kExampleFieldsType_Email,
+    kExampleFieldsType_Birthday,
+    kExampleFieldsType_IssueDate
     
 };
 
@@ -38,18 +41,20 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
                     [self createRowWithType:kExampleFieldsType_Name],
                     [self createRowWithType:kExampleFieldsType_Surename],
                     [self createRowWithType:kExampleFieldsType_Email],
-                    [self createRowWithType:kExampleFieldsType_Phone]
+                    [self createRowWithType:kExampleFieldsType_Phone],
+                    [self createRowWithType:kExampleFieldsType_Birthday],
+                    [self createRowWithType:kExampleFieldsType_IssueDate]
                    ] mutableCopy];
     
-    for (NSInteger index = 0; index < 50; index++)
-    {
-        NSString *indexSTR = [NSString stringWithFormat:@"Field %ld",index];
-        AFRow *row = [self createRowWithType:kExampleFieldsType_Phone];
-        AFTextFieldConfig *config = (AFTextFieldConfig *)row.inputViewConfig;
-        config.placeholder = indexSTR;
-        
-        [self.source addObject:row];
-    }
+//    for (NSInteger index = 0; index < 50; index++)
+//    {
+//        NSString *indexSTR = [NSString stringWithFormat:@"Field %ld",index];
+//        AFRow *row = [self createRowWithType:kExampleFieldsType_Phone];
+//        AFTextFieldConfig *config = (AFTextFieldConfig *)row.inputViewConfig;
+//        config.placeholder = indexSTR;
+//
+//        [self.source addObject:row];
+//    }
     
     return self;
 }
@@ -81,6 +86,9 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
     AFTextFieldConfig *tfConfig = [AFTextFieldConfig defaultTextFieldConfig];
     AFLayoutConstraint *heightConstrain = [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:44 andEstimate:0];;
     AFLayoutConstraint *widthConstrain =  [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:kAFAutocompletViewHeightAutomaticDemision andEstimate:0];
+    AFDatePickerConfig *datePickerConfig = [AFDatePickerConfig new];
+    datePickerConfig.dateFormmat = @"dd.MM.YYYY";
+    datePickerConfig.pickerMode = UIDatePickerModeDate;
     
     switch (type) {
         case kExampleFieldsType_Name:
@@ -96,6 +104,16 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             break;
         case kExampleFieldsType_Phone:
             tfConfig.placeholder = @"phone";
+            break;
+        case kExampleFieldsType_Birthday:
+            tfConfig.placeholder = @"birthday";
+            tfConfig.inputViewConfig = datePickerConfig;
+            break;
+        case kExampleFieldsType_IssueDate:
+            datePickerConfig.dateFormmat = @"dd.MM.YYYY HH:mm:ss";
+            datePickerConfig.pickerMode = UIDatePickerModeDateAndTime;
+            tfConfig.placeholder = @"issue date";
+            tfConfig.inputViewConfig = datePickerConfig;
             break;
         default:
             break;

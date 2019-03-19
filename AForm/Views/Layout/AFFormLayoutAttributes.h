@@ -24,9 +24,11 @@
 
 @property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, assign) CGSize initionalSize;
+
 - (void)setNewFrame:(CGRect)frame;
 
-- (void)invalidateFlowLayoutWithNewSize:(CGSize)size;
+- (void)invalidateFlowLayoutWithNewHeight:(CGFloat)height;
 
 @end
 

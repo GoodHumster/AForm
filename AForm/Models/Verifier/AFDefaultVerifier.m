@@ -17,7 +17,7 @@
         return nil;
     }
     
-    self.minCharecterCount = NSUIntegerMax;
+    self.minCharecterCount = 0;
     self.maxCharecterCount = NSUIntegerMax;
     self.allowedCharactersString = nil;
     self.disallowedCharactersString = nil;
@@ -71,12 +71,25 @@
 {
     BOOL valid = YES;
     
-    valid &= !( (self.allowedCharactersString != nil) ^
-                ([text rangeOfCharacterFromSet:self.allowedCharactersString].location != NSNotFound) );
-    valid &= !( (self.disallowedCharactersString != nil) ^
-                ([text rangeOfCharacterFromSet:self.disallowedCharactersString].location == NSNotFound) );
-    valid &= !( (self.maxCharecterCount != NSUIntegerMax) ^ (text.length <= self.maxCharecterCount) );
-    valid &= !( (self.minCharecterCount != 0) ^ (text.length >= self.minCharecterCount) );
+    if (self.allowedCharactersString)
+    {
+        valid &= [text rangeOfCharacterFromSet:self.allowedCharactersString].location != NSNotFound;
+    }
+    
+    if (self.disallowedCharactersString)
+    {
+        valid &= [text rangeOfCharacterFromSet:self.disallowedCharactersString].location == NSNotFound;
+    }
+    
+    if (self.maxCharecterCount != NSUIntegerMax)
+    {
+        valid &= (text.length <= self.maxCharecterCount);
+    }
+    
+    if (self.minCharecterCount > 0)
+    {
+        valid &= text.length >= self.minCharecterCount;
+    }
     
     return valid;
 }

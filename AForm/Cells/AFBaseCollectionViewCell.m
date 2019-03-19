@@ -10,6 +10,8 @@
 
 @implementation AFBaseCollectionViewCell
 
+@dynamic output;
+
 - (void) configWithRow:(AFRow *)row layoutAttributes:(AFFormLayoutAttributes *)attributes
 {
     self.row = row;

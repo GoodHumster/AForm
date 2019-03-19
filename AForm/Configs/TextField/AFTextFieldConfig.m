@@ -28,7 +28,7 @@
     {
         return nil;
     }
-    self.datePickerConfig = nil;
+    self.inputViewConfig = nil;
     self.textFieldClass = nil;
     self.haveAutocomplete = NO;
     self.identifier = kAFTextFieldCollectionViewCellIdentifier;
@@ -50,6 +50,21 @@
     return config;
 }
 
++ (id) dateTextFieldConfigWithDatePickerConfig:(AFDatePickerConfig *)datePickerConfig
+{
+    if (!datePickerConfig)
+    {
+        datePickerConfig = [AFDatePickerConfig new];
+    }
+    
+    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    config.verifier = [AFDefaultVerifier new];
+    config.keyboardKeyType = UIKeyboardTypeDefault;
+    config.borderStyle = AFTextFieldBorderLine;
+    config.inputViewConfig = datePickerConfig;
+    
+    return config;
+}
 
 #pragma mark - NSCopying protocol methods
 
@@ -67,7 +82,7 @@
     config.textColor = self.textColor;
     config.backgroundColor = self.backgroundColor;
     config.verifier = [(id)self.verifier copy];
-    config.datePickerConfig = [self.datePickerConfig copy];
+    config.inputViewConfig = [(id)self.inputViewConfig copy];
     
     return config;
 }

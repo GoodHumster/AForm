@@ -12,6 +12,8 @@
 #import "AFAutocompleteView.h"
 #import "AFTextField.h"
 #import "AFDatePickerConfig.h"
+#import "AFTextFieldInputView.h"
+#import "AFTextFieldInputViewConfig.h"
 
 typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 {
@@ -27,6 +29,7 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 @property (nonatomic, assign) Class<AFTextField> textFieldClass;
 
 @property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, assign) NSTextAlignment textAlignment;
 @property (nonatomic, strong) NSString *leftViewImageName;
 @property (nonatomic, strong) NSString *rightViewImageName;
 
@@ -43,15 +46,14 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 @property (nonatomic, strong) UIColor *borderColor;
 
 @property (nonatomic, strong) id<AFTextVerifier> verifier;
-
-@property (nonatomic, strong) AFDatePickerConfig *datePickerConfig;
+@property (nonatomic, strong) id<AFTextFieldInputViewConfig> inputViewConfig;
 
 + (id) defaultTextFieldConfig;
 + (id) emailTextFieldConfig;
 + (id) numberTextFiedlConfig;
-+ (id) passportNumberTextFieldConfigWithLocale:(NSLocale *)locale;;
-+ (id) passportSeriesTextFieldConfigWithLocale:(NSLocale *)locale;;
-+ (id) passportNumberAndSeriesTextFieldConfigWithLocale:(NSLocale *)locale;;
++ (id) passportNumberTextFieldConfigWithLocale:(NSLocale *)locale;
++ (id) passportSeriesTextFieldConfigWithLocale:(NSLocale *)locale;
++ (id) passportNumberAndSeriesTextFieldConfigWithLocale:(NSLocale *)locale;
 + (id) phoneNumberTextFieldConfigWithLocale:(NSLocale *)locale;
 + (id) dateTextFieldConfigWithDatePickerConfig:(AFDatePickerConfig *)config;
 

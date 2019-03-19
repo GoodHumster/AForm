@@ -13,10 +13,6 @@
 
 @protocol AFTextField <NSObject>
 
-+ (UIView<AFTextField> *) textFieldWithConfig:(AFTextFieldConfig *)config andSetDelegate:(id<UITextFieldDelegate>)delegate;
-
-- (NSString *) getText;
-
-- (NSString *) setText:(NSString *)text;
++ (UITextField<AFTextField> *) textFieldWithConfig:(AFTextFieldConfig *)config andSetDelegate:(id<UITextFieldDelegate>)delegate;
 
 @end

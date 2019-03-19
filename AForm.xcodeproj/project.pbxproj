@@ -46,6 +46,9 @@
 		C37E333B223BCA010021FB1E /* AFTextFieldConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32B2223AC7420021FB1E /* AFTextFieldConfig.h */; };
 		C37E333C223BCA040021FB1E /* AFDatePickerConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */; };
 		C37E333D223BCA060021FB1E /* AFInputViewConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31FE2237ED770021FB1E /* AFInputViewConfig.h */; };
+		C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E343C223FF1960021FB1E /* AFDatePickerView.m */; };
+		C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E34402240C6A70021FB1E /* AFCacheManager.m */; };
+		C37E34422240CA480021FB1E /* AFTextFieldInputViewConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E343E2240C3C40021FB1E /* AFTextFieldInputViewConfig.h */; };
 		C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AForm.h */; };
 /* End PBXBuildFile section */
 
@@ -60,9 +63,10 @@
 				C37E333D223BCA060021FB1E /* AFInputViewConfig.h in CopyFiles */,
 				C37E332A223BC9AF0021FB1E /* AFTextFieldInputView.h in CopyFiles */,
 				C37E332B223BC9B10021FB1E /* AFAutocompleteView.h in CopyFiles */,
-				C37E333C223BCA040021FB1E /* AFDatePickerConfig.h in CopyFiles */,
 				C37E332C223BC9B60021FB1E /* AFTextVerifier.h in CopyFiles */,
 				C37E333B223BCA010021FB1E /* AFTextFieldConfig.h in CopyFiles */,
+				C37E333C223BCA040021FB1E /* AFDatePickerConfig.h in CopyFiles */,
+				C37E34422240CA480021FB1E /* AFTextFieldInputViewConfig.h in CopyFiles */,
 				C37E333A223BC9FA0021FB1E /* AFormView.h in CopyFiles */,
 				C37E332D223BC9BA0021FB1E /* AFTextField.h in CopyFiles */,
 				C37E3337223BC9F20021FB1E /* AFHeaderViewConfig.h in CopyFiles */,
@@ -131,6 +135,11 @@
 		C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRussianPassportVerifier.m; sourceTree = "<group>"; };
 		C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDefaultVerifier.h; sourceTree = "<group>"; };
 		C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDefaultVerifier.m; sourceTree = "<group>"; };
+		C37E343B223FF1960021FB1E /* AFDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDatePickerView.h; sourceTree = "<group>"; };
+		C37E343C223FF1960021FB1E /* AFDatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDatePickerView.m; sourceTree = "<group>"; };
+		C37E343E2240C3C40021FB1E /* AFTextFieldInputViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldInputViewConfig.h; sourceTree = "<group>"; };
+		C37E343F2240C6A70021FB1E /* AFCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCacheManager.h; sourceTree = "<group>"; };
+		C37E34402240C6A70021FB1E /* AFCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCacheManager.m; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +161,8 @@
 				C37E3205223814B90021FB1E /* AFResourceManager.h */,
 				C37E3208223818C90021FB1E /* AFResourceManager_Private.h */,
 				C37E3206223814B90021FB1E /* AFResourceManager.m */,
+				C37E343F2240C6A70021FB1E /* AFCacheManager.h */,
+				C37E34402240C6A70021FB1E /* AFCacheManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -293,6 +304,10 @@
 		C37E32D1223B9C810021FB1E /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				C37E32BB223AD61D0021FB1E /* AFAutocompleteView.h */,
+				C37E32CB223B963F0021FB1E /* AFTextField.h */,
+				C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */,
+				C37E343E2240C3C40021FB1E /* AFTextFieldInputViewConfig.h */,
 				C37E32B2223AC7420021FB1E /* AFTextFieldConfig.h */,
 				C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */,
 			);
@@ -315,6 +330,15 @@
 				C37E32DC223B9D380021FB1E /* AFRussianPassportVerifier.m */,
 			);
 			path = Passport;
+			sourceTree = "<group>";
+		};
+		C37E343A223FF1840021FB1E /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				C37E343B223FF1960021FB1E /* AFDatePickerView.h */,
+				C37E343C223FF1960021FB1E /* AFDatePickerView.m */,
+			);
+			path = DatePicker;
 			sourceTree = "<group>";
 		};
 		C3FD5C452236A61300FD6789 = {
@@ -345,9 +369,6 @@
 				C3FD5C5A2236A61B00FD6789 /* Models */,
 				C3FD5C512236A61300FD6789 /* AForm.h */,
 				C37E32B6223ACA810021FB1E /* AFTextVerifier.h */,
-				C37E32BB223AD61D0021FB1E /* AFAutocompleteView.h */,
-				C37E32CB223B963F0021FB1E /* AFTextField.h */,
-				C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */,
 			);
 			path = AForm;
 			sourceTree = "<group>";
@@ -380,6 +401,7 @@
 		C3FD5C6E2236B1DC00FD6789 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C37E343A223FF1840021FB1E /* DatePicker */,
 				C37E321422382B950021FB1E /* Layout */,
 				C37E31EC2237DF160021FB1E /* AFormView.h */,
 				C37E31ED2237DF160021FB1E /* AFormView.m */,
@@ -447,6 +469,7 @@
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
 				C37E32D9223B9CFE0021FB1E /* AFEmailNumberVerifier.m in Sources */,
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
+				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
 				C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
@@ -459,6 +482,7 @@
 				C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */,
 				C37E31F92237E5F10021FB1E /* AFRow.m in Sources */,
 				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
+				C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */,
 				C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */,
 				C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */,
 				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,

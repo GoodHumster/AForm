@@ -16,8 +16,6 @@
 @property (nonatomic, strong) NSMutableDictionary *cachedIdByIndexPath;
 
 @property (nonatomic, assign) CGFloat maxSquare;
-@property (nonatomic, assign) CGFloat sumSquare;
-
 @property (nonatomic, assign) NSInteger lastUUID;
 
 @end
@@ -87,8 +85,16 @@
 
 - (AFFormLayoutAttributes *)getFormAttributeByIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.cachedIdByIndexPath objectForKey:indexPath];
+    NSNumber *idx = [self.cachedIdByIndexPath objectForKey:indexPath];
+    
+    if (!idx)
+    {
+        return nil;
+    }
+    
+    return [self.cachedAttributesById objectForKey:idx];
 }
+
 
 - (AFFormLayoutAttributes *)getFormAttributeById:(NSUInteger)uuid
 {
@@ -110,10 +116,31 @@
     [self.cachedIdBySquare setObject:@(uuid) forKey:@(square)];
     [self.cachedIdByIndexPath setObject:@(uuid) forKey:attribute.indexPath];
     
-    self.lastUUID = uuid;
+    self.lastUUID = MAX(self.lastUUID,uuid);
+    self.maxSquare = MAX(self.maxSquare,square);
+}
+
+- (void)replaceFormAttribute:(AFFormLayoutAttributes *)attribute
+{
+    if (!attribute || attribute.uuid == NSNotFound)
+    {
+        return;
+    }
     
-    self.maxSquare = square;
-    self.sumSquare += square;
+    NSUInteger uuid = attribute.uuid;
+    CGFloat oldSquare = [self getSquareForUUID:uuid];
+    CGFloat newSquare = [self getSquareForFormAttribute:attribute];
+    
+    self.lastUUID = MAX(self.lastUUID,uuid);
+    self.maxSquare = MAX(self.maxSquare,newSquare);
+    
+    [self.cachedAttributesById setObject:attribute forKey:@(uuid)];
+    
+    if (oldSquare != newSquare)
+    {
+        [self.cachedIdBySquare removeObjectForKey:@(oldSquare)];
+        [self.cachedIdBySquare setObject:@(uuid) forKey:@(newSquare)];
+    }
 }
 
 - (AFFormLayoutAttributes *)lastFormAttribute
@@ -128,13 +155,18 @@
 
 - (void)enumerateFormAttributeStartFrom:(NSUInteger)uuid wihtBlock:(void (^)(AFFormLayoutAttributes *))enumerationBlock
 {
-    NSSet<NSNumber *>* keys = [self.cachedAttributesById keysOfEntriesWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    NSSet<NSNumber *>* keysSet = [self.cachedAttributesById keysOfEntriesWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         NSUInteger keyUuid = [key unsignedIntegerValue];
         return keyUuid > uuid;
     }];
     
-    [keys enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, BOOL * _Nonnull stop) {
+    NSArray<NSNumber *> *keys = [keysSet sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES]]];
+    
+    [keys enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
+//    }]
+//    [keys enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, BOOL * _Nonnull stop) {
+//        
         AFFormLayoutAttributes *layoutAttributes = [self.cachedAttributesById objectForKey:obj];
         
         if (enumerationBlock)
@@ -162,6 +194,13 @@
 }
 
 #pragma mark - utils
+
+- (CGFloat) getSquareForUUID:(NSUInteger)uuid
+{
+    return [[self.cachedIdBySquare keysOfEntriesPassingTest:^BOOL(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        return [obj unsignedIntegerValue] == uuid;
+    }].allObjects.firstObject floatValue];
+}
 
 - (CGFloat) getSquareForFormAttribute:(AFFormLayoutAttributes *)attribute
 {
