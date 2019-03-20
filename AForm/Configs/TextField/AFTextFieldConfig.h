@@ -52,9 +52,6 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 + (id) defaultTextFieldConfig;
 + (id) emailTextFieldConfig;
 + (id) numberTextFiedlConfig;
-+ (id) passportNumberTextFieldConfigWithLocale:(NSLocale *)locale;
-+ (id) passportSeriesTextFieldConfigWithLocale:(NSLocale *)locale;
-+ (id) passportNumberAndSeriesTextFieldConfigWithLocale:(NSLocale *)locale;
 + (id) phoneNumberTextFieldConfigWithLocale:(NSLocale *)locale;
 + (id) dateTextFieldConfigWithDatePickerConfig:(AFDatePickerConfig *)config;
 

@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C340F1A222412E1E00402742 /* AFormFramework.h */; };
 		C37E31EE2237DF160021FB1E /* AFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31ED2237DF160021FB1E /* AFormView.m */; };
 		C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */; };
 		C37E31F62237E5D40021FB1E /* AFSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F52237E5D40021FB1E /* AFSection.m */; };
@@ -35,7 +36,6 @@
 		C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32AA223A9A810021FB1E /* AFBaseHeaderSectionView.m */; };
 		C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32B0223A9BB20021FB1E /* AFDefaultHeaderSectionView.m */; };
 		C37E32B4223AC7420021FB1E /* AFTextFieldConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */; };
-		C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */; };
 		C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */; };
 		C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D5223B9CEE0021FB1E /* AFPhoneNumberVerifier.m */; };
 		C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32D8223B9CFE0021FB1E /* AFEmailVerifier.m */; };
@@ -48,7 +48,6 @@
 		C37E332E223BC9CB0021FB1E /* AFDefaultVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */; };
 		C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D7223B9CFE0021FB1E /* AFEmailVerifier.h */; };
 		C37E3330223BC9D00021FB1E /* AFPhoneNumberVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D4223B9CEE0021FB1E /* AFPhoneNumberVerifier.h */; };
-		C37E3331223BC9D40021FB1E /* AFAutocompleteViewAttributes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */; };
 		C37E3332223BC9D70021FB1E /* AFLayoutConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32012237ED870021FB1E /* AFLayoutConfig.h */; };
 		C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31FB2237ED610021FB1E /* AFRowConfig.h */; };
 		C37E3334223BC9DC0021FB1E /* AFRow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31F72237E5F10021FB1E /* AFRow.h */; };
@@ -73,6 +72,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */,
 				C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */,
 				C37E333D223BCA060021FB1E /* AFInputViewConfig.h in CopyFiles */,
 				C37E332A223BC9AF0021FB1E /* AFTextFieldInputView.h in CopyFiles */,
@@ -92,7 +92,6 @@
 				C37E3335223BC9DE0021FB1E /* AFSection.h in CopyFiles */,
 				C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */,
 				C37E3330223BC9D00021FB1E /* AFPhoneNumberVerifier.h in CopyFiles */,
-				C37E3331223BC9D40021FB1E /* AFAutocompleteViewAttributes.h in CopyFiles */,
 				C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C340F1A222412E1E00402742 /* AFormFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormFramework.h; sourceTree = "<group>"; };
 		C37E31EC2237DF160021FB1E /* AFormView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormView.h; sourceTree = "<group>"; };
 		C37E31ED2237DF160021FB1E /* AFormView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFormView.m; sourceTree = "<group>"; };
 		C37E31EF2237DFCA0021FB1E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -135,8 +135,6 @@
 		C37E32B3223AC7420021FB1E /* AFTextFieldConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextFieldConfig.m; sourceTree = "<group>"; };
 		C37E32B6223ACA810021FB1E /* AFTextVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextVerifier.h; sourceTree = "<group>"; };
 		C37E32BB223AD61D0021FB1E /* AFAutocompleteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFAutocompleteView.h; sourceTree = "<group>"; };
-		C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFAutocompleteViewAttributes.h; sourceTree = "<group>"; };
-		C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFAutocompleteViewAttributes.m; sourceTree = "<group>"; };
 		C37E32CB223B963F0021FB1E /* AFTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextField.h; sourceTree = "<group>"; };
 		C37E32CC223B97140021FB1E /* AFTextFieldInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldInputView.h; sourceTree = "<group>"; };
 		C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDatePickerConfig.h; sourceTree = "<group>"; };
@@ -243,15 +241,6 @@
 				C37E32DF223B9D620021FB1E /* AFDefaultVerifier.m */,
 			);
 			path = Verifier;
-			sourceTree = "<group>";
-		};
-		C37E32C4223B95880021FB1E /* Autocomplete */ = {
-			isa = PBXGroup;
-			children = (
-				C37E32BD223AD6F90021FB1E /* AFAutocompleteViewAttributes.h */,
-				C37E32BE223AD6F90021FB1E /* AFAutocompleteViewAttributes.m */,
-			);
-			path = Autocomplete;
 			sourceTree = "<group>";
 		};
 		C37E32C5223B95970021FB1E /* Configs */ = {
@@ -383,6 +372,7 @@
 				C3FD5C5A2236A61B00FD6789 /* Models */,
 				C3FD5C512236A61300FD6789 /* AForm.h */,
 				C37E32B6223ACA810021FB1E /* AFTextVerifier.h */,
+				C340F1A222412E1E00402742 /* AFormFramework.h */,
 			);
 			path = AForm;
 			sourceTree = "<group>";
@@ -393,7 +383,6 @@
 				C37E32C7223B95B40021FB1E /* Section */,
 				C37E32C6223B95A70021FB1E /* Row */,
 				C37E32C5223B95970021FB1E /* Configs */,
-				C37E32C4223B95880021FB1E /* Autocomplete */,
 				C37E32C3223B95810021FB1E /* Verifier */,
 			);
 			path = Models;
@@ -494,7 +483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ x\"${EXTERNALFRAMEWORKSPATH}\" = \"x\" ]; then\nEXTERNALFRAMEWORKSPATH=\"${SRCROOT}\"\nfi\n\nFMK_NAME=\"${TARGET_NAME}\"\nFMK_VERSION=\"A\"\n\nINSTALL_DIR=\"${EXTERNALFRAMEWORKSPATH}/${CONFIGURATION}/iOS/${FMK_NAME}.framework\"\nFMK_DIR=\"${INSTALL_DIR}/${FMK_NAME}.framework\"\n\nWRK_DIR=build\nrm -rf \"${WRK_DIR}\"\nDEVICE_DIR=${WRK_DIR}/${CONFIGURATION}-iphoneos\nSIMULATOR_DIR=${WRK_DIR}/${CONFIGURATION}-iphonesimulator\n\nif [ x\"${ENABLE_BITCODE}\" != \"x\" ]; then\nBITCODEOPT=\"ENABLE_BITCODE=${ENABLE_BITCODE}\"\nfembed_bitcode=`echo \"${ENABLE_BITCODE}\" | tr '[:upper]' '[:lower]'`\n[ \"${fembed_bitcode}\" = 1 -o \"${fembed_bitxode}\" = \"yes\" -o \"${fembed_bitcode}\" = \"true\" ] && {\nOTHER_CFLAGS=\"${OTHER_CFLAGS} -fembed-bitcode\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS} -fembed-bitcode\"\n}\nfi\n\n#Building\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphoneos ARCHS='armv7 arm64'\nVALID_ARCHS='armv7 arm64' ONLY_ACTIVE_ARCH=0 ${BITCODEOPT} OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphonesimulator ARCHS='i386 x86_64'\nVALID_ARCHS='i386 x86_64' ${BITCODEOPT} ONLY_ACTIVE_ARCH=0 OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]; then\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# Copies the header files to the final product folder.\ncp \"${DEVICE_DIR}/include/AFormFramework/\"*.h \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\n\n# Copy frameworks\n# Install dir (in the root folder of the current project) will be the final output to the framework.\nlibtool -static -o \"${DEVICE_DIR}/${FMK_NAME}\" `find \"${DEVICE_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${SIMULATOR_DIR}/${FMK_NAME}\" `find \"${SIMULATOR_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\" \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\"\n\n# Creates the internal links.\n# It MUST use relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Clean up\nrm -rf \"${WRK_DIR}\"\n\n# Set the build revision mark for the frmework.\n{\n    cd \"${SRCROOT}\"\n    h=`git rev-list --full-history --all --max-count=1 -- \"../../..\" 2> /dev/null | head -1`\n    [ -z \"${h}\" ] || { echo \"Seting framework build revision mark ${h}\"; echo \"${h}\" > \"${INSTALL_DIR}/.build-revision\"; }\n}\n";
+			shellScript = "if [ x\"${EXTERNALFRAMEWORKSPATH}\" = \"x\" ]; then\nEXTERNALFRAMEWORKSPATH=\"${SRCROOT}\"\nfi\n\nFMK_NAME=\"${TARGET_NAME}\"\nFMK_VERSION=\"A\"\n\nINSTALL_DIR=\"${EXTERNALFRAMEWORKSPATH}/${CONFIGURATION}/iOS/${FMK_NAME}.framework\"\nFMK_DIR=\"${INSTALL_DIR}/${FMK_NAME}.framework\"\n\nWRK_DIR=build\nrm -rf \"${WRK_DIR}\"\nDEVICE_DIR=${WRK_DIR}/${CONFIGURATION}-iphoneos\nSIMULATOR_DIR=${WRK_DIR}/${CONFIGURATION}-iphonesimulator\n\nif [ x\"${ENABLE_BITCODE}\" != \"x\" ]; then\nBITCODEOPT=\"ENABLE_BITCODE=${ENABLE_BITCODE}\"\nfembed_bitcode=`echo \"${ENABLE_BITCODE}\" | tr '[:upper]' '[:lower]'`\n[ \"${fembed_bitcode}\" = 1 -o \"${fembed_bitxode}\" = \"yes\" -o \"${fembed_bitcode}\" = \"true\" ] && {\nOTHER_CFLAGS=\"${OTHER_CFLAGS} -fembed-bitcode\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS} -fembed-bitcode\"\n}\nfi\n\n#Building\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphoneos ARCHS='armv7 arm64'\nVALID_ARCHS='armv7 arm64' ONLY_ACTIVE_ARCH=0 ${BITCODEOPT} OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"AForm\" -sdk iphonesimulator ARCHS='i386 x86_64'\nVALID_ARCHS='i386 x86_64' ${BITCODEOPT} ONLY_ACTIVE_ARCH=0 OTHER_CFLAGS=\"${OTHER_CFLAGS}\"\nOTHER_LDFLAGS=\"${OTHER_LDFLAGS}\"\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]; then\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# Copies the header files to the final product folder.\ncp \"${DEVICE_DIR}/include/AForm/\"*.h \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\n\n# Copy frameworks\n# Install dir (in the root folder of the current project) will be the final output to the framework.\nlibtool -static -o \"${DEVICE_DIR}/${FMK_NAME}\" `find \"${DEVICE_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${SIMULATOR_DIR}/${FMK_NAME}\" `find \"${SIMULATOR_DIR}\" -type f -name \"*.a\"`\nlibtool -static -o \"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\" \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\"\n\n# Creates the internal links.\n# It MUST use relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Clean up\nrm -rf \"${WRK_DIR}\"\n\n# Set the build revision mark for the frmework.\n{\n    cd \"${SRCROOT}\"\n    h=`git rev-list --full-history --all --max-count=1 -- \"../../..\" 2> /dev/null | head -1`\n    [ -z \"${h}\" ] || { echo \"Seting framework build revision mark ${h}\"; echo \"${h}\" > \"${INSTALL_DIR}/.build-revision\"; }\n}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -509,7 +498,6 @@
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
-				C37E32BF223AD6F90021FB1E /* AFAutocompleteViewAttributes.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
 				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
 				C37E32B4223AC7420021FB1E /* AFTextFieldConfig.m in Sources */,

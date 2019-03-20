@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "AFAutocompleteViewAttributes.h"
 
 @protocol AFAutocompleteViewDelegate <NSObject>
 
