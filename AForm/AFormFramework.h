@@ -14,11 +14,10 @@
 #import <AFormFramework/AFTextVerifier.h>
 #import <AFormFramework/AFRowConfig.h>
 #import <AFormFramework/AFLayoutConfig.h>
-#import <AFormFramework/ARow.h>
+#import <AFormFramework/AFRow.h>
 #import <AFormFramework/AFSection.h>
 #import <AFormFramework/AFEmailVerifier.h>
 #import <AFormFramework/AFPhoneNumberVerifier.h>
-#import <AFormFramework/AFRussianPassportVerifier.h>
 #import <AFormFramework/AFDefaultVerifier.h>
 #import <AFormFramework/AFHeaderViewConfig.h>
 #import <AFormFramework/AFHeaderSectionView.h>
@@ -27,6 +26,6 @@
 #import <AFormFramework/AFTextFieldConfig.h>
 #import <AFormFramework/AFTextField.h>
 #import <AFormFramework/AFTextFieldInputView.h>
-#import <AFromFramework/AFTextFieldInputViewConfig.h>
+#import <AFormFramework/AFTextFieldInputViewConfig.h>
 
 #endif /* AFormFramework_h */

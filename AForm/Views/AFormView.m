@@ -206,6 +206,19 @@
     return row.layoutConfig;
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    AFSection *sc = [self.formModel getSection:section];
+    
+    if (!sc)
+    {
+        return UIEdgeInsetsZero;
+    }
+    
+    return sc.insets;
+}
+
+
 #pragma mark - UICollectionViewDelegate protocol methods
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

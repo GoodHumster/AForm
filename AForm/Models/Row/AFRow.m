@@ -20,13 +20,42 @@
 
 @implementation AFRow
 
+- (instancetype) init
+{
+    if ( ( self = [super init]) == nil )
+    {
+        return nil;
+    }
+    return self;
+}
+
 + (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFInputViewConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
 {
     AFRow *row = [AFRow new];
+    row->identifier = @"AFRow";
     row.key = rowConfig.key;
     row.value = rowConfig.value;
     row.inputViewConfig = [(id)ivConfig copy];
     row.layoutConfig = [(id)layoutConfig copy];
+    
+    return row;
+}
+
++ (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier
+{
+    AFRow *row = [AFRow new];
+    row.key = key;
+    row.value = value;
+    row->identifier = identifier;
+    
+    return row;
+}
+
++ (id) rowWithKey:(NSString *)key andIdentifier:(NSString *)identifier
+{
+    AFRow *row = [AFRow new];
+    row.key = key;
+    row->identifier = identifier;
     
     return row;
 }

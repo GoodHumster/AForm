@@ -37,6 +37,7 @@
     self.textColor = [UIColor blackColor];
     self.borderColor = [UIColor lightGrayColor];
     self.borderWidth = 1;
+    self.insets = UIEdgeInsetsZero;
     return self;
 }
 
@@ -83,6 +84,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     AFTextFieldConfig *config = [AFTextFieldConfig new];
+    config.insets = self.insets;
     config.textFieldClass = self.textFieldClass;
     config.placeholder = self.placeholder;
     config.haveAutocomplete = self.haveAutocomplete;

@@ -30,6 +30,11 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 @property (nonatomic, strong) NSLayoutConstraint *underlineViewBottomConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *underlineViewHeightConstraint;
 
+@property (nonatomic, strong) NSLayoutConstraint *textFieldTopConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *textFieldBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *textFieldLeadingConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *textFieldTrailingConstraint;
+
 @property (nonatomic, assign) BOOL canEditing;
 @property (nonatomic, assign) CGFloat autocompleteHeight;
 
@@ -92,14 +97,14 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     underlineView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.underlineView = underlineView;
-    [self addSubview:underlineView];
+    [self.contentView addSubview:underlineView];
     
     [underlineView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
     [self.contentView.trailingAnchor constraintEqualToAnchor:underlineView.trailingAnchor].active = YES;
     self.underlineViewBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:underlineView.bottomAnchor];
-    self.underlineViewBottomConstraint.active = YES;
     self.underlineViewHeightConstraint = [underlineView.heightAnchor constraintEqualToConstant:1];
-    self.underlineViewHeightConstraint.active = YES;
+    
+    [NSLayoutConstraint activateConstraints:@[self.underlineViewBottomConstraint,self.underlineViewHeightConstraint]];
 }
 
 #pragma mark - UICollectionViewCell override methods
@@ -128,7 +133,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (void) configWithRow:(AFRow *)row layoutAttributes:(AFFormLayoutAttributes *)attributes
 {
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor clearColor];
     [super configWithRow:row layoutAttributes:attributes];
     row.output = self;
     
@@ -137,11 +142,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 }
 
 #pragma mark - UIResponder methods
-
-- (void)reloadInputViews
-{
-    [super reloadInputViews];
-}
 
 - (BOOL)canBecomeFirstResponder
 {
@@ -299,6 +299,14 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
         [self setupTextFieldWithConfig:config];
     }
     
+    [self.contentView bringSubviewToFront:self.underlineView];
+    
+    UIEdgeInsets insets = config.insets;
+    self.textFieldTopConstraint.constant += insets.top;
+    self.textFieldBottomConstraint.constant += insets.bottom;
+    self.textFieldTrailingConstraint.constant += insets.right;
+    self.textFieldLeadingConstraint.constant += insets.left;
+    
     [self addAutocompleteViewWithConfig:config];
     [self addInputViewFromConfig:config];
 }
@@ -320,14 +328,14 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 - (void) addUserTextFieldWithConfig:(AFTextFieldConfig *)config
 {
     UITextField<AFTextField> *view = [config.textFieldClass textFieldWithConfig:config andSetDelegate:self];
-    
-    if (![view isKindOfClass:[UIView class]])
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    if (![view isKindOfClass:[UITextField class]])
     {
         NSLog(@"%@: [WARNING] Failed add user text field, because he not inherited uiview class \n",NSStringFromClass(self.class));
         return;
     }
     
-    view.parentCell = self;
+//view.parentCell = self;
     self.textField = view;
     [self addTextField:view];
 }
@@ -337,10 +345,12 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 {
     [self.contentView addSubview:view];
     
-    [view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor].active = YES;
-    [view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
-    [self.contentView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
-    [self.contentView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:1].active = YES;
+    self.textFieldTopConstraint = [view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor];
+    self.textFieldLeadingConstraint = [view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor];
+    self.textFieldTrailingConstraint = [self.contentView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor];
+    self.textFieldBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:1];
+    
+    [NSLayoutConstraint activateConstraints:@[_textFieldTopConstraint,_textFieldBottomConstraint,_textFieldLeadingConstraint,_textFieldTrailingConstraint]];
 }
 
 - (void) addAutocompleteViewWithConfig:(AFTextFieldConfig *)config
@@ -352,6 +362,11 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     
     UIView<AFAutocompleteView> *autocompleteView = [config.autocompleteViewClass autocompleteViewWithDelegate:self];
     autocompleteView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    if (!autocompleteView)
+    {
+        return;
+    }
     
     [self.contentView addSubview:autocompleteView];
     [self.contentView removeConstraint:self.underlineViewBottomConstraint];

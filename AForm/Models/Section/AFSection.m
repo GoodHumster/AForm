@@ -31,26 +31,25 @@
 
 #pragma mark - Public API methods
 
-//+ (id) sectionWithTitle:(NSString *)title andHeaderType:(kAFSectionHeaderType)headerType
-//{
-//    AFSection *section = [AFSection new];
-//    section.title = title;
-//    section.headerType = headerType;
-//    section.rows = [NSArray new];
-//    
-//    return section;
-//}
-//
-//+ (id) sectionWithTitle:(NSString *)title andHeaderType:(kAFSectionHeaderType)headerType layoutConfig:(AFLayoutConfig *)layoutConfig
-//{
-//    AFSection *section = [AFSection new];
-//    section.title = title;
-//    section.headerType = headerType;
-//    section.rows = [NSArray new];
-//    section.layoutConfig = layoutConfig;
-//    
-//    return section;
-//}
++ (id) sectionWithTitle:(NSString *)title
+{
+    AFSection *section = [AFSection new];
+    section.title = title;
+    section.rows = [NSArray new];
+    
+    return section;
+}
+
++ (id) sectionWithTitle:(NSString *)title andHeaderConfig:(id<AFHeaderViewConfig>)config layoutConfig:(AFLayoutConfig *)layoutConfig
+{
+    AFSection *section = [AFSection new];
+    section.title = title;
+    section.headerConfig = config;
+    section.rows = [NSArray new];
+    section.layoutConfig = layoutConfig;
+
+    return section;
+}
 
 - (void) addRow:(AFRow *)row
 {

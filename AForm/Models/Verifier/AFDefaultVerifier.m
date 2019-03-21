@@ -45,6 +45,11 @@
     NSString *text = [textOwner getOwnerText];
     text = [text stringByReplacingCharactersInRange:range withString:string];
     
+    if (range.length > 0)
+    {
+        return YES;
+    }
+    
     return [self validateText:text];
 }
 

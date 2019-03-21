@@ -205,6 +205,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         return CGSizeZero;
     }
     
+    UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:indexPath.section];
     AFLayoutConfig *config = [self.delegate layoutConfigForHeaderAtSection:indexPath.section];
     
     if (!config)
@@ -212,7 +213,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         return CGSizeZero;
     }
     
-    return [self sizeForLayoutConfig:config wihtSectionInsets:UIEdgeInsetsZero];
+    return [self sizeForLayoutConfig:config wihtSectionInsets:sectionInsets];
 }
 
 - (CGSize) sizeForCellAtIndexPath:(NSIndexPath *)indexPath
@@ -252,9 +253,9 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     config.width.multiplie : config.width.constant / CGRectGetWidth(self.collectionView.frame);
     
     width -= (interItemMultiplie*minimumInteritemSpacing + minimumInteritemSpacing);
+    width -= (insets.left + insets.right);
     
-    CGRect frame = {.origin = CGPointZero, .size = CGSizeMake(width, height)};
-    return UIEdgeInsetsInsetRect(frame, insets).size;
+    return CGSizeMake(width, height);
 }
 
 - (UIEdgeInsets) sectionInsetsAtIndex:(NSInteger)section
@@ -304,9 +305,11 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 - (void) invalidateLayout:(UICollectionViewLayoutAttributes *)attributes fromRect:(CGRect)fromFrame
 {
+    UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:attributes.indexPath.section];
+    CGFloat yOffset = CGRectEqualToRect(fromFrame, CGRectZero) ? sectionInsets.top : 0;
     CGFloat minimumInteritemSpacing = self.minimumInteritemSpacing;
     CGFloat x = CGRectGetMaxX(fromFrame) + minimumInteritemSpacing;
-    CGFloat y = CGRectGetMinY(fromFrame);
+    CGFloat y = CGRectGetMinY(fromFrame) + yOffset;
     
     CGFloat width = CGRectGetWidth(attributes.frame);
     CGFloat parentWidth = CGRectGetWidth(self.collectionView.frame);

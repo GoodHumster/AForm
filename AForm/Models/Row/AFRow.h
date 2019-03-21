@@ -15,6 +15,10 @@
 
 
 @interface AFRow : NSObject
+{
+    @private
+    NSString *identifier;
+}
 
 @property (nonatomic, strong, readonly) NSString *key;
 
@@ -25,5 +29,9 @@
 @property (nonatomic, strong) AFLayoutConfig *layoutConfig;
 
 + (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFInputViewConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
+
++ (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
+
++ (id) rowWithKey:(NSString *)key andIdentifier:(NSString *)identifier;
 
 @end
