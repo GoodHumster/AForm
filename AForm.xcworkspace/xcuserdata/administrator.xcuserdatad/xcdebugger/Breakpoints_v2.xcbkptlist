@@ -493,7 +493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
             endingLineNumber = "268"
-            landmarkName = "-textFieldDidPressReturnKey:"
+            landmarkName = "-textFieldDidBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -509,8 +509,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "-textFieldDidPressReturnKey:"
-            landmarkType = "7">
+            landmarkName = "AFormView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -525,7 +525,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "311"
             endingLineNumber = "311"
-            landmarkName = "-getNextIndexPath:"
+            landmarkName = "-textFieldCell:shouldShowAutocomplete:withControllBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -574,22 +574,6 @@
             startingLineNumber = "226"
             endingLineNumber = "226"
             landmarkName = "-textFieldShouldReturn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "574685532.277397"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-becomeFirstResponder"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -653,8 +637,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
             endingLineNumber = "277"
-            landmarkName = "-textFieldDidPressReturnKey:"
-            landmarkType = "7">
+            landmarkName = "AFormView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -669,7 +653,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "375"
             endingLineNumber = "375"
-            landmarkName = "-addInputViewFromConfig:"
+            landmarkName = "-addAutocompleteViewWithConfig:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -717,8 +701,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
             endingLineNumber = "143"
-            landmarkName = "-reloadInputViews"
-            landmarkType = "7">
+            landmarkName = "AFTextFieldCollectionViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -877,7 +861,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
             endingLineNumber = "390"
-            landmarkName = "-textFieldChanageState:"
+            landmarkName = "-addInputViewFromConfig:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

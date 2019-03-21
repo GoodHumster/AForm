@@ -265,12 +265,12 @@
 
 #pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
 
-- (void) textFieldDidBecomFirstResponder:(AFTextFieldCollectionViewCell *)cell
+- (void) textFieldDidBeginEditing:(AFTextFieldCollectionViewCell *)cell
 {
     self.currentFocusedCell = cell;
 }
 
-- (void) textFieldDidResignFirstResponder:(AFTextFieldCollectionViewCell *)cell
+- (void) textFieldDidEndEditing:(AFTextFieldCollectionViewCell *)cell
 {
     self.currentFocusedCell = nil;
 }
@@ -309,12 +309,12 @@
 {
     AFRow *row = cell.row;
     
-    if (![self.textFieldDelegate respondsToSelector:@selector(fromView:forRow:shouldShowAutocomplete:withControllBlock:)])
+    if (![self.textFieldDelegate respondsToSelector:@selector(formView:forRow:shouldShowAutocomplete:withControllBlock:)])
     {
         return;
     }
     
-    [self.textFieldDelegate fromView:self forRow:row shouldShowAutocomplete:view withControllBlock:controllBlock];
+    [self.textFieldDelegate formView:self forRow:row shouldShowAutocomplete:view withControllBlock:controllBlock];
 }
 
 #pragma mark - utils methods

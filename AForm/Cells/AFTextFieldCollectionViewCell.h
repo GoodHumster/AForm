@@ -14,8 +14,8 @@
 
 @protocol AFTextFieldCollectionViewCellOutput <AFCollectionViewCellOutput>
 
-- (void) textFieldDidBecomFirstResponder:(AFTextFieldCollectionViewCell *)cell;
-- (void) textFieldDidResignFirstResponder:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldDidBeginEditing:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldDidEndEditing:(AFTextFieldCollectionViewCell *)cell;
 - (void) textFieldDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell;
 
 - (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValue:(NSString *)value inRow:(AFRow *)row;

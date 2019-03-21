@@ -150,14 +150,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL) becomeFirstResponder
 {
-    BOOL becomeFR = [self.textField becomeFirstResponder];
-    
-    if (becomeFR)
-    {
-        [self.output textFieldDidBecomFirstResponder:self];
-    }
-    
-    return becomeFR;
+    return [self.textField becomeFirstResponder];;
 }
 
 - (BOOL)resignFirstResponder
@@ -166,7 +159,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     
     if (resignFR)
     {
-        [self.output textFieldDidResignFirstResponder:self];
         [self hideAutocompleteView];
     }
     
@@ -200,9 +192,15 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.output textFieldDidBeginEditing:self];
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     BOOL isValid = [[self getVerifier] isValidText:textField.text];
+    [self.output textFieldDidEndEditing:self];
     [self textFieldChanageState:isValid];
 }
 

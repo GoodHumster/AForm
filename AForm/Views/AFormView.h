@@ -23,7 +23,7 @@
 
 @protocol AFormViewTextFieldDelegate <NSObject>
 
-- (void)fromView:(AFormView *)view forRow:(AFRow *)row shouldShowAutocomplete:(UIView<AFAutocompleteView> *)autocompelteView withControllBlock:(void (^)(BOOL))controllBlock;
+- (void)formView:(AFormView *)view forRow:(AFRow *)row shouldShowAutocomplete:(UIView<AFAutocompleteView> *)autocompelteView withControllBlock:(void (^)(BOOL))controllBlock;
 
 @end
 
