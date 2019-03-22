@@ -7,7 +7,7 @@
 //
 
 #import "AFormExample.h"
-#import <AForm/AFTextFieldConfig.h>
+#import <AForm/AFTextFieldCellConfig.h>
 #import <AForm/AFDatePickerConfig.h>
 #import <AForm/AFLayoutConfig.h>
 
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
 //    {
 //        NSString *indexSTR = [NSString stringWithFormat:@"Field %ld",index];
 //        AFRow *row = [self createRowWithType:kExampleFieldsType_Phone];
-//        AFTextFieldConfig *config = (AFTextFieldConfig *)row.inputViewConfig;
+//        AFTextFieldCellConfig *config = (AFTextFieldCellConfig *)row.inputViewConfig;
 //        config.placeholder = indexSTR;
 //
 //        [self.source addObject:row];
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
 
 - (AFRow *) createRowWithType:(kExampleFieldsType)type
 {
-    AFTextFieldConfig *tfConfig = [AFTextFieldConfig defaultTextFieldConfig];
+    AFTextFieldCellConfig *tfConfig = [AFTextFieldCellConfig defaultTextFieldConfig];
     AFLayoutConstraint *heightConstrain = [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:44 andEstimate:0];;
     AFLayoutConstraint *widthConstrain =  [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:kAFAutocompletViewHeightAutomaticDemision andEstimate:0];
     AFDatePickerConfig *datePickerConfig = [AFDatePickerConfig new];
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             tfConfig.placeholder = @"Фамилия";
             break;
         case kExampleFieldsType_Email:
-            tfConfig = [AFTextFieldConfig emailTextFieldConfig];
+            tfConfig = [AFTextFieldCellConfig emailTextFieldConfig];
             tfConfig.placeholder = @"Email";
             break;
         case kExampleFieldsType_Phone:

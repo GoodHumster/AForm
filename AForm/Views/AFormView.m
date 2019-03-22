@@ -20,7 +20,7 @@
 #import "AFFormLayoutAttributes.h"
 
 #import "AFHeaderViewConfig.h"
-#import "AFInputViewConfig.h"
+#import "AFCellConfig.h"
 
 
 @interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFTextFieldCollectionViewCellOutput>
@@ -243,7 +243,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
-    id<AFInputViewConfig> inputViewConig = row.inputViewConfig;
+    id<AFCellConfig> inputViewConig = row.inputViewConfig;
     
     UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
     cell.output = self;
@@ -265,17 +265,17 @@
 
 #pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
 
-- (void) textFieldDidBeginEditing:(AFTextFieldCollectionViewCell *)cell
+- (void)textFieldCellDidBeginEditing:(AFTextFieldCollectionViewCell *)cell
 {
     self.currentFocusedCell = cell;
 }
 
-- (void) textFieldDidEndEditing:(AFTextFieldCollectionViewCell *)cell
+- (void)textFieldCellDidEndEditing:(AFTextFieldCollectionViewCell *)cell
 {
     self.currentFocusedCell = nil;
 }
 
-- (void)textFieldDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell
+- (void)textFieldCellDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     NSIndexPath *nextIndexPath = [self getNextIndexPath:indexPath];
@@ -291,7 +291,7 @@
     {
         [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self textFieldDidPressReturnKey:cell];
+            [self textFieldCellDidPressReturnKey:cell];
         });
         return;
     }
@@ -300,9 +300,9 @@
     [nextCell becomeFirstResponder];
 }
 
-- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValue:(NSString *)value inRow:(AFRow *)row
+- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueinRow:(AFRow *)row
 {
-    row.value = value;
+    
 }
 
 - (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void (^)(BOOL))controllBlock

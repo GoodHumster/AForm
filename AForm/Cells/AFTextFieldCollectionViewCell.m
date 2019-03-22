@@ -11,7 +11,9 @@
 #import "AFFormLayoutAttributes.h"
 
 #import "AFRow_Private.h"
-#import "AFTextFieldConfig.h"
+#import "AFTextFieldCellConfig.h"
+
+#import "NSString+AFValue.h"
 
 #import "AFCacheManager.h"
 #import "AFResourceManager.h"
@@ -22,7 +24,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
                                             UITextFieldDelegate,
                                             AFTextOwner,
                                             AFAutocompleteViewDelegate,
-                                            AFTextFieldInputViewOutput >
+                                            AFTextFieldCellInputViewOutput >
 
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIView<AFAutocompleteView> *autocompleteView;
@@ -137,8 +139,127 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     [super configWithRow:row layoutAttributes:attributes];
     row.output = self;
     
-    [self setupConfigurations:(AFTextFieldConfig *)row.inputViewConfig];
-    self.textField.text = self.row.value;
+    [self setupConfigurations:(AFTextFieldCellConfig *)row.inputViewConfig];
+    self.textField.text = [self.row.value getStringValue];
+}
+
+- (void) setupConfigurations:(AFTextFieldCellConfig *)config
+{
+    self.backgroundColor = config.backgroundColor;
+    self.underlineView.hidden = config.borderStyle != AFTextFieldBorderUnderline;
+    self.underlineView.backgroundColor = config.borderColor;
+    self.underlineViewHeightConstraint.constant = config.borderWidth;
+    
+    UITextField *textField = self.textField;
+    if (config.textFieldClass)
+    {
+        [textField removeFromSuperview];
+        [self addUserTextFieldWithConfig:config];
+    }
+    else
+    {
+        [self setupTextFieldWithConfig:config];
+    }
+    
+    [self.contentView bringSubviewToFront:self.underlineView];
+    
+    UIEdgeInsets insets = config.insets;
+    self.textFieldTopConstraint.constant += insets.top;
+    self.textFieldBottomConstraint.constant += insets.bottom;
+    self.textFieldTrailingConstraint.constant += insets.right;
+    self.textFieldLeadingConstraint.constant += insets.left;
+    
+    [self addAutocompleteViewWithConfig:config];
+    [self addInputViewFromConfig:config];
+}
+
+- (void) setupTextFieldWithConfig:(AFTextFieldCellConfig *)config
+{
+    UITextField *textField = self.textField;
+    
+    textField.textColor = config.textColor;
+    textField.font = config.font;
+    textField.layer.borderColor = config.borderColor.CGColor;
+    textField.borderStyle = config.borderStyle == AFTextFieldBorderUnderline ?
+    UITextBorderStyleNone : (UITextBorderStyle)config.borderStyle;
+    textField.keyboardType = config.keyboardKeyType;
+    textField.returnKeyType = config.returnKeyType;
+    textField.placeholder = config.placeholder;
+}
+
+- (void) addUserTextFieldWithConfig:(AFTextFieldCellConfig *)config
+{
+    UITextField<AFTextField> *view = [config.textFieldClass textFieldWithConfig:config andSetDelegate:self];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    if (![view isKindOfClass:[UITextField class]])
+    {
+        NSLog(@"%@: [WARNING] Failed add user text field, because he not inherited uiview class \n",NSStringFromClass(self.class));
+        return;
+    }
+    
+    //view.parentCell = self;
+    self.textField = view;
+    [self addTextField:view];
+}
+
+
+- (void) addTextField:(UIView *)view
+{
+    [self.contentView addSubview:view];
+    
+    self.textFieldTopConstraint = [view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor];
+    self.textFieldLeadingConstraint = [view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor];
+    self.textFieldTrailingConstraint = [self.contentView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor];
+    self.textFieldBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:1];
+    
+    [NSLayoutConstraint activateConstraints:@[_textFieldTopConstraint,_textFieldBottomConstraint,_textFieldLeadingConstraint,_textFieldTrailingConstraint]];
+}
+
+- (void) addAutocompleteViewWithConfig:(AFTextFieldCellConfig *)config
+{
+    if (!config.haveAutocomplete)
+    {
+        return;
+    }
+    
+    UIView<AFAutocompleteView> *autocompleteView = [config.autocompleteViewClass autocompleteViewWithDelegate:self];
+    autocompleteView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    if (!autocompleteView)
+    {
+        return;
+    }
+    
+    [self.contentView addSubview:autocompleteView];
+    [self.contentView removeConstraint:self.underlineViewBottomConstraint];
+    
+    [self.underlineView.bottomAnchor constraintEqualToAnchor:autocompleteView.topAnchor].active = YES;
+    [autocompleteView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.contentView.trailingAnchor constraintEqualToAnchor:autocompleteView.trailingAnchor].active = YES;
+    [self.contentView.bottomAnchor constraintEqualToAnchor:autocompleteView.bottomAnchor].active = YES;
+}
+
+- (void) addInputViewFromConfig:(AFTextFieldCellConfig *)config
+{
+    Class<AFTextFieldCellInputView> inputViewClass = config.inputViewConfig.inputViewClass;
+    AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
+    
+    if (!inputViewClass)
+    {
+        return;
+    }
+    
+    UIView<AFTextFieldCellInputView> *inputView = (UIView<AFTextFieldCellInputView> *)[cacheManager cachedViewForClass:inputViewClass];
+    
+    if (!inputView)
+    {
+        inputView = [inputViewClass inputView];
+        [cacheManager cacheView:inputView forClass:inputViewClass];
+    }
+    
+    inputView.output = self;
+    [inputView prepareWithConfiguration:config.inputViewConfig];
+    self.textField.inputView = inputView;
 }
 
 #pragma mark - UIResponder methods
@@ -174,8 +295,8 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    AFTextFieldConfig *config = [self getConfig];
-    Class<AFTextFieldInputView> inputViewClass = config.inputViewConfig.inputViewClass;
+    AFTextFieldCellConfig *config = [self getConfig];
+    Class<AFTextFieldCellInputView> inputViewClass = config.inputViewConfig.inputViewClass;
     AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
     
     if (!inputViewClass)
@@ -183,7 +304,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
         return YES;
     }
     
-    UIView<AFTextFieldInputView> *inputView = ( UIView<AFTextFieldInputView> *)[cacheManager cachedViewForClass:inputViewClass];
+    UIView<AFTextFieldCellInputView> *inputView = ( UIView<AFTextFieldCellInputView> *)[cacheManager cachedViewForClass:inputViewClass];
     inputView.output = self;
     [inputView prepareWithConfiguration:[self getConfig].inputViewConfig];
     
@@ -194,13 +315,13 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.output textFieldDidBeginEditing:self];
+    [self.output textFieldCellDidBeginEditing:self];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     BOOL isValid = [[self getVerifier] isValidText:textField.text];
-    [self.output textFieldDidEndEditing:self];
+    [self.output textFieldCellDidEndEditing:self];
     [self textFieldChanageState:isValid];
 }
 
@@ -212,7 +333,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
       
-        [self.output textFieldCell:self didChangeValue:text inRow:self.row];
+        [self updateRowValue:text];
         [self textFieldShowAutocompleteIfNeeded];
     }
     
@@ -221,7 +342,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [self.output textFieldDidPressReturnKey:self];
+    [self.output textFieldCellDidPressReturnKey:self];
     return YES;
 }
 
@@ -245,24 +366,25 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     [self hideAutocompleteView];
 }
 
-- (void)formAutocompleteDidSelectValue:(NSString *)value
+- (void)formAutocompleteDidSelectValue:(id<AFValue>)value
 {
-    self.textField.text = value;
-    [self.output textFieldCell:self didChangeValue:value inRow:self.row];
+    self.textField.text = [value getStringValue];
+    [self updateRowValue:value];
 }
 
-#pragma mark - AFTextFieldInputViewOutput protocol methods
+#pragma mark - AFTextFieldCellInputViewOutput protocol methods
 
-- (void)inputViewDidChangeValue:(NSString *)value
+- (void)inputViewDidChangeValue:(id<AFValue>)value
 {
-    self.textField.text = value;
+    self.textField.text = [value getStringValue];
+    [self updateRowValue:value];
 }
 
 #pragma mark - AFRowOutput protocol methods
 
 - (void) didUpdateRowValue
 {
-    self.textField.text = self.row.value;
+    self.textField.text = [self.row.value getStringValue];
 }
 
 #pragma mark - AFTextOwner protocol methods
@@ -279,123 +401,10 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 #pragma mark - utils methods
 
-- (void) setupConfigurations:(AFTextFieldConfig *)config
+- (void) updateRowValue:(id<AFValue>)value
 {
-    self.backgroundColor = config.backgroundColor;
-    self.underlineView.hidden = config.borderStyle != AFTextFieldBorderUnderline;
-    self.underlineView.backgroundColor = config.borderColor;
-    self.underlineViewHeightConstraint.constant = config.borderWidth;
-    
-    UITextField *textField = self.textField;
-    if (config.textFieldClass)
-    {
-        [textField removeFromSuperview];
-        [self addUserTextFieldWithConfig:config];
-    }
-    else
-    {
-        [self setupTextFieldWithConfig:config];
-    }
-    
-    [self.contentView bringSubviewToFront:self.underlineView];
-    
-    UIEdgeInsets insets = config.insets;
-    self.textFieldTopConstraint.constant += insets.top;
-    self.textFieldBottomConstraint.constant += insets.bottom;
-    self.textFieldTrailingConstraint.constant += insets.right;
-    self.textFieldLeadingConstraint.constant += insets.left;
-    
-    [self addAutocompleteViewWithConfig:config];
-    [self addInputViewFromConfig:config];
-}
-
-- (void) setupTextFieldWithConfig:(AFTextFieldConfig *)config
-{
-    UITextField *textField = self.textField;
-    
-    textField.textColor = config.textColor;
-    textField.font = config.font;
-    textField.layer.borderColor = config.borderColor.CGColor;
-    textField.borderStyle = config.borderStyle == AFTextFieldBorderUnderline ?
-    UITextBorderStyleNone : (UITextBorderStyle)config.borderStyle;
-    textField.keyboardType = config.keyboardKeyType;
-    textField.returnKeyType = config.returnKeyType;
-    textField.placeholder = config.placeholder;
-}
-
-- (void) addUserTextFieldWithConfig:(AFTextFieldConfig *)config
-{
-    UITextField<AFTextField> *view = [config.textFieldClass textFieldWithConfig:config andSetDelegate:self];
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    if (![view isKindOfClass:[UITextField class]])
-    {
-        NSLog(@"%@: [WARNING] Failed add user text field, because he not inherited uiview class \n",NSStringFromClass(self.class));
-        return;
-    }
-    
-//view.parentCell = self;
-    self.textField = view;
-    [self addTextField:view];
-}
-
-
-- (void) addTextField:(UIView *)view
-{
-    [self.contentView addSubview:view];
-    
-    self.textFieldTopConstraint = [view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor];
-    self.textFieldLeadingConstraint = [view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor];
-    self.textFieldTrailingConstraint = [self.contentView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor];
-    self.textFieldBottomConstraint = [self.contentView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:1];
-    
-    [NSLayoutConstraint activateConstraints:@[_textFieldTopConstraint,_textFieldBottomConstraint,_textFieldLeadingConstraint,_textFieldTrailingConstraint]];
-}
-
-- (void) addAutocompleteViewWithConfig:(AFTextFieldConfig *)config
-{
-    if (!config.haveAutocomplete)
-    {
-        return;
-    }
-    
-    UIView<AFAutocompleteView> *autocompleteView = [config.autocompleteViewClass autocompleteViewWithDelegate:self];
-    autocompleteView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    if (!autocompleteView)
-    {
-        return;
-    }
-    
-    [self.contentView addSubview:autocompleteView];
-    [self.contentView removeConstraint:self.underlineViewBottomConstraint];
-    
-    [self.underlineView.bottomAnchor constraintEqualToAnchor:autocompleteView.topAnchor].active = YES;
-    [autocompleteView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
-    [self.contentView.trailingAnchor constraintEqualToAnchor:autocompleteView.trailingAnchor].active = YES;
-    [self.contentView.bottomAnchor constraintEqualToAnchor:autocompleteView.bottomAnchor].active = YES;
-}
-
-- (void) addInputViewFromConfig:(AFTextFieldConfig *)config
-{
-    Class<AFTextFieldInputView> inputViewClass = config.inputViewConfig.inputViewClass;
-    AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
-    
-    if (!inputViewClass)
-    {
-        return;
-    }
-    
-    UIView<AFTextFieldInputView> *inputView = (UIView<AFTextFieldInputView> *)[cacheManager cachedViewForClass:inputViewClass];
-    
-    if (!inputView)
-    {
-        inputView = [inputViewClass inputView];
-        [cacheManager cacheView:inputView forClass:inputViewClass];
-    }
-    
-    inputView.output = self;
-    [inputView prepareWithConfiguration:config.inputViewConfig];
-    self.textField.inputView = inputView;
+    self.row.value = value;
+    [self.output textFieldCell:self didChangeValueinRow:self.row];
 }
 
 - (void) textFieldChanageState:(BOOL)state
@@ -460,14 +469,16 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     self.autocompleteHeight = 0;
 }
 
-- (AFTextFieldConfig *) getConfig
+#pragma mark - get methods
+
+- (AFTextFieldCellConfig *) getConfig
 {
-    return (AFTextFieldConfig *)self.row.inputViewConfig;
+    return (AFTextFieldCellConfig *)self.row.inputViewConfig;
 }
 
 - (id<AFTextVerifier>) getVerifier
 {
-    AFTextFieldConfig *config = [self getConfig];
+    AFTextFieldCellConfig *config = [self getConfig];
     return config.verifier;
 }
 

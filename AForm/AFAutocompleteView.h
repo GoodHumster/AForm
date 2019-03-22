@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "AFValue.h"
+
 
 @protocol AFAutocompleteViewDelegate <NSObject>
 
-- (void) formAutocompleteDidSelectValue:(NSString *)value;
+- (void) formAutocompleteDidSelectValue:(id<AFValue>)value;
 - (void) formAutocompleteSetHeight:(CGFloat)height;
 
 - (void) formAutocompleteHide;

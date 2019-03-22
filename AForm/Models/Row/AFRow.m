@@ -9,7 +9,7 @@
 #import "AFRow_Private.h"
 
 #import "AFRowConfig.h"
-#import "AFInputViewConfig.h"
+#import "AFCellConfig.h"
 #import "AFLayoutConfig.h"
 
 @interface AFRow()
@@ -29,7 +29,7 @@
     return self;
 }
 
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFInputViewConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
++ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
 {
     AFRow *row = [AFRow new];
     row->identifier = @"AFRow";

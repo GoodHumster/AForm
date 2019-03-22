@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFValue.h"
 
 @class AFRowConfig;
 @class AFLayoutConfig;
-
-@protocol AFInputViewConfig;
-
+@protocol AFCellConfig;
 
 @interface AFRow : NSObject
 {
@@ -22,13 +21,13 @@
 
 @property (nonatomic, strong, readonly) NSString *key;
 
-@property (nonatomic, strong) id value;
+@property (nonatomic, strong) id<AFValue> value;
 
-@property (nonatomic, strong) id<AFInputViewConfig> inputViewConfig;
+@property (nonatomic, strong) id<AFCellConfig> inputViewConfig;
 
 @property (nonatomic, strong) AFLayoutConfig *layoutConfig;
 
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFInputViewConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
++ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
 
 + (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
 

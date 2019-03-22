@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "AFTextFieldInputViewConfig.h"
+#import "AFTextFieldCellInputViewConfig.h"
 
-@interface AFDatePickerConfig : NSObject<AFTextFieldInputViewConfig>
+@interface AFDatePickerConfig : NSObject<AFTextFieldCellInputViewConfig>
 
 @property (nonatomic, assign) UIDatePickerMode pickerMode;
 

@@ -1,5 +1,5 @@
 //
-//  AFTextFieldConfig.h
+//  AFTextFieldCellConfig.h
 //  AForm
 //
 //  Created by Administrator on 14/03/2019.
@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AFInputViewConfig.h"
+#import "AFBaseCellConfig.h"
 #import "AFAutocompleteView.h"
 #import "AFTextField.h"
 #import "AFDatePickerConfig.h"
-#import "AFTextFieldInputView.h"
-#import "AFTextFieldInputViewConfig.h"
+#import "AFTextFieldCellInputView.h"
+#import "AFTextFieldCellInputViewConfig.h"
 
 typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 {
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
     AFTextFieldBorderUnderline
 };
 
-@interface AFTextFieldConfig : NSObject<AFInputViewConfig>
+@interface AFTextFieldCellConfig : AFBaseCellConfig
 
 @property (nonatomic, assign) Class<AFTextField> textFieldClass;
 
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, AFTextFieldBorderStyle)
 @property (nonatomic, assign) UIEdgeInsets insets;
 
 @property (nonatomic, strong) id<AFTextVerifier> verifier;
-@property (nonatomic, strong) id<AFTextFieldInputViewConfig> inputViewConfig;
+@property (nonatomic, strong) id<AFTextFieldCellInputViewConfig> inputViewConfig;
 
 + (id) defaultTextFieldConfig;
 + (id) emailTextFieldConfig;

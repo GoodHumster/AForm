@@ -1,12 +1,12 @@
 //
-//  AFTextFieldConfig.m
+//  AFTextFieldCellConfig.m
 //  AForm
 //
 //  Created by Administrator on 14/03/2019.
 //  Copyright © 2019 Administrator. All rights reserved.
 //
 
-#import "AFTextFieldConfig.h"
+#import "AFTextFieldCellConfig.h"
 #import "AFTextFieldCollectionViewCell.h"
 
 #import "AFDefaultVerifier.h"
@@ -14,13 +14,13 @@
 #import "AFPhoneNumberVerifier.h"
 #import "AFRussianPassportVerifier.h"
 
-@interface AFTextFieldConfig()
+@interface AFTextFieldCellConfig()
 
 @property (nonatomic, strong) NSString *identifier;
 
 @end
 
-@implementation AFTextFieldConfig
+@implementation AFTextFieldCellConfig
 
 - (instancetype) init
 {
@@ -45,7 +45,7 @@
 
 + (id) defaultTextFieldConfig
 {
-    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    AFTextFieldCellConfig *config = [AFTextFieldCellConfig new];
     config.verifier = [AFDefaultVerifier new];
     config.keyboardKeyType = UIKeyboardTypeDefault;
     config.borderStyle = AFTextFieldBorderLine;
@@ -60,7 +60,7 @@
         datePickerConfig = [AFDatePickerConfig new];
     }
     
-    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    AFTextFieldCellConfig *config = [AFTextFieldCellConfig new];
     config.verifier = [AFDefaultVerifier new];
     config.keyboardKeyType = UIKeyboardTypeDefault;
     config.borderStyle = AFTextFieldBorderLine;
@@ -71,7 +71,7 @@
 
 + (id) emailTextFieldConfig
 {
-    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    AFTextFieldCellConfig *config = [AFTextFieldCellConfig new];
     config.verifier = [AFEmailVerifier new];
     config.keyboardKeyType = UIKeyboardTypeDefault;
     config.borderStyle = AFTextFieldBorderLine;
@@ -83,7 +83,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    AFTextFieldConfig *config = [AFTextFieldConfig new];
+    AFTextFieldCellConfig *config = [AFTextFieldCellConfig new];
     config.insets = self.insets;
     config.textFieldClass = self.textFieldClass;
     config.placeholder = self.placeholder;

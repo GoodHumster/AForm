@@ -72,12 +72,12 @@
 
 #pragma mark - Public API methods
 
-+ (UIView<AFTextFieldInputView> *) inputView
++ (UIView<AFTextFieldCellInputView> *) inputView
 {
     return [[AFDatePickerView alloc] init];
 }
 
-- (void) prepareWithConfiguration:(id<AFTextFieldInputViewConfig>)config
+- (void) prepareWithConfiguration:(id<AFTextFieldCellInputViewConfig>)config
 {
     AFDatePickerConfig *datePickerConfig = (AFDatePickerConfig *)config;
     self.datePicker.minimumDate = datePickerConfig.minDate;

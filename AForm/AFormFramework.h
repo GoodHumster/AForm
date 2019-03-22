@@ -22,10 +22,12 @@
 #import <AFormFramework/AFHeaderViewConfig.h>
 #import <AFormFramework/AFHeaderSectionView.h>
 #import <AFormFramework/AFDatePickerConfig.h>
-#import <AFormFramework/AFInputViewConfig.h>
-#import <AFormFramework/AFTextFieldConfig.h>
+#import <AFormFramework/AFCellConfig.h>
+#import <AFormFramework/AFTextFieldCellConfig.h>
 #import <AFormFramework/AFTextField.h>
-#import <AFormFramework/AFTextFieldInputView.h>
-#import <AFormFramework/AFTextFieldInputViewConfig.h>
+#import <AFormFramework/AFTextFieldCellInputView.h>
+#import <AFormFramework/AFTextFieldCellInputViewConfig.h>
+#import <AFormFramework/AFValue.h>
+#import <AFormFramework/>
 
 #endif /* AFormFramework_h */

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#import "AFTextFieldInputView.h"
+#import "AFTextFieldCellInputView.h"
 
-@interface AFDatePickerView : UIView<AFTextFieldInputView>
+@interface AFDatePickerView : UIView<AFTextFieldCellInputView>
 @end

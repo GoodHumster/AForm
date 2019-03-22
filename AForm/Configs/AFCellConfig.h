@@ -1,5 +1,5 @@
 //
-//  AFInputViewConfig.h
+//  AFCellConfig.h
 //  AForm
 //
 //  Created by Administrator on 12/03/2019.
@@ -10,7 +10,7 @@
 
 #import "AFTextVerifier.h"
 
-@protocol AFInputViewConfig <NSCopying>
+@protocol AFCellConfig <NSCopying>
 
 @property (nonatomic, strong, readonly) NSString *identifier;
 

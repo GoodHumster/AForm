@@ -14,11 +14,11 @@
 
 @protocol AFTextFieldCollectionViewCellOutput <AFCollectionViewCellOutput>
 
-- (void) textFieldDidBeginEditing:(AFTextFieldCollectionViewCell *)cell;
-- (void) textFieldDidEndEditing:(AFTextFieldCollectionViewCell *)cell;
-- (void) textFieldDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldCellDidBeginEditing:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldCellDidEndEditing:(AFTextFieldCollectionViewCell *)cell;
+- (void) textFieldCellDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell;
 
-- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValue:(NSString *)value inRow:(AFRow *)row;
+- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueinRow:(AFRow *)row;
 - (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void(^)(BOOL show))controllBlock;
 
 @end
