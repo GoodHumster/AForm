@@ -22,7 +22,7 @@
 
 @protocol AFCollectionViewCell <NSObject>
 
-- (void) configWithRow:(id<AFCellRow>)row layoutAttributes:(AFFormLayoutAttributes *)attributes;
+- (void) configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config layoutAttributes:(AFFormLayoutAttributes *)attributes;
 
 @property (nonatomic, weak) id<AFCollectionViewCellOutput> output;
 
@@ -31,7 +31,9 @@
 @interface AFBaseCollectionViewCell : UICollectionViewCell<AFCollectionViewCell>
 
 @property (nonatomic, weak) id<AFCellRow> cellRow;
+@property (nonatomic, weak) AFBaseCellConfig *config;
 @property (nonatomic, weak) AFFormLayoutAttributes *layoutAttributes;
+@property (nonatomic, assign) CGFloat height;
 
 - (void) setRowValue:(id)value;
 - (void) updateRowValue;

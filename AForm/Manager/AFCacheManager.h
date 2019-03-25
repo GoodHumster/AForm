@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class AFCollectionViewFlowLayout;
+
 @interface AFCacheManager : NSObject
 
 + (id) sharedInstance;

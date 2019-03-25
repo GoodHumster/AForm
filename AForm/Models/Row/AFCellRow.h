@@ -13,8 +13,6 @@
 
 @protocol AFCellRow <NSObject>
 
-@property (nonatomic, strong) AFBaseCellConfig *config;
-
 @property (nonatomic, strong, readonly) id<AFValue> cellValue;
 
 @end

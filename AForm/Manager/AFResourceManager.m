@@ -87,6 +87,16 @@
     [self enumerateMap:self.resourceHeaderClassesByIdentifier withElementKind:AFResourceManagerElementKind_Header withBlock:enumerationBlock];
 }
 
+- (Class)classForIdentifier:(NSString *)identifier
+{
+    return [self.resourceClassesByIdentifier valueForKey:identifier];
+}
+
+- (UINib *)nibForIdentifier:(NSString *)identifier
+{
+    return [self.resourceNibsByIdentifier valueForKey:identifier];
+}
+
 #pragma mark - utils methods
 
 - (Class) getResourceClasssForIdentifier:(NSString *)identifier forElementKind:(AFResourceManagerElementKind)kind

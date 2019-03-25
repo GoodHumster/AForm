@@ -42,6 +42,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 @implementation AFTextFieldCollectionViewCell
 
 @synthesize output = _output;
+@synthesize config = _config;
 
 + (void) load
 {
@@ -114,7 +115,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     self.textField.text = nil;
     self.textField.inputView = nil;
     
-    if ([self getConfig].textFieldClass)
+    if (self.config.textFieldClass)
     {
         [self.textField removeFromSuperview];
     }
@@ -125,16 +126,17 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL)haveAutocomplete
 {
-    return [self getConfig].haveAutocomplete;
+    return self.config.haveAutocomplete;
 }
 
 #pragma mark - AFBaseCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row layoutAttributes:(AFFormLayoutAttributes *)attributes
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config layoutAttributes:(AFFormLayoutAttributes *)attributes
 {
+    [super configWithRow:row andConfig:config layoutAttributes:attributes];
+    [self setupConfigurations:self.config];
+    
     self.backgroundColor = [UIColor clearColor];
-    [super configWithRow:row layoutAttributes:attributes];
-    [self setupConfigurations:(AFTextFieldCellConfig *)row.config];
     self.textField.text = [row.cellValue getStringValue];
 }
 
@@ -290,7 +292,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    AFTextFieldCellConfig *config = [self getConfig];
+    AFTextFieldCellConfig *config = self.config;
     Class<AFTextFieldCellInputView> inputViewClass = config.inputViewConfig.inputViewClass;
     AFCacheManager *cacheManager = [AFCacheManager sharedInstance];
     
@@ -301,7 +303,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     
     UIView<AFTextFieldCellInputView> *inputView = ( UIView<AFTextFieldCellInputView> *)[cacheManager cachedViewForClass:inputViewClass];
     inputView.output = self;
-    [inputView prepareWithConfiguration:[self getConfig].inputViewConfig];
+    [inputView prepareWithConfiguration:self.config.inputViewConfig];
     
     self.textField.inputView = inputView;
 
@@ -392,7 +394,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 - (void) updateRowValue:(id)value
 {
     [self setRowValue:value];
-    [self.output textFieldCell:self didChangeValueinRow:self.cellRow];
+    [self.output textFieldCell:self didChangeValueAtIndexPath:self.layoutAttributes.indexPath];
 }
 
 - (void) textFieldChanageState:(BOOL)state
@@ -408,7 +410,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (void) textFieldShowAutocompleteIfNeeded
 {
-    if (![self getConfig].haveAutocomplete)
+    if (!self.config.haveAutocomplete)
     {
         return;
     }
@@ -459,20 +461,15 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 #pragma mark - get methods
 
-- (AFTextFieldCellConfig *) getConfig
-{
-    return (AFTextFieldCellConfig *)self.cellRow.config;
-}
-
 - (id<AFTextVerifier>) getVerifier
 {
-    AFTextFieldCellConfig *config = [self getConfig];
+    AFTextFieldCellConfig *config = self.config;
     return config.verifier;
 }
 
 - (BOOL) isUsedCustomTextField
 {
-    return [self getConfig].textFieldClass != nil;
+    return self.config.textFieldClass != nil;
 }
 
 @end

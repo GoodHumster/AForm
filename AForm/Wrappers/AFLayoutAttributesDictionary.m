@@ -44,7 +44,7 @@
         return nil;
     }
     
-    CGFloat count = (CGFloat)self.cachedIdBySquare.count - 1;
+    CGFloat count = (CGFloat)self.cachedIdBySquare.count; // - 1;
     CGFloat maxY = CGRectGetMaxY(rect) == 0 ? CGRectGetHeight(rect) : CGRectGetMaxY(rect);
     CGFloat minY = CGRectGetMinY(rect) < 0 ? 0 : CGRectGetMinY(rect);
     

@@ -248,7 +248,7 @@
     UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
     cell.output = self;
     AFFormLayoutAttributes *formAttribute = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
-    [cell configWithRow:row layoutAttributes:formAttribute];
+    [cell configWithRow:row andConfig:row.cellConfig layoutAttributes:formAttribute];
     
     return cell;
 }
@@ -303,21 +303,20 @@
     [nextCell becomeFirstResponder];
 }
 
-- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueinRow:(AFRow *)row
+- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
 
 - (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void (^)(BOOL))controllBlock
 {
-    AFRow *row = cell.row;
-    
-    if (![self.textFieldDelegate respondsToSelector:@selector(formView:forRow:shouldShowAutocomplete:withControllBlock:)])
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if (![self.textFieldDelegate respondsToSelector:@selector(formView:shouldShowAutocomplete:withControllBlock:atIndexPath:)])
     {
         return;
     }
     
-    [self.textFieldDelegate formView:self forRow:row shouldShowAutocomplete:view withControllBlock:controllBlock];
+    [self.textFieldDelegate formView:self shouldShowAutocomplete:view withControllBlock:controllBlock atIndexPath:indexPath];
 }
 
 #pragma mark - utils methods

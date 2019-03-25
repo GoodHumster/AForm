@@ -10,6 +10,7 @@
 #import <AForm/AFTextFieldCellConfig.h>
 #import <AForm/AFDatePickerConfig.h>
 #import <AForm/AFLayoutConfig.h>
+#import <AForm/AFLabelCellConfig.h>
 
 typedef NS_ENUM(NSInteger, kExampleFieldsType)
 {
@@ -45,16 +46,6 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
                     [self createRowWithType:kExampleFieldsType_Birthday],
                     [self createRowWithType:kExampleFieldsType_IssueDate]
                    ] mutableCopy];
-    
-//    for (NSInteger index = 0; index < 50; index++)
-//    {
-//        NSString *indexSTR = [NSString stringWithFormat:@"Field %ld",index];
-//        AFRow *row = [self createRowWithType:kExampleFieldsType_Phone];
-//        AFTextFieldCellConfig *config = (AFTextFieldCellConfig *)row.inputViewConfig;
-//        config.placeholder = indexSTR;
-//
-//        [self.source addObject:row];
-//    }
     
     return self;
 }
@@ -96,9 +87,23 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             tfConfig.placeholder = @"Имя";
             break;
         case kExampleFieldsType_Surename:
+        {
             widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0];
             tfConfig.placeholder = @"Фамилия";
+            
+            AFLabelCellConfig *config = [AFLabelCellConfig new];
+            config.textColor = [UIColor purpleColor];
+            config.font = [UIFont systemFontOfSize:15];
+            config.aligment = NSTextAlignmentLeft;
+            config.editable = NO;
+            config.defaultText = @"Данные необходимы для получения информации из Бюро кредитных историй";
+            config.layoutConfig = [AFLayoutConfig layoutConfigWithHeightConstrain:[AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:20 andEstimate:0] andWidthConstrain: [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0]];
+            
+            
+            [tfConfig addAlwaysShowDependencyConfig:config];
+            
             break;
+        }
         case kExampleFieldsType_Email:
             tfConfig = [AFTextFieldCellConfig emailTextFieldConfig];
             tfConfig.placeholder = @"Email";

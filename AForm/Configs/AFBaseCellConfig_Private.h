@@ -10,7 +10,9 @@
 
 @interface AFBaseCellConfig(Private)
 
-@property (nonatomic, assign, readonly) NSInteger dependeciesCount;
+@property (nonatomic, assign, readonly) NSInteger dependenciesCount;
+
+@property (nonatomic, assign, readonly) CGFloat dependenciesPreapreHeight;
 
 - (AFBaseCellConfig *) dependencyConfigAtIndex:(NSInteger)index;
 

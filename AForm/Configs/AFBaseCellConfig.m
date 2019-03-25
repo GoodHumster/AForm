@@ -8,6 +8,8 @@
 
 #import "AFBaseCellConfig_Private.h"
 
+#import "AFLayoutConfig.h"
+
 NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
 
 @interface AFBaseCellDependency : NSObject
@@ -28,6 +30,7 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
 
 @implementation AFBaseCellConfig
 
+@synthesize layoutConfig = _layoutConfig;
 @synthesize identifier = _identifier;
 
 - (instancetype) init
@@ -71,7 +74,7 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
     }];
 }
 
-- (NSInteger)dependeciesCount
+- (NSInteger)dependenciesCount
 {
     return self.dependecies.count;
 }
@@ -86,6 +89,17 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
 {
     AFBaseCellDependency *dependency = [self.dependecies objectAtIndex:index];
     return dependency.predicate;
+}
+
+- (CGFloat)dependenciesPreapreHeight
+{
+    __block CGFloat height = 0;
+    
+    [self enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
+        height += config.layoutConfig.height.constant;
+    }];
+    
+    return height;
 }
 
 #pragma mark - NSCoping protocol methods

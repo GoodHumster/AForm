@@ -66,6 +66,12 @@
 		C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E343C223FF1960021FB1E /* AFDatePickerView.m */; };
 		C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E34402240C6A70021FB1E /* AFCacheManager.m */; };
 		C37E34422240CA480021FB1E /* AFTextFieldCellInputViewConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E343E2240C3C40021FB1E /* AFTextFieldCellInputViewConfig.h */; };
+		C3A9C47E2248D27900D61BB2 /* AFCellRow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C382373D224830D7009BA9B7 /* AFCellRow.h */; };
+		C3A9C47F2248D28000D61BB2 /* AFBaseCollectionViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */; };
+		C3A9C4832248DFEB00D61BB2 /* AFLabelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4822248DFEB00D61BB2 /* AFLabelCollectionViewCell.m */; };
+		C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4862248E1FF00D61BB2 /* AFLabelCellConfig.m */; };
+		C3A9C4882248E49600D61BB2 /* AFLabelCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4852248E1FF00D61BB2 /* AFLabelCellConfig.h */; };
+		C3A9C4892248E4B300D61BB2 /* AFLabelCollectionViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4812248DFEB00D61BB2 /* AFLabelCollectionViewCell.h */; };
 		C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AForm.h */; };
 /* End PBXBuildFile section */
 
@@ -78,22 +84,26 @@
 			files = (
 				C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */,
 				C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */,
+				C3A9C47F2248D28000D61BB2 /* AFBaseCollectionViewCell.h in CopyFiles */,
+				C31C33982243CA8000E83D40 /* AFBaseCellConfig.h in CopyFiles */,
 				C37E333D223BCA060021FB1E /* AFCellConfig.h in CopyFiles */,
 				C37E332A223BC9AF0021FB1E /* AFTextFieldCellInputView.h in CopyFiles */,
 				C37E332B223BC9B10021FB1E /* AFAutocompleteView.h in CopyFiles */,
 				C37E332C223BC9B60021FB1E /* AFTextVerifier.h in CopyFiles */,
-				C31C33982243CA8000E83D40 /* AFBaseCellConfig.h in CopyFiles */,
 				C37E333B223BCA010021FB1E /* AFTextFieldCellConfig.h in CopyFiles */,
 				C37E333C223BCA040021FB1E /* AFDatePickerConfig.h in CopyFiles */,
 				C37E34422240CA480021FB1E /* AFTextFieldCellInputViewConfig.h in CopyFiles */,
+				C3A9C4882248E49600D61BB2 /* AFLabelCellConfig.h in CopyFiles */,
 				C37E333A223BC9FA0021FB1E /* AFormView.h in CopyFiles */,
 				C37E332D223BC9BA0021FB1E /* AFTextField.h in CopyFiles */,
 				C37E3337223BC9F20021FB1E /* AFHeaderViewConfig.h in CopyFiles */,
+				C3A9C47E2248D27900D61BB2 /* AFCellRow.h in CopyFiles */,
 				C37E3338223BC9F50021FB1E /* AFDefaultHeaderSectionView.h in CopyFiles */,
 				C37E3334223BC9DC0021FB1E /* AFRow.h in CopyFiles */,
 				C37E3339223BC9F70021FB1E /* AFHeaderSectionView.h in CopyFiles */,
 				C37E332E223BC9CB0021FB1E /* AFDefaultVerifier.h in CopyFiles */,
 				C37E3332223BC9D70021FB1E /* AFLayoutConfig.h in CopyFiles */,
+				C3A9C4892248E4B300D61BB2 /* AFLabelCollectionViewCell.h in CopyFiles */,
 				C37E3335223BC9DE0021FB1E /* AFSection.h in CopyFiles */,
 				C31C33CE2245079300E83D40 /* AFValue.h in CopyFiles */,
 				C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */,
@@ -165,6 +175,10 @@
 		C37E343F2240C6A70021FB1E /* AFCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCacheManager.h; sourceTree = "<group>"; };
 		C37E34402240C6A70021FB1E /* AFCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCacheManager.m; sourceTree = "<group>"; };
 		C382373D224830D7009BA9B7 /* AFCellRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCellRow.h; sourceTree = "<group>"; };
+		C3A9C4812248DFEB00D61BB2 /* AFLabelCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLabelCollectionViewCell.h; sourceTree = "<group>"; };
+		C3A9C4822248DFEB00D61BB2 /* AFLabelCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLabelCollectionViewCell.m; sourceTree = "<group>"; };
+		C3A9C4852248E1FF00D61BB2 /* AFLabelCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLabelCellConfig.h; sourceTree = "<group>"; };
+		C3A9C4862248E1FF00D61BB2 /* AFLabelCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLabelCellConfig.m; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,13 +326,6 @@
 			name = TextView;
 			sourceTree = "<group>";
 		};
-		C37E32C9223B95F20021FB1E /* Button */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Button;
-			sourceTree = "<group>";
-		};
 		C37E32CA223B95FA0021FB1E /* Selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +336,7 @@
 		C37E32D0223B989B0021FB1E /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C4842248E1DB00D61BB2 /* Label */,
 				C37E32D1223B9C810021FB1E /* TextField */,
 				C37E31FE2237ED770021FB1E /* AFCellConfig.h */,
 				C31C33952243CA2700E83D40 /* AFBaseCellConfig.h */,
@@ -367,6 +375,24 @@
 				C37E343C223FF1960021FB1E /* AFDatePickerView.m */,
 			);
 			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		C3A9C4802248DFD100D61BB2 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C4812248DFEB00D61BB2 /* AFLabelCollectionViewCell.h */,
+				C3A9C4822248DFEB00D61BB2 /* AFLabelCollectionViewCell.m */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		C3A9C4842248E1DB00D61BB2 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C4852248E1FF00D61BB2 /* AFLabelCellConfig.h */,
+				C3A9C4862248E1FF00D61BB2 /* AFLabelCellConfig.m */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		C3FD5C452236A61300FD6789 = {
@@ -419,9 +445,9 @@
 		C3FD5C6D2236B1D600FD6789 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C4802248DFD100D61BB2 /* Label */,
 				C37E320D2238225D0021FB1E /* TextField */,
 				C37E32C8223B95EA0021FB1E /* TextView */,
-				C37E32C9223B95F20021FB1E /* Button */,
 				C37E32CA223B95FA0021FB1E /* Selector */,
 				C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */,
 				C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */,
@@ -526,6 +552,7 @@
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
+				C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
 				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
 				C37E32B4223AC7420021FB1E /* AFTextFieldCellConfig.m in Sources */,
@@ -540,6 +567,7 @@
 				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
 				C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */,
 				C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */,
+				C3A9C4832248DFEB00D61BB2 /* AFLabelCollectionViewCell.m in Sources */,
 				C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */,
 				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,
 				C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */,

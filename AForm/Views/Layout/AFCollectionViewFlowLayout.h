@@ -19,6 +19,8 @@
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section;
 
+- (void) layoutDidUpdatedContentSize;
+
 @end
 
 @interface AFCollectionViewFlowLayout : UICollectionViewFlowLayout

@@ -19,12 +19,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ks0-gc-uAM">
-                                <rect key="frame" x="0.0" y="311.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="272" width="375" height="123"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SP9-8U-r30">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SP9-8U-r30">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6IT-e5-UVM">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="73"/>
+                                        <color key="backgroundColor" red="0.96078431369999995" green="0.66666666669999997" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bDX-L2-7UK">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hpy-X2-bKa">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eeR-6a-bgg">
                                         <rect key="frame" x="0.0" y="44" width="375" height="0.0"/>
                                         <subviews>
@@ -59,20 +79,30 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="6IT-e5-UVM" firstAttribute="top" secondItem="Ks0-gc-uAM" secondAttribute="top" constant="50" id="2FH-VZ-fIp"/>
                                     <constraint firstAttribute="trailing" secondItem="SP9-8U-r30" secondAttribute="trailing" id="6TP-rR-Vh3"/>
+                                    <constraint firstAttribute="trailing" secondItem="6IT-e5-UVM" secondAttribute="trailing" id="DBH-M3-r5C"/>
                                     <constraint firstItem="SP9-8U-r30" firstAttribute="leading" secondItem="Ks0-gc-uAM" secondAttribute="leading" id="E7b-GT-IGJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="6IT-e5-UVM" secondAttribute="bottom" id="Ify-89-KZT"/>
                                     <constraint firstAttribute="bottom" secondItem="eeR-6a-bgg" secondAttribute="bottom" id="Nai-Me-G22"/>
-                                    <constraint firstAttribute="height" constant="44" id="agi-2l-0iu"/>
+                                    <constraint firstItem="6IT-e5-UVM" firstAttribute="leading" secondItem="Ks0-gc-uAM" secondAttribute="leading" id="Q2p-Kn-nIR"/>
+                                    <constraint firstAttribute="height" constant="123" id="agi-2l-0iu"/>
                                     <constraint firstItem="SP9-8U-r30" firstAttribute="top" secondItem="Ks0-gc-uAM" secondAttribute="top" id="eaY-Oa-WZN"/>
                                     <constraint firstItem="eeR-6a-bgg" firstAttribute="top" secondItem="SP9-8U-r30" secondAttribute="bottom" id="p6p-yi-yzv"/>
                                     <constraint firstItem="eeR-6a-bgg" firstAttribute="leading" secondItem="Ks0-gc-uAM" secondAttribute="leading" id="pXi-To-0ky"/>
+                                    <constraint firstItem="6IT-e5-UVM" firstAttribute="centerY" secondItem="Ks0-gc-uAM" secondAttribute="centerY" constant="25" id="qzR-dt-HrD"/>
+                                    <constraint firstItem="6IT-e5-UVM" firstAttribute="top" secondItem="SP9-8U-r30" secondAttribute="bottom" id="s3V-vC-s2j"/>
                                     <constraint firstAttribute="trailing" secondItem="eeR-6a-bgg" secondAttribute="trailing" id="wcH-8W-U9A"/>
                                     <constraint firstAttribute="bottom" secondItem="SP9-8U-r30" secondAttribute="bottom" id="yyv-uJ-Qz2"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="SP9-8U-r30"/>
+                                        <exclude reference="6IT-e5-UVM"/>
                                         <exclude reference="eeR-6a-bgg"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="yyv-uJ-Qz2"/>
                                     </mask>
                                 </variation>
                             </view>

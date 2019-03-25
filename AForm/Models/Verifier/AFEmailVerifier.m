@@ -30,7 +30,6 @@
     return [predicate evaluateWithObject:text];
 }
 
-
 #pragma mark - NSCopying protocol methods
 
 - (id) copyWithZone:(NSZone *)zone

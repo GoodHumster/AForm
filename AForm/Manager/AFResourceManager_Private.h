@@ -14,4 +14,8 @@
 
 - (void) enumerateClassesByIdentiferByBlock:(void(^)(Class cls, NSString *identifier, AFResourceManagerElementKind elementKind))enumerationBlock;
 
+- (Class) classForIdentifier:(NSString *)identifier;
+
+- (UINib *) nibForIdentifier:(NSString *)identifier;
+
 @end

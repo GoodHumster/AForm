@@ -50,6 +50,21 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 #pragma mark - UICollectionViewFlowLayout methods
 
+- (void)prepareLayout
+{
+    [super prepareLayout];
+}
+
+- (CGSize)collectionViewContentSize
+{
+    if (CGSizeEqualToSize(CGSizeZero, _contentSize))
+    {
+        return  [super collectionViewContentSize];
+    }
+    
+    return _contentSize;
+}
+
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray<AFFormLayoutAttributes *> *attributes = [self.cachedLayoutAttributes getFormAttributeInRect:rect];
@@ -68,7 +83,30 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
           mAttributes = [NSMutableArray new];
     }
     
+    NSArray *buildedAttributes = [self layoutAttributesBuildForceAll:NO fromIndexPath:indexPath inRect:rect];
+    [mAttributes addObjectsFromArray:buildedAttributes];
+
+    NSArray<UICollectionViewLayoutAttributes *> *layoutesAttibutes = [mAttributes valueForKey:@"collectionLayoutAttributes"];
+    UICollectionViewLayoutAttributes *lastLayoutAttribute = layoutesAttibutes.lastObject;
+    
+    if (CGRectGetMaxY(lastLayoutAttribute.frame) > _contentSize.height)
+    {
+        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + 10;
+        _contentSize.width = CGRectGetWidth(self.collectionView.frame);
+        
+        if ([self.delegate respondsToSelector:@selector(layoutDidUpdatedContentSize)])
+        {
+            [self.delegate layoutDidUpdatedContentSize];
+        }
+    }
+    
+    return layoutesAttibutes;
+}
+
+- (NSArray *) layoutAttributesBuildForceAll:(BOOL)force fromIndexPath:(NSIndexPath *)indexPath inRect:(CGRect)rect
+{
     AFLayoutAttributesDictionary *cachedAttributes = self.cachedLayoutAttributes;
+    NSMutableArray *mAttributes = [NSMutableArray new];
     
     void (^createIfNeededAndCachedBlock) (NSIndexPath *indexPath, AFCollectionViewElementKind elementKind) = ^(NSIndexPath *indexPath, AFCollectionViewElementKind elementKind) {
         
@@ -83,34 +121,24 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         [mAttributes addObject:attr];
     };
     
-   [self enumerateIndexPathsFromIndexPath:indexPath withBlock:^(NSIndexPath *indexPath, BOOL *stop) {
-           
+    [self enumerateIndexPathsFromIndexPath:indexPath withBlock:^(NSIndexPath *indexPath, BOOL *stop) {
+        
         if (indexPath.row == 0)
         {
             createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Header);
         }
-       
+        
         createIfNeededAndCachedBlock(indexPath,AFCollectionViewElementKind_Cell);
-       
-       if ([cachedAttributes isFilledRect:rect])
-       {
-           *stop = YES;
-       }
-            
+        
+        if ([cachedAttributes isFilledRect:rect] && !force)
+        {
+            *stop = YES;
+        }
+        
     }];
-   
-    NSArray<UICollectionViewLayoutAttributes *> *layoutesAttibutes = [mAttributes valueForKey:@"collectionLayoutAttributes"];
-    UICollectionViewLayoutAttributes *lastLayoutAttribute = layoutesAttibutes.lastObject;
     
-    if (CGRectGetMaxY(lastLayoutAttribute.frame) > _contentSize.height)
-    {
-        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + 10;
-        _contentSize.width = CGRectGetWidth(self.collectionView.frame);
-    }
-    
-    return layoutesAttibutes;
+    return mAttributes;
 }
-
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -128,16 +156,6 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     attributes.size = [self sizeForElementKind:element atIndexPath:indexPath];
     
     return attributes;
-}
-
-- (CGSize)collectionViewContentSize
-{
-    if (CGSizeEqualToSize(CGSizeZero, _contentSize))
-    {
-        return [super collectionViewContentSize];
-    }
-    
-    return _contentSize;
 }
 
 #pragma mark - Layout create helpers
