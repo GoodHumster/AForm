@@ -22,6 +22,8 @@
 
 @implementation AFTextFieldCellConfig
 
+@synthesize identifier = _identifier;
+
 - (instancetype) init
 {
     if ( ( self = [super init]) == nil )
@@ -83,7 +85,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    AFTextFieldCellConfig *config = [AFTextFieldCellConfig new];
+    AFTextFieldCellConfig *config = [super copyWithZone:zone];
     config.insets = self.insets;
     config.textFieldClass = self.textFieldClass;
     config.placeholder = self.placeholder;

@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "AFValue.h"
+#import "AFCellRow.h"
 
 @class AFRowConfig;
 @class AFLayoutConfig;
-@protocol AFCellConfig;
+@class AFBaseCellConfig;
 
-@interface AFRow : NSObject
+@interface AFRow : NSObject<AFCellRow>
 {
     @private
     NSString *identifier;
@@ -23,11 +24,9 @@
 
 @property (nonatomic, strong) id<AFValue> value;
 
-@property (nonatomic, strong) id<AFCellConfig> inputViewConfig;
+@property (nonatomic, strong) AFBaseCellConfig *cellConfig;
 
-@property (nonatomic, strong) AFLayoutConfig *layoutConfig;
-
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
++ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(AFBaseCellConfig *)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
 
 + (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
 

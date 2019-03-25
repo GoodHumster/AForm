@@ -18,7 +18,7 @@
 - (void) textFieldCellDidEndEditing:(AFTextFieldCollectionViewCell *)cell;
 - (void) textFieldCellDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell;
 
-- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueinRow:(AFRow *)row;
+- (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueinRow:(id<AFCellRow>)row;
 - (void) textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void(^)(BOOL show))controllBlock;
 
 @end

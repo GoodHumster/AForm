@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import "AFTextVerifier.h"
+#import "AFLayoutConfig.h"
 
 @protocol AFCellConfig <NSCopying>
 
 @property (nonatomic, strong, readonly) NSString *identifier;
+@property (nonatomic, strong) AFLayoutConfig *layoutConfig;
 
 @end

@@ -10,6 +10,12 @@
 
 @interface AFBaseCellConfig(Private)
 
-- (void) enumerateDependenciesWithBlock:(void(^)(AFBaseCellConfig *config,NSPredicate *predicate))enumrationBlock;
+@property (nonatomic, assign, readonly) NSInteger dependeciesCount;
+
+- (AFBaseCellConfig *) dependencyConfigAtIndex:(NSInteger)index;
+
+- (NSPredicate *) dependencyPredicateAtIndex:(NSInteger)index;
+
+- (void) enumerateDependenciesWithBlock:(void(^)(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger))enumrationBlock;
 
 @end

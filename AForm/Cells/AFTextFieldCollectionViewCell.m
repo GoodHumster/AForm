@@ -8,20 +8,17 @@
 
 #import "AFTextFieldCollectionViewCell.h"
 
-#import "AFFormLayoutAttributes.h"
+#import "AFCacheManager.h"
+#import "AFResourceManager.h"
 
-#import "AFRow_Private.h"
+#import "AFFormLayoutAttributes.h"
 #import "AFTextFieldCellConfig.h"
 
 #import "NSString+AFValue.h"
 
-#import "AFCacheManager.h"
-#import "AFResourceManager.h"
-
 NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollectionViewCellIdentifier";
 
-@interface AFTextFieldCollectionViewCell()< AFRowOutput,
-                                            UITextFieldDelegate,
+@interface AFTextFieldCollectionViewCell()< UITextFieldDelegate,
                                             AFTextOwner,
                                             AFAutocompleteViewDelegate,
                                             AFTextFieldCellInputViewOutput >
@@ -133,14 +130,12 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 #pragma mark - AFBaseCollectionViewCell protocol methods
 
-- (void) configWithRow:(AFRow *)row layoutAttributes:(AFFormLayoutAttributes *)attributes
+- (void)configWithRow:(id<AFCellRow>)row layoutAttributes:(AFFormLayoutAttributes *)attributes
 {
     self.backgroundColor = [UIColor clearColor];
     [super configWithRow:row layoutAttributes:attributes];
-    row.output = self;
-    
-    [self setupConfigurations:(AFTextFieldCellConfig *)row.inputViewConfig];
-    self.textField.text = [self.row.value getStringValue];
+    [self setupConfigurations:(AFTextFieldCellConfig *)row.config];
+    self.textField.text = [row.cellValue getStringValue];
 }
 
 - (void) setupConfigurations:(AFTextFieldCellConfig *)config
@@ -380,13 +375,6 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     [self updateRowValue:value];
 }
 
-#pragma mark - AFRowOutput protocol methods
-
-- (void) didUpdateRowValue
-{
-    self.textField.text = [self.row.value getStringValue];
-}
-
 #pragma mark - AFTextOwner protocol methods
 
 - (void)setOwnerText:(NSString *)text
@@ -401,10 +389,10 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 #pragma mark - utils methods
 
-- (void) updateRowValue:(id<AFValue>)value
+- (void) updateRowValue:(id)value
 {
-    self.row.value = value;
-    [self.output textFieldCell:self didChangeValueinRow:self.row];
+    [self setRowValue:value];
+    [self.output textFieldCell:self didChangeValueinRow:self.cellRow];
 }
 
 - (void) textFieldChanageState:(BOOL)state
@@ -473,7 +461,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 
 - (AFTextFieldCellConfig *) getConfig
 {
-    return (AFTextFieldCellConfig *)self.row.inputViewConfig;
+    return (AFTextFieldCellConfig *)self.cellRow.config;
 }
 
 - (id<AFTextVerifier>) getVerifier

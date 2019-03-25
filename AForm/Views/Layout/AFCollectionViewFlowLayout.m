@@ -273,17 +273,26 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewHeight:(CGFloat)height
 {
+    UICollectionViewLayoutAttributes *collectionLayoutAttribute = attribute.collectionLayoutAttributes;
+    CGSize size = collectionLayoutAttribute.size;
+    size.height = height;
+    
+    [self invalidateLayout:attribute withNewSize:size];
+}
+
+- (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewSize:(CGSize)size
+{
     __block CGRect prevFrame = CGRectZero;
     
     UICollectionViewLayoutAttributes *collectionLayoutAttribute = attribute.collectionLayoutAttributes;
     
     prevFrame = collectionLayoutAttribute.frame;
-    prevFrame.size.height = height;
+    prevFrame.size = size;
     collectionLayoutAttribute.frame = prevFrame;
     
     [self.cachedLayoutAttributes replaceFormAttribute:attribute];
     [self.cachedLayoutAttributes enumerateFormAttributeStartFrom:attribute.uuid wihtBlock:^(AFFormLayoutAttributes *formAttribute) {
-
+        
         UICollectionViewLayoutAttributes *collectionLayoutAttribute = formAttribute.collectionLayoutAttributes;
         [self invalidateLayout:collectionLayoutAttribute fromRect:prevFrame];
         prevFrame = collectionLayoutAttribute.frame;
@@ -299,6 +308,11 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.cachedLayoutAttributes getFormAttributeByIndexPath:indexPath];
+}
+
+- (CGSize)sizeForLayoutConfig:(AFLayoutConfig *)config
+{
+    return [self sizeForLayoutConfig:config wihtSectionInsets:UIEdgeInsetsZero];
 }
 
 #pragma mark - utils methods

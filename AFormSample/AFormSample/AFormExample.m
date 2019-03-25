@@ -85,18 +85,18 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
 {
     AFTextFieldCellConfig *tfConfig = [AFTextFieldCellConfig defaultTextFieldConfig];
     AFLayoutConstraint *heightConstrain = [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:44 andEstimate:0];;
-    AFLayoutConstraint *widthConstrain =  [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:kAFAutocompletViewHeightAutomaticDemision andEstimate:0];
+    AFLayoutConstraint *widthConstrain =  [AFLayoutConstraint constrainWithMultiplie:1.0 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0];
     AFDatePickerConfig *datePickerConfig = [AFDatePickerConfig new];
     datePickerConfig.dateFormmat = @"dd.MM.YYYY";
     datePickerConfig.pickerMode = UIDatePickerModeDate;
     
     switch (type) {
         case kExampleFieldsType_Name:
-            widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:kAFAutocompletViewHeightAutomaticDemision andEstimate:0];
+            widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0];
             tfConfig.placeholder = @"Имя";
             break;
         case kExampleFieldsType_Surename:
-            widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:kAFAutocompletViewHeightAutomaticDemision andEstimate:0];
+            widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0];
             tfConfig.placeholder = @"Фамилия";
             break;
         case kExampleFieldsType_Email:

@@ -27,7 +27,11 @@
 
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewHeight:(CGFloat)height;
 
+- (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewSize:(CGSize)size;
+
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath;
+
+- (CGSize) sizeForLayoutConfig:(AFLayoutConfig *)config;
 
 @end
 

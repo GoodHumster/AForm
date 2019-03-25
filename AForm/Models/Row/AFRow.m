@@ -9,7 +9,7 @@
 #import "AFRow_Private.h"
 
 #import "AFRowConfig.h"
-#import "AFCellConfig.h"
+#import "AFBaseCellConfig.h"
 #import "AFLayoutConfig.h"
 
 @interface AFRow()
@@ -29,14 +29,28 @@
     return self;
 }
 
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
+#pragma mark - AFCellRow protocol methods
+
+- (AFBaseCellConfig *)config
+{
+    return self.cellConfig;
+}
+
+- (id<AFValue>) cellValue
+{
+    return self.value;
+}
+
+#pragma mark - Public API methods
+
++ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(AFBaseCellConfig *)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
 {
     AFRow *row = [AFRow new];
     row->identifier = @"AFRow";
     row.key = rowConfig.key;
     row.value = rowConfig.value;
-    row.inputViewConfig = [(id)ivConfig copy];
-    row.layoutConfig = [(id)layoutConfig copy];
+    row.cellConfig = [(id)ivConfig copy];
+    row.cellConfig.layoutConfig = [(id)layoutConfig copy];
     
     return row;
 }

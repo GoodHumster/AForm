@@ -64,11 +64,37 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
 
 #pragma mark - Private API methods
 
-- (void)enumerateDependenciesWithBlock:(void (^)(AFBaseCellConfig *, NSPredicate *))enumrationBlock
+- (void)enumerateDependenciesWithBlock:(void(^)(AFBaseCellConfig *, NSPredicate *, NSInteger))enumrationBlock
 {
     [self.dependecies enumerateObjectsUsingBlock:^(AFBaseCellDependency * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        enumrationBlock(obj.config,obj.predicate);
+        enumrationBlock(obj.config,obj.predicate,idx);
     }];
+}
+
+- (NSInteger)dependeciesCount
+{
+    return self.dependecies.count;
+}
+
+- (AFBaseCellConfig *)dependencyConfigAtIndex:(NSInteger)index
+{
+    AFBaseCellDependency *dependency = [self.dependecies objectAtIndex:index];
+    return dependency.config;
+}
+
+- (NSPredicate *)dependencyPredicateAtIndex:(NSInteger)index
+{
+    AFBaseCellDependency *dependency = [self.dependecies objectAtIndex:index];
+    return dependency.predicate;
+}
+
+#pragma mark - NSCoping protocol methods
+
+- (id) copyWithZone:(NSZone *)zone
+{
+    AFBaseCellConfig *copy = [self.class new];
+    copy.dependecies = self.dependecies;
+    return copy;
 }
 
 

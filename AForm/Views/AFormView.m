@@ -20,10 +20,10 @@
 #import "AFFormLayoutAttributes.h"
 
 #import "AFHeaderViewConfig.h"
-#import "AFCellConfig.h"
+#import "AFBaseCellConfig.h"
 
 
-@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFTextFieldCollectionViewCellOutput>
+@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFTextFieldCollectionViewCellOutput,AFCollectionViewCellOutput>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) AFCollectionViewFlowLayout *flowLayout;
@@ -203,7 +203,7 @@
         return nil;
     }
     
-    return row.layoutConfig;
+    return row.cellConfig.layoutConfig;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -243,7 +243,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
-    id<AFCellConfig> inputViewConig = row.inputViewConfig;
+    id<AFCellConfig> inputViewConig = row.cellConfig;
     
     UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
     cell.output = self;
@@ -263,7 +263,10 @@
     return [self.formModel numberOfRowsInSection:section];
 }
 
-#pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
+#pragma mark - AFCollectionViewCellOutput protocol methods
+
+
+#pragma mark - AFTextFieldCollectionViewCellOutput protocol methods
 
 - (void)textFieldCellDidBeginEditing:(AFTextFieldCollectionViewCell *)cell
 {

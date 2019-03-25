@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class AFRow;
+#import "AFCellRow.h"
+
 @class AFFormLayoutAttributes;
+@class AFBaseCollectionViewCell;
+@protocol AFRowOutput;
 
 @protocol AFCollectionViewCellOutput<NSObject>
+
+- (AFBaseCollectionViewCell *) dependencyCellWithIdentifier:(NSString *)identifier;
+
 @end
 
 @protocol AFCollectionViewCell <NSObject>
 
-- (void) configWithRow:(AFRow *)row layoutAttributes:(AFFormLayoutAttributes *)attributes;
+- (void) configWithRow:(id<AFCellRow>)row layoutAttributes:(AFFormLayoutAttributes *)attributes;
 
 @property (nonatomic, weak) id<AFCollectionViewCellOutput> output;
 
@@ -24,8 +30,11 @@
 
 @interface AFBaseCollectionViewCell : UICollectionViewCell<AFCollectionViewCell>
 
-@property (nonatomic, weak) AFRow *row;
+@property (nonatomic, weak) id<AFCellRow> cellRow;
 @property (nonatomic, weak) AFFormLayoutAttributes *layoutAttributes;
+
+- (void) setRowValue:(id)value;
+- (void) updateRowValue;
 
 
 

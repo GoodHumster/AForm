@@ -164,6 +164,7 @@
 		C37E343E2240C3C40021FB1E /* AFTextFieldCellInputViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextFieldCellInputViewConfig.h; sourceTree = "<group>"; };
 		C37E343F2240C6A70021FB1E /* AFCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCacheManager.h; sourceTree = "<group>"; };
 		C37E34402240C6A70021FB1E /* AFCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCacheManager.m; sourceTree = "<group>"; };
+		C382373D224830D7009BA9B7 /* AFCellRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCellRow.h; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,6 +288,7 @@
 		C37E32C6223B95A70021FB1E /* Row */ = {
 			isa = PBXGroup;
 			children = (
+				C382373D224830D7009BA9B7 /* AFCellRow.h */,
 				C37E31F72237E5F10021FB1E /* AFRow.h */,
 				C37E320C2238217D0021FB1E /* AFRow_Private.h */,
 				C37E31F82237E5F10021FB1E /* AFRow.m */,

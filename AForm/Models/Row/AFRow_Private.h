@@ -10,7 +10,7 @@
 
 @protocol AFRowOutput <NSObject>
 
-- (void) didUpdateRowValue;
+- (void) didChangeRowValue;
 
 @end
 
