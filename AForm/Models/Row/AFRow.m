@@ -81,6 +81,19 @@
     
     return row;
 }
+#pragma mark - Get/Set
+
+- (void) setValue:(id<AFValue>)value
+{
+    _value = value;
+    
+    if ( ![self.output respondsToSelector:@selector(didChangeRowValue)] )
+    {
+        return;
+    }
+    
+    [self.output didChangeRowValue];
+}
 
 
 @end

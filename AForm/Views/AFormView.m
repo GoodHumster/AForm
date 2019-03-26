@@ -72,6 +72,8 @@
 
 - (void) commonInit
 {
+    self.currentFocusedCell = nil;
+    
     AFCollectionViewFlowLayout *flowLayout = [AFCollectionViewFlowLayout new];
     flowLayout.delegate = self;
     
@@ -80,6 +82,7 @@
     collectionView.backgroundColor = [UIColor clearColor];
     collectionView.delegate = self;
     collectionView.dataSource = self;
+    collectionView.remembersLastFocusedIndexPath = YES;
     
     [self addSubview:collectionView];
     
@@ -218,6 +221,10 @@
     return sc.insets;
 }
 
+- (NSIndexPath *)layoutGetCurrentFocusedCellIndexPath
+{
+    return self.currentFocusedCell.layoutAttributes.indexPath;
+}
 
 #pragma mark - UICollectionViewDelegate protocol methods
 

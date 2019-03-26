@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 @property (nonatomic, assign) CGSize contentSize;
 
+@property (nonatomic, assign) CGPoint layoutOffset;
+
 @end
 
 @implementation AFCollectionViewFlowLayout
@@ -43,12 +45,20 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     }
     
     _contentSize = CGSizeZero;
+    self.layoutOffset = CGPointZero;
     self.scrollDirection = UICollectionViewScrollDirectionVertical;
+    self.prepareCollectionViewContentSize = CGSizeZero;
+    self.invalidateLayoutBoundsChange = NO;
     self.cachedLayoutAttributes = [AFLayoutAttributesDictionary new];
     return self;
 }
 
 #pragma mark - UICollectionViewFlowLayout methods
+
+- (UICollectionViewLayoutInvalidationContext *)invalidationContextForBoundsChange:(CGRect)newBounds
+{
+    return [super invalidationContextForBoundsChange:newBounds];
+}
 
 - (void)prepareLayout
 {
@@ -156,6 +166,11 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     attributes.size = [self sizeForElementKind:element atIndexPath:indexPath];
     
     return attributes;
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return self.invalidateLayoutBoundsChange;
 }
 
 #pragma mark - Layout create helpers
@@ -308,17 +323,22 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     prevFrame.size = size;
     collectionLayoutAttribute.frame = prevFrame;
     
-    [self.cachedLayoutAttributes replaceFormAttribute:attribute];
+    NSMutableArray *replacedAttributes = [NSMutableArray new];
+    [replacedAttributes addObject:attribute];
     [self.cachedLayoutAttributes enumerateFormAttributeStartFrom:attribute.uuid wihtBlock:^(AFFormLayoutAttributes *formAttribute) {
         
         UICollectionViewLayoutAttributes *collectionLayoutAttribute = formAttribute.collectionLayoutAttributes;
         [self invalidateLayout:collectionLayoutAttribute fromRect:prevFrame];
         prevFrame = collectionLayoutAttribute.frame;
         
-        [self.cachedLayoutAttributes replaceFormAttribute:attribute];
+        [replacedAttributes addObject:formAttribute];
     }];
     
+    self.layoutOffset = collectionLayoutAttribute.frame.origin;
+    [self.cachedLayoutAttributes replaceFormAttributes:[replacedAttributes copy]];
+    
     [UIView animateWithDuration:0.4 animations:^{
+        [self scrollIfNeeded];
         [self invalidateLayout];
     }];
 }
@@ -395,6 +415,27 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         section += 1;
     }
 }
+
+- (void)scrollIfNeeded
+{
+    NSIndexPath *indexPath = [self.delegate layoutGetCurrentFocusedCellIndexPath];
+    CGPoint proposedContentOffset = self.collectionView.contentOffset;
+    
+    if (!indexPath)
+    {
+        return;
+    }
+    
+    AFFormLayoutAttributes *attribute = [self.cachedLayoutAttributes getFormAttributeByIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *collectionLayoutAttributes = attribute.collectionLayoutAttributes;
+    
+    CGFloat height = CGRectGetHeight(self.collectionView.frame);
+    
+    proposedContentOffset.y = (CGRectGetMaxY(collectionLayoutAttributes.frame) + self.minimumLineSpacing) - height;
+    
+    [self.collectionView setContentOffset:proposedContentOffset];
+}
+
 
 @end
 

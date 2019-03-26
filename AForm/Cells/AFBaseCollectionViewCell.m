@@ -99,7 +99,8 @@
 {
     AFCollectionViewFlowLayout *flowLayout = [AFCollectionViewFlowLayout new];
     flowLayout.delegate = self;
-    
+    flowLayout.invalidateLayoutBoundsChange = NO;
+   
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     collectionView.backgroundColor = [UIColor clearColor];
@@ -135,16 +136,12 @@
     self.inputRow.output = self;
     self.layoutAttributes = attributes;
     
-    self.contentViewHeight.constant = CGRectGetHeight(self.frame);
+    self.contentViewHeight.constant = attributes.initionalSize.height;
     self.contentViewHeight.active = YES;
     
     [self registrateNeededCells];
     [self configFlowLayout];
-    
-    CGFloat dependeciesHeight = config.dependenciesPreapreHeight;
-    CGSize size = self.frame.size;
-    
-    [attributes invalidateFlowLayoutWithNewHeight:size.height + dependeciesHeight];
+    [self invalidateCellHeightIfNeeded];
 }
 
 - (void)setRowValue:(id)value
@@ -192,15 +189,22 @@
     AFBaseCellConfig *inputViewConig = [self.config dependencyConfigAtIndex:indexPath.row];
     
     UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
-    cell.output = self.output;
+   // cell.output = self.output;
     
     AFFormLayoutAttributes *formAttribute = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
     [cell configWithRow:self.cellRow andConfig:inputViewConig layoutAttributes:formAttribute];
+    
+    self.inputRow.output = self;
     
     return cell;
 }
 
 #pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
+
+- (NSIndexPath *)layoutGetCurrentFocusedCellIndexPath
+{
+    return nil;
+}
 
 - (void)layoutDidUpdatedContentSize
 {
@@ -245,6 +249,7 @@
 {
     self.flowLayout.minimumInteritemSpacing = self.config.minimumDependeciesInterItemSpacing;
     self.flowLayout.minimumLineSpacing = self.config.minimumDependeciesLineSpacing;
+    self.flowLayout.prepareCollectionViewContentSize = self.frame.size;
 }
 
 - (void) registrateNeededCells
@@ -269,31 +274,17 @@
     }];
 }
 
-
-//
-//- (void) invalidateSizeIfNeeded
-//{
-//    __block CGFloat height = 0;
-//    AFRow *row = self.inputRow;
-//
-//    __weak typeof(self) weakSelf = self;
-//    [self.inputRow.config enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
-//        __strong typeof(weakSelf) blockSelf = weakSelf;
-//
-//        if (!blockSelf)
-//        {
-//            return;
-//        }
-//
-//        id value = row.cellValue ? (id)row.cellValue : @1;
-//        BOOL shouldShow = [predicate evaluateWithObject:value];
-//        CGSize size = [blockSelf.flowLayout sizeForLayoutConfig:config.layoutConfig];
-//        height += shouldShow ? size.height : 0;
-//    }];
-//
-//    CGSize size = self.frame.size;
-//    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + height];
-//}
+- (void) invalidateCellHeightIfNeeded
+{
+    CGFloat collectionHeight = CGRectGetHeight(self.collectionView.frame);
+    CGFloat dependeciesHeight = self.config.dependenciesPreapreHeight;
+    
+    if (collectionHeight < dependeciesHeight)
+    {
+        CGSize size = self.layoutAttributes.initionalSize;
+        [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + dependeciesHeight];
+    }
+}
 
 - (void) showDependenciesIfNeeded
 {
@@ -310,27 +301,30 @@
             return;
         }
         
-        id value = row.cellValue ? (id)row.cellValue : @1;
+        id value = row.cellValue;
         BOOL shouldShow = [predicate evaluateWithObject:value];
         CGSize size = CGSizeZero;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         AFFormLayoutAttributes *formLayoutAttribute = [blockSelf.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
+        CGSize oldSize = formLayoutAttribute.collectionLayoutAttributes.size;
         
         if (shouldShow)
         {
             size = [blockSelf.flowLayout sizeForLayoutConfig:config.layoutConfig];
-            height += size.height;
+            height += CGSizeEqualToSize(oldSize, size) ? 0 : size.height;
         } else {
             size = CGSizeZero;
-            height -= formLayoutAttribute.initionalSize.height;
+            height -= CGRectGetHeight(formLayoutAttribute.collectionLayoutAttributes.frame);
         }
         
-        [blockSelf.flowLayout invalidateLayout:formLayoutAttribute withNewSize:size];
-
+        [formLayoutAttribute invalidateFlowLayoutWithNewHeight:size.height];
     }];
     
-    CGSize size = self.frame.size;
-    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + height];
+    if (height != 0)
+    {
+        CGSize size = self.frame.size;
+        [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + height];
+    }
 }
 
 

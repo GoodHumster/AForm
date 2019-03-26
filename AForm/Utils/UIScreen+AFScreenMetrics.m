@@ -8,9 +8,6 @@
 
 #import "UIScreen+AFScreenMetrics.h"
 
-
-
-
 @implementation UIScreen (AFScreenMetrics)
 
 - (AFScreenMetrics)screenMetrics

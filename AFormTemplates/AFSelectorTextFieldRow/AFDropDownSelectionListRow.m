@@ -61,7 +61,7 @@ static NSString *const kAFDropDownSelectionListRowIdentifier = @"AFDropDownSelec
         row.cellConfig.layoutConfig = layoutConfig;
     }
   
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.row.value.other == YES"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.other == YES"];
     [row.cellConfig addDependencyConfig:textViewConfig withShowPredicate:predicate];
     
     return row;

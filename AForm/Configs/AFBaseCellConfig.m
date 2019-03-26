@@ -98,7 +98,11 @@
     __block CGFloat height = 0;
     
     [self enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
-        height += config.layoutConfig.height.constant;
+        BOOL shouldShow = [predicate evaluateWithObject:nil];
+        if (shouldShow)
+        {
+            height += config.layoutConfig.height.constant;
+        }
     }];
     
     return height;

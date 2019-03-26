@@ -21,6 +21,8 @@
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section;
 
+- (NSIndexPath *) layoutGetCurrentFocusedCellIndexPath;
+
 @optional
 
 - (void) layoutDidUpdatedContentSize;
@@ -30,6 +32,8 @@
 @interface AFCollectionViewFlowLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, weak) id<AFCollectionViewFlowLayoutDelegate> delegate;
+@property (nonatomic, assign) BOOL invalidateLayoutBoundsChange;
+@property (nonatomic, assign) CGSize prepareCollectionViewContentSize;
 
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewHeight:(CGFloat)height;
 

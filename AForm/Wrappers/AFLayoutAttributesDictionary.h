@@ -20,7 +20,7 @@
 - (NSArray<AFFormLayoutAttributes *> *) getFormAttributeInRect:(CGRect)rect;
 
 - (void) cacheFormAttribute:(AFFormLayoutAttributes *)attribute;
-- (void) replaceFormAttribute:(AFFormLayoutAttributes *)attribute;
+- (void) replaceFormAttributes:(NSArray<AFFormLayoutAttributes *> *)attributes;
 
 - (AFFormLayoutAttributes *) lastFormAttribute;
 - (AFFormLayoutAttributes *) firtFormAttribute;
