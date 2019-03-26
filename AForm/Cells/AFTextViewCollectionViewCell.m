@@ -69,6 +69,8 @@ NSString *const kAFTextViewCollectionViewCellIdentifier = @"AFTextViewCollection
 {
     [self setupConfiguration:(AFTextViewCellConfig *)config];
     [super configWithRow:row andConfig:config layoutAttributes:attributes];
+    
+    self.textView.text = [self.cellRow.cellValue getStringValue];
 }
 
 #pragma mark - config methods

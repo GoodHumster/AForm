@@ -15,9 +15,13 @@
 
 @protocol AFCollectionViewFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
 
+@required
+
 - (AFLayoutConfig *) layoutConfigForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section;
+
+@optional
 
 - (void) layoutDidUpdatedContentSize;
 

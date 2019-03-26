@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A9C4842248E1DB00D61BB2 /* Label */,
-				C37E32D1223B9C810021FB1E /* TextInputs */,
+				C37E32D1223B9C810021FB1E /* TextContainers */,
 				C37E31FE2237ED770021FB1E /* AFCellConfig.h */,
 				C31C33952243CA2700E83D40 /* AFBaseCellConfig.h */,
 				C31C33D4224518DC00E83D40 /* AFBaseCellConfig_Private.h */,
@@ -367,7 +367,7 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		C37E32D1223B9C810021FB1E /* TextInputs */ = {
+		C37E32D1223B9C810021FB1E /* TextContainers */ = {
 			isa = PBXGroup;
 			children = (
 				C3A9C49922492E5600D61BB2 /* TextView */,
@@ -378,7 +378,7 @@
 				C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */,
 				C3A9C49622492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m */,
 			);
-			path = TextInputs;
+			path = TextContainers;
 			sourceTree = "<group>";
 		};
 		C37E32DA223B9D230021FB1E /* Passport */ = {
@@ -432,7 +432,7 @@
 			path = AFSelectorTextFieldRow;
 			sourceTree = "<group>";
 		};
-		C3A9C49022492C2300D61BB2 /* TextInputs */ = {
+		C3A9C49022492C2300D61BB2 /* TextContainers */ = {
 			isa = PBXGroup;
 			children = (
 				C37E320D2238225D0021FB1E /* TextField */,
@@ -443,7 +443,7 @@
 				C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */,
 				C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */,
 			);
-			name = TextInputs;
+			name = TextContainers;
 			sourceTree = "<group>";
 		};
 		C3A9C49822492E4000D61BB2 /* TextField */ = {
@@ -518,7 +518,7 @@
 		C3FD5C6D2236B1D600FD6789 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C3A9C49022492C2300D61BB2 /* TextInputs */,
+				C3A9C49022492C2300D61BB2 /* TextContainers */,
 				C3A9C4802248DFD100D61BB2 /* Label */,
 				C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */,
 				C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */,

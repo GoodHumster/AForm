@@ -23,7 +23,7 @@
 #import "AFBaseCellConfig.h"
 
 
-@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFTextFieldCollectionViewCellOutput,AFCollectionViewCellOutput>
+@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFBaseTextContainerCollectionViewCellOutput,AFCollectionViewCellOutput>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) AFCollectionViewFlowLayout *flowLayout;
@@ -263,22 +263,19 @@
     return [self.formModel numberOfRowsInSection:section];
 }
 
-#pragma mark - AFCollectionViewCellOutput protocol methods
+#pragma mark - AFBaseTextContainerCollectionViewCellOutput protocol methods
 
-
-#pragma mark - AFTextFieldCollectionViewCellOutput protocol methods
-
-- (void)textFieldCellDidBeginEditing:(AFTextFieldCollectionViewCell *)cell
+- (void)textContainerCellDidBeginEditing:(AFBaseTextContainerCollectionViewCell *)cell
 {
     self.currentFocusedCell = cell;
 }
 
-- (void)textFieldCellDidEndEditing:(AFTextFieldCollectionViewCell *)cell
+- (void)textContainerCellDidEndEditing:(AFBaseTextContainerCollectionViewCell *)cell
 {
     self.currentFocusedCell = nil;
 }
 
-- (void)textFieldCellDidPressReturnKey:(AFTextFieldCollectionViewCell *)cell
+- (void)textContainerCellDidPressReturnKey:(AFBaseTextContainerCollectionViewCell *)cell
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     NSIndexPath *nextIndexPath = [self getNextIndexPath:indexPath];
@@ -294,7 +291,7 @@
     {
         [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self textFieldCellDidPressReturnKey:cell];
+            [self textContainerCellDidPressReturnKey:cell];
         });
         return;
     }
@@ -303,12 +300,12 @@
     [nextCell becomeFirstResponder];
 }
 
-- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell didChangeValueAtIndexPath:(NSIndexPath *)indexPath
+- (void)textContainerCell:(AFBaseTextContainerCollectionViewCell *)cell didChangeValueAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
 
-- (void)textFieldCell:(AFTextFieldCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void (^)(BOOL))controllBlock
+- (void)textContainerCell:(AFBaseTextContainerCollectionViewCell *)cell shouldShowAutocomplete:(UIView<AFAutocompleteView> *)view withControllBlock:(void (^)(BOOL))controllBlock
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     if (![self.textFieldDelegate respondsToSelector:@selector(formView:shouldShowAutocomplete:withControllBlock:atIndexPath:)])
