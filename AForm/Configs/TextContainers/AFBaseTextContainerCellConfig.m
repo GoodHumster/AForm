@@ -42,7 +42,7 @@
 
 - (id) copyWithZone:(NSZone *)zone
 {
-    AFBaseTextContainerCellConfig *copy = [self.class new];
+    AFBaseTextContainerCellConfig *copy = [super copyWithZone:zone];
     copy.inputViewConfig = [(id)self.inputViewConfig copy];
     copy.haveAutocomplete = self.haveAutocomplete;
     copy.autocompleteViewClass = self.autocompleteViewClass;

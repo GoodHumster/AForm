@@ -227,7 +227,7 @@
         return nil;
     }
     
-    id value = row.cellValue ? (id)row.cellValue : @1;
+    id value = row.cellValue;
     
     BOOL shouldShow = [predicate evaluateWithObject:value];
     

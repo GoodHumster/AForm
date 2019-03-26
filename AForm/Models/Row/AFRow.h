@@ -28,8 +28,8 @@
 
 + (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(AFBaseCellConfig *)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
 
-+ (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
+- (instancetype) initWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
 
-+ (id) rowWithKey:(NSString *)key andIdentifier:(NSString *)identifier;
+- (instancetype) initWithKey:(NSString *)key andIdentifier:(NSString *)identifier;
 
 @end

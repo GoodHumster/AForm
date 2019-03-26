@@ -10,6 +10,8 @@
 
 #import "AFDatePickerConfig.h"
 
+#import "UIScreen+AFScreenMetrics.h"
+
 @interface AFDatePickerView()
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
@@ -21,12 +23,13 @@
 
 @synthesize output = _output;
 
-
 - (instancetype) init
 {
     UIScreen *mainScreen = [UIScreen mainScreen];
+    CGFloat width = CGRectGetWidth(mainScreen.bounds);
+    CGFloat height = mainScreen.defaultKeyboardHeightForCurrentOrientation;
     
-    if ( ( self = [super initWithFrame:CGRectMake(0, 0, CGRectGetWidth(mainScreen.bounds), 253)]) == nil )
+    if ( ( self = [super initWithFrame:CGRectMake(0, 0, width, height)]) == nil )
     {
         return nil;
     }

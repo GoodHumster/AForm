@@ -29,6 +29,33 @@
     return self;
 }
 
+- (instancetype)initWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier
+{
+    if ( ( self = [super init]) == nil )
+    {
+        return nil;
+    }
+    
+    self.key = key;
+    self.value = value;
+    self->identifier = identifier;
+
+    return self;
+}
+
+- (instancetype)initWithKey:(NSString *)key andIdentifier:(NSString *)identifier
+{
+    if ( ( self = [super init]) == nil )
+    {
+        return nil;
+    }
+    
+    self.key = key;
+    self->identifier = identifier;
+    
+    return self;
+}
+
 #pragma mark - AFCellRow protocol methods
 
 - (AFBaseCellConfig *)config
@@ -55,23 +82,5 @@
     return row;
 }
 
-+ (id) rowWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier
-{
-    AFRow *row = [AFRow new];
-    row.key = key;
-    row.value = value;
-    row->identifier = identifier;
-    
-    return row;
-}
-
-+ (id) rowWithKey:(NSString *)key andIdentifier:(NSString *)identifier
-{
-    AFRow *row = [AFRow new];
-    row.key = key;
-    row->identifier = identifier;
-    
-    return row;
-}
 
 @end

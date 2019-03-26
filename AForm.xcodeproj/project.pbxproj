@@ -82,6 +82,16 @@
 		C3A9C4A7224A256700D61BB2 /* AFTextViewCollectionViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C48D2249258500D61BB2 /* AFTextViewCollectionViewCell.h */; };
 		C3A9C4A8224A257200D61BB2 /* AFTextViewCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49A22492E6800D61BB2 /* AFTextViewCellConfig.h */; };
 		C3A9C4A9224A257400D61BB2 /* AFTextView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49D22492E9400D61BB2 /* AFTextView.h */; };
+		C3A9C4AF224A369A00D61BB2 /* AFPickerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4AE224A369A00D61BB2 /* AFPickerConfig.m */; };
+		C3A9C4B3224A36E400D61BB2 /* AFPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4B2224A36E400D61BB2 /* AFPickerView.m */; };
+		C3A9C4B4224A3C3700D61BB2 /* AFDropDownSelectionListRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4AB224A35D300D61BB2 /* AFDropDownSelectionListRow.m */; };
+		C3A9C4B7224A3D0700D61BB2 /* AFDropDownSelectionListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4B6224A3D0700D61BB2 /* AFDropDownSelectionListItem.m */; };
+		C3A9C4BB224A4C2500D61BB2 /* AFDropDownSelectionListRow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4AA224A35D300D61BB2 /* AFDropDownSelectionListRow.h */; };
+		C3A9C4BC224A4C2700D61BB2 /* AFDropDownSelectionListItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4B5224A3D0700D61BB2 /* AFDropDownSelectionListItem.h */; };
+		C3A9C4BD224A4C2D00D61BB2 /* AFPickerConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4AD224A369A00D61BB2 /* AFPickerConfig.h */; };
+		C3A9C4BE224A4C9C00D61BB2 /* AFPickerItem.h in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4BA224A4A0800D61BB2 /* AFPickerItem.h */; };
+		C3A9C4BF224A4CA000D61BB2 /* AFPickerItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4BA224A4A0800D61BB2 /* AFPickerItem.h */; };
+		C3A9C4C7224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4C6224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m */; };
 		C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AForm.h */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +103,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */,
+				C3A9C4BF224A4CA000D61BB2 /* AFPickerItem.h in CopyFiles */,
 				C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */,
 				C3A9C47F2248D28000D61BB2 /* AFBaseCollectionViewCell.h in CopyFiles */,
 				C31C33982243CA8000E83D40 /* AFBaseCellConfig.h in CopyFiles */,
@@ -102,7 +113,10 @@
 				C37E332C223BC9B60021FB1E /* AFTextVerifier.h in CopyFiles */,
 				C37E333B223BCA010021FB1E /* AFTextFieldCellConfig.h in CopyFiles */,
 				C37E333C223BCA040021FB1E /* AFDatePickerConfig.h in CopyFiles */,
+				C3A9C4BB224A4C2500D61BB2 /* AFDropDownSelectionListRow.h in CopyFiles */,
+				C3A9C4BD224A4C2D00D61BB2 /* AFPickerConfig.h in CopyFiles */,
 				C37E34422240CA480021FB1E /* AFTextFieldCellInputViewConfig.h in CopyFiles */,
+				C3A9C4BC224A4C2700D61BB2 /* AFDropDownSelectionListItem.h in CopyFiles */,
 				C3A9C4882248E49600D61BB2 /* AFLabelCellConfig.h in CopyFiles */,
 				C37E333A223BC9FA0021FB1E /* AFormView.h in CopyFiles */,
 				C37E332D223BC9BA0021FB1E /* AFTextField.h in CopyFiles */,
@@ -205,6 +219,17 @@
 		C3A9C4A1224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell.h; sourceTree = "<group>"; };
 		C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseTextContainerCollectionViewCell.m; sourceTree = "<group>"; };
 		C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell_Private.h; sourceTree = "<group>"; };
+		C3A9C4AA224A35D300D61BB2 /* AFDropDownSelectionListRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDropDownSelectionListRow.h; sourceTree = "<group>"; };
+		C3A9C4AB224A35D300D61BB2 /* AFDropDownSelectionListRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDropDownSelectionListRow.m; sourceTree = "<group>"; };
+		C3A9C4AD224A369A00D61BB2 /* AFPickerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPickerConfig.h; sourceTree = "<group>"; };
+		C3A9C4AE224A369A00D61BB2 /* AFPickerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFPickerConfig.m; sourceTree = "<group>"; };
+		C3A9C4B1224A36E400D61BB2 /* AFPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPickerView.h; sourceTree = "<group>"; };
+		C3A9C4B2224A36E400D61BB2 /* AFPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFPickerView.m; sourceTree = "<group>"; };
+		C3A9C4B5224A3D0700D61BB2 /* AFDropDownSelectionListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDropDownSelectionListItem.h; sourceTree = "<group>"; };
+		C3A9C4B6224A3D0700D61BB2 /* AFDropDownSelectionListItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDropDownSelectionListItem.m; sourceTree = "<group>"; };
+		C3A9C4BA224A4A0800D61BB2 /* AFPickerItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPickerItem.h; sourceTree = "<group>"; };
+		C3A9C4C5224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScreen+AFScreenMetrics.h"; sourceTree = "<group>"; };
+		C3A9C4C6224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+AFScreenMetrics.m"; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,19 +248,21 @@
 		C31C33CF224507C600E83D40 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C4C5224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.h */,
+				C3A9C4C6224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m */,
 				C31C33D0224507E600E83D40 /* NSString+AFValue.h */,
 				C31C33D1224507E600E83D40 /* NSString+AFValue.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		C31C33D322450E5700E83D40 /* InputViews */ = {
+		C31C33D322450E5700E83D40 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
-				C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */,
-				C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */,
+				C3A9C4B9224A49FB00D61BB2 /* simple */,
+				C3A9C4B8224A49F200D61BB2 /* date */,
 			);
-			name = InputViews;
+			name = Inputs;
 			sourceTree = "<group>";
 		};
 		C37E32042238148B0021FB1E /* Manager */ = {
@@ -372,7 +399,7 @@
 			children = (
 				C3A9C49922492E5600D61BB2 /* TextView */,
 				C3A9C49822492E4000D61BB2 /* TextField */,
-				C31C33D322450E5700E83D40 /* InputViews */,
+				C31C33D322450E5700E83D40 /* Inputs */,
 				C37E32CC223B97140021FB1E /* AFTextFieldCellInputView.h */,
 				C37E343E2240C3C40021FB1E /* AFTextFieldCellInputViewConfig.h */,
 				C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */,
@@ -428,6 +455,10 @@
 		C3A9C48C2249254C00D61BB2 /* AFSelectorTextFieldRow */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C4AA224A35D300D61BB2 /* AFDropDownSelectionListRow.h */,
+				C3A9C4AB224A35D300D61BB2 /* AFDropDownSelectionListRow.m */,
+				C3A9C4B5224A3D0700D61BB2 /* AFDropDownSelectionListItem.h */,
+				C3A9C4B6224A3D0700D61BB2 /* AFDropDownSelectionListItem.m */,
 			);
 			path = AFSelectorTextFieldRow;
 			sourceTree = "<group>";
@@ -464,6 +495,34 @@
 				C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */,
 			);
 			name = TextView;
+			sourceTree = "<group>";
+		};
+		C3A9C4B0224A36D600D61BB2 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C4BA224A4A0800D61BB2 /* AFPickerItem.h */,
+				C3A9C4B1224A36E400D61BB2 /* AFPickerView.h */,
+				C3A9C4B2224A36E400D61BB2 /* AFPickerView.m */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		C3A9C4B8224A49F200D61BB2 /* date */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32CD223B98900021FB1E /* AFDatePickerConfig.h */,
+				C37E32CE223B98900021FB1E /* AFDatePickerConfig.m */,
+			);
+			name = date;
+			sourceTree = "<group>";
+		};
+		C3A9C4B9224A49FB00D61BB2 /* simple */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C4AD224A369A00D61BB2 /* AFPickerConfig.h */,
+				C3A9C4AE224A369A00D61BB2 /* AFPickerConfig.m */,
+			);
+			name = simple;
 			sourceTree = "<group>";
 		};
 		C3FD5C452236A61300FD6789 = {
@@ -529,6 +588,7 @@
 		C3FD5C6E2236B1DC00FD6789 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C4B0224A36D600D61BB2 /* Picker */,
 				C37E343A223FF1840021FB1E /* DatePicker */,
 				C37E31EC2237DF160021FB1E /* AFormView.h */,
 				C37E31ED2237DF160021FB1E /* AFormView.m */,
@@ -620,8 +680,11 @@
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
 				C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */,
 				C3A9C4A3224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m in Sources */,
+				C3A9C4B3224A36E400D61BB2 /* AFPickerView.m in Sources */,
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
+				C3A9C4BE224A4C9C00D61BB2 /* AFPickerItem.h in Sources */,
+				C3A9C4AF224A369A00D61BB2 /* AFPickerConfig.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
 				C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
@@ -635,15 +698,18 @@
 				C37E31F62237E5D40021FB1E /* AFSection.m in Sources */,
 				C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */,
 				C37E31F92237E5F10021FB1E /* AFRow.m in Sources */,
+				C3A9C4C7224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m in Sources */,
 				C31C33D2224507E600E83D40 /* NSString+AFValue.m in Sources */,
 				C31C33972243CA2700E83D40 /* AFBaseCellConfig.m in Sources */,
 				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
 				C3A9C48F2249258500D61BB2 /* AFTextViewCollectionViewCell.m in Sources */,
 				C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */,
+				C3A9C4B7224A3D0700D61BB2 /* AFDropDownSelectionListItem.m in Sources */,
 				C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */,
 				C3A9C4832248DFEB00D61BB2 /* AFLabelCollectionViewCell.m in Sources */,
 				C3A9C49722492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m in Sources */,
 				C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */,
+				C3A9C4B4224A3C3700D61BB2 /* AFDropDownSelectionListRow.m in Sources */,
 				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,
 				C3A9C49C22492E6800D61BB2 /* AFTextViewCellConfig.m in Sources */,
 				C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */,

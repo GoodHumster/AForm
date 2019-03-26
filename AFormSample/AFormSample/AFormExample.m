@@ -12,6 +12,7 @@
 #import <AForm/AFLayoutConfig.h>
 #import <AForm/AFLabelCellConfig.h>
 #import <AForm/AFTextViewCellConfig.h>
+#import <AForm/AFDropDownSelectionListRow.h>
 
 typedef NS_ENUM(NSInteger, kExampleFieldsType)
 {
@@ -21,12 +22,15 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
     kExampleFieldsType_Email,
     kExampleFieldsType_Birthday,
     kExampleFieldsType_IssueDate,
-    kExampleFieldsType_TextView
+    kExampleFieldsType_TextView,
+    kExampleFieldsType_Questionary
     
 };
 
-@interface AFormExample()
+@interface AFormExample()<AFDropDownSelectionListRowDataSource>
 
+
+@property (nonatomic, strong) NSArray *dropDownList;
 @property (nonatomic, strong) NSMutableArray *source;
 
 @end
@@ -47,8 +51,18 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
                     [self createRowWithType:kExampleFieldsType_Phone],
                     [self createRowWithType:kExampleFieldsType_Birthday],
                     [self createRowWithType:kExampleFieldsType_IssueDate],
-                    [self createRowWithType:kExampleFieldsType_TextView]
+                    [self createRowWithType:kExampleFieldsType_TextView],
+                    [self createRowWithType:kExampleFieldsType_Questionary]
                    ] mutableCopy];
+    
+    self.dropDownList = @[
+                          [self itemWithTitle:@"1 Вариант" tag:1 other:NO],
+                          [self itemWithTitle:@"2 Вариант" tag:1 other:NO],
+                          [self itemWithTitle:@"3 Вариант" tag:1 other:NO],
+                          [self itemWithTitle:@"4 Вариант" tag:1 other:NO],
+                          [self itemWithTitle:@"5 Вариант" tag:1 other:NO],
+                          [self itemWithTitle:@"Другой" tag:1 other:YES]
+                        ];
     
     return self;
 }
@@ -133,6 +147,17 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             AFLayoutConfig *config = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
             return [AFRow rowWithConfig:nil inputViewConfig:tvConfig layoutConfig:config];;
         }
+        case kExampleFieldsType_Questionary:
+        {
+            heightConstrain.constant = 100;
+            AFTextViewCellConfig *config = [AFTextViewCellConfig defaultTextViewConfig];
+            config.borderStyle = AFTextInputBorderUnderline;
+            config.layoutConfig = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
+            
+            AFDropDownSelectionListRow *row = [AFDropDownSelectionListRow rowWithKey:@"Test" andTextViewConfig:config];
+            row.dataSource = self;
+            return row;
+        }
         default:
             break;
     }
@@ -140,6 +165,23 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
     
     AFLayoutConfig *config = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
     return [AFRow rowWithConfig:nil inputViewConfig:tfConfig layoutConfig:config];
+}
+
+- (AFDropDownSelectionListItem *) itemWithTitle:(NSString *)title tag:(NSInteger)tag other:(BOOL)other
+{
+    return [[AFDropDownSelectionListItem alloc] initWithTitle:title tag:tag other:other];
+}
+
+#pragma mark - AFDropDownSelectionListRowDataSource protocol methods
+
+- (NSInteger)numberOfItems
+{
+    return self.dropDownList.count;
+}
+
+- (AFDropDownSelectionListItem *)dropDownListItemAtIndex:(NSInteger)index
+{
+    return [self.dropDownList objectAtIndex:index];
 }
 
 @end
