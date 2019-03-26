@@ -10,8 +10,6 @@
 
 #import "AFLayoutConfig.h"
 
-NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
-
 @interface AFBaseCellDependency : NSObject
 
 @property (nonatomic, strong) AFBaseCellConfig *config;
@@ -32,6 +30,8 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
 
 @synthesize layoutConfig = _layoutConfig;
 @synthesize identifier = _identifier;
+@synthesize minimumDependeciesLineSpacing = _minimumDependeciesLineSpacing;
+@synthesize minimumDependeciesInterItemSpacing = _minimumDependeciesInterItemSpacing;
 
 - (instancetype) init
 {
@@ -40,6 +40,8 @@ NSString *const AFBaseConfigPredicateRowValueKey = @"self.value";
         return nil;
     }
     self.dependecies = [NSMutableArray new];
+    self.minimumDependeciesInterItemSpacing = 0;
+    self.minimumDependeciesLineSpacing = 0;
     return self;
 }
 

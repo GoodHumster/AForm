@@ -11,6 +11,7 @@
 #import <AForm/AFDatePickerConfig.h>
 #import <AForm/AFLayoutConfig.h>
 #import <AForm/AFLabelCellConfig.h>
+#import <AForm/AFTextViewCellConfig.h>
 
 typedef NS_ENUM(NSInteger, kExampleFieldsType)
 {
@@ -19,7 +20,8 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
     kExampleFieldsType_Phone,
     kExampleFieldsType_Email,
     kExampleFieldsType_Birthday,
-    kExampleFieldsType_IssueDate
+    kExampleFieldsType_IssueDate,
+    kExampleFieldsType_TextView
     
 };
 
@@ -44,7 +46,8 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
                     [self createRowWithType:kExampleFieldsType_Email],
                     [self createRowWithType:kExampleFieldsType_Phone],
                     [self createRowWithType:kExampleFieldsType_Birthday],
-                    [self createRowWithType:kExampleFieldsType_IssueDate]
+                    [self createRowWithType:kExampleFieldsType_IssueDate],
+                    [self createRowWithType:kExampleFieldsType_TextView]
                    ] mutableCopy];
     
     return self;
@@ -90,7 +93,12 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
         {
             widthConstrain = [AFLayoutConstraint constrainWithMultiplie:0.5 andConstant:AFLayoutConstraintAutomaticDimension andEstimate:0];
             tfConfig.placeholder = @"Фамилия";
-            
+            break;
+        }
+        case kExampleFieldsType_Email:
+        {
+            tfConfig = [AFTextFieldCellConfig emailTextFieldConfig];
+            tfConfig.placeholder = @"Email";
             AFLabelCellConfig *config = [AFLabelCellConfig new];
             config.textColor = [UIColor purpleColor];
             config.font = [UIFont systemFontOfSize:15];
@@ -104,10 +112,6 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             
             break;
         }
-        case kExampleFieldsType_Email:
-            tfConfig = [AFTextFieldCellConfig emailTextFieldConfig];
-            tfConfig.placeholder = @"Email";
-            break;
         case kExampleFieldsType_Phone:
             tfConfig.placeholder = @"phone";
             break;
@@ -121,10 +125,18 @@ typedef NS_ENUM(NSInteger, kExampleFieldsType)
             tfConfig.placeholder = @"issue date";
             tfConfig.inputViewConfig = datePickerConfig;
             break;
+        case kExampleFieldsType_TextView:
+        {
+            AFTextViewCellConfig *tvConfig = [AFTextViewCellConfig defaultTextViewConfig];
+            heightConstrain.constant = 100;
+            tvConfig.borderStyle = AFTextInputBorderUnderline;
+            AFLayoutConfig *config = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
+            return [AFRow rowWithConfig:nil inputViewConfig:tvConfig layoutConfig:config];;
+        }
         default:
             break;
     }
-    tfConfig.borderStyle = AFTextFieldBorderUnderline;
+    tfConfig.borderStyle = AFTextInputBorderUnderline;
     
     AFLayoutConfig *config = [AFLayoutConfig layoutConfigWithHeightConstrain:heightConstrain andWidthConstrain:widthConstrain];
     return [AFRow rowWithConfig:nil inputViewConfig:tfConfig layoutConfig:config];

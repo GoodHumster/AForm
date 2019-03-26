@@ -72,6 +72,16 @@
 		C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4862248E1FF00D61BB2 /* AFLabelCellConfig.m */; };
 		C3A9C4882248E49600D61BB2 /* AFLabelCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4852248E1FF00D61BB2 /* AFLabelCellConfig.h */; };
 		C3A9C4892248E4B300D61BB2 /* AFLabelCollectionViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C4812248DFEB00D61BB2 /* AFLabelCollectionViewCell.h */; };
+		C3A9C48F2249258500D61BB2 /* AFTextViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C48E2249258500D61BB2 /* AFTextViewCollectionViewCell.m */; };
+		C3A9C49722492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49622492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m */; };
+		C3A9C49C22492E6800D61BB2 /* AFTextViewCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */; };
+		C3A9C4A02249765100D61BB2 /* AFTextInputContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */; };
+		C3A9C4A3224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */; };
+		C3A9C4A5224A235000D61BB2 /* AFBaseTextContainerCellConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */; };
+		C3A9C4A6224A236F00D61BB2 /* AFBaseTextContainerCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */; };
+		C3A9C4A7224A256700D61BB2 /* AFTextViewCollectionViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C48D2249258500D61BB2 /* AFTextViewCollectionViewCell.h */; };
+		C3A9C4A8224A257200D61BB2 /* AFTextViewCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49A22492E6800D61BB2 /* AFTextViewCellConfig.h */; };
+		C3A9C4A9224A257400D61BB2 /* AFTextView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49D22492E9400D61BB2 /* AFTextView.h */; };
 		C3FD5C542236A61300FD6789 /* AForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AForm.h */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +108,12 @@
 				C37E332D223BC9BA0021FB1E /* AFTextField.h in CopyFiles */,
 				C37E3337223BC9F20021FB1E /* AFHeaderViewConfig.h in CopyFiles */,
 				C3A9C47E2248D27900D61BB2 /* AFCellRow.h in CopyFiles */,
+				C3A9C4A7224A256700D61BB2 /* AFTextViewCollectionViewCell.h in CopyFiles */,
 				C37E3338223BC9F50021FB1E /* AFDefaultHeaderSectionView.h in CopyFiles */,
 				C37E3334223BC9DC0021FB1E /* AFRow.h in CopyFiles */,
+				C3A9C4A9224A257400D61BB2 /* AFTextView.h in CopyFiles */,
+				C3A9C4A8224A257200D61BB2 /* AFTextViewCellConfig.h in CopyFiles */,
+				C3A9C4A6224A236F00D61BB2 /* AFBaseTextContainerCellConfig.h in CopyFiles */,
 				C37E3339223BC9F70021FB1E /* AFHeaderSectionView.h in CopyFiles */,
 				C37E332E223BC9CB0021FB1E /* AFDefaultVerifier.h in CopyFiles */,
 				C37E3332223BC9D70021FB1E /* AFLayoutConfig.h in CopyFiles */,
@@ -179,6 +193,18 @@
 		C3A9C4822248DFEB00D61BB2 /* AFLabelCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLabelCollectionViewCell.m; sourceTree = "<group>"; };
 		C3A9C4852248E1FF00D61BB2 /* AFLabelCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLabelCellConfig.h; sourceTree = "<group>"; };
 		C3A9C4862248E1FF00D61BB2 /* AFLabelCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLabelCellConfig.m; sourceTree = "<group>"; };
+		C3A9C48D2249258500D61BB2 /* AFTextViewCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextViewCollectionViewCell.h; sourceTree = "<group>"; };
+		C3A9C48E2249258500D61BB2 /* AFTextViewCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextViewCollectionViewCell.m; sourceTree = "<group>"; };
+		C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCellConfig.h; sourceTree = "<group>"; };
+		C3A9C49622492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseTextContainerCellConfig.m; sourceTree = "<group>"; };
+		C3A9C49A22492E6800D61BB2 /* AFTextViewCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextViewCellConfig.h; sourceTree = "<group>"; };
+		C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextViewCellConfig.m; sourceTree = "<group>"; };
+		C3A9C49D22492E9400D61BB2 /* AFTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextView.h; sourceTree = "<group>"; };
+		C3A9C49E2249765100D61BB2 /* AFTextInputContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextInputContentView.h; sourceTree = "<group>"; };
+		C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextInputContentView.m; sourceTree = "<group>"; };
+		C3A9C4A1224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell.h; sourceTree = "<group>"; };
+		C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseTextContainerCollectionViewCell.m; sourceTree = "<group>"; };
+		C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell_Private.h; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,22 +348,17 @@
 		C37E32C8223B95EA0021FB1E /* TextView */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C48D2249258500D61BB2 /* AFTextViewCollectionViewCell.h */,
+				C3A9C48E2249258500D61BB2 /* AFTextViewCollectionViewCell.m */,
 			);
 			name = TextView;
-			sourceTree = "<group>";
-		};
-		C37E32CA223B95FA0021FB1E /* Selector */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Selector;
 			sourceTree = "<group>";
 		};
 		C37E32D0223B989B0021FB1E /* Configs */ = {
 			isa = PBXGroup;
 			children = (
 				C3A9C4842248E1DB00D61BB2 /* Label */,
-				C37E32D1223B9C810021FB1E /* TextField */,
+				C37E32D1223B9C810021FB1E /* TextInputs */,
 				C37E31FE2237ED770021FB1E /* AFCellConfig.h */,
 				C31C33952243CA2700E83D40 /* AFBaseCellConfig.h */,
 				C31C33D4224518DC00E83D40 /* AFBaseCellConfig_Private.h */,
@@ -346,17 +367,18 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		C37E32D1223B9C810021FB1E /* TextField */ = {
+		C37E32D1223B9C810021FB1E /* TextInputs */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C49922492E5600D61BB2 /* TextView */,
+				C3A9C49822492E4000D61BB2 /* TextField */,
 				C31C33D322450E5700E83D40 /* InputViews */,
-				C37E32CB223B963F0021FB1E /* AFTextField.h */,
 				C37E32CC223B97140021FB1E /* AFTextFieldCellInputView.h */,
 				C37E343E2240C3C40021FB1E /* AFTextFieldCellInputViewConfig.h */,
-				C37E32B2223AC7420021FB1E /* AFTextFieldCellConfig.h */,
-				C37E32B3223AC7420021FB1E /* AFTextFieldCellConfig.m */,
+				C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */,
+				C3A9C49622492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m */,
 			);
-			path = TextField;
+			path = TextInputs;
 			sourceTree = "<group>";
 		};
 		C37E32DA223B9D230021FB1E /* Passport */ = {
@@ -395,9 +417,59 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
+		C3A9C48B2249254300D61BB2 /* AFormTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C48C2249254C00D61BB2 /* AFSelectorTextFieldRow */,
+			);
+			path = AFormTemplates;
+			sourceTree = "<group>";
+		};
+		C3A9C48C2249254C00D61BB2 /* AFSelectorTextFieldRow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AFSelectorTextFieldRow;
+			sourceTree = "<group>";
+		};
+		C3A9C49022492C2300D61BB2 /* TextInputs */ = {
+			isa = PBXGroup;
+			children = (
+				C37E320D2238225D0021FB1E /* TextField */,
+				C37E32C8223B95EA0021FB1E /* TextView */,
+				C3A9C49E2249765100D61BB2 /* AFTextInputContentView.h */,
+				C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */,
+				C3A9C4A1224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.h */,
+				C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */,
+				C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */,
+			);
+			name = TextInputs;
+			sourceTree = "<group>";
+		};
+		C3A9C49822492E4000D61BB2 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				C37E32CB223B963F0021FB1E /* AFTextField.h */,
+				C37E32B2223AC7420021FB1E /* AFTextFieldCellConfig.h */,
+				C37E32B3223AC7420021FB1E /* AFTextFieldCellConfig.m */,
+			);
+			name = TextField;
+			sourceTree = "<group>";
+		};
+		C3A9C49922492E5600D61BB2 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C49D22492E9400D61BB2 /* AFTextView.h */,
+				C3A9C49A22492E6800D61BB2 /* AFTextViewCellConfig.h */,
+				C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */,
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
 		C3FD5C452236A61300FD6789 = {
 			isa = PBXGroup;
 			children = (
+				C3A9C48B2249254300D61BB2 /* AFormTemplates */,
 				C3FD5C502236A61300FD6789 /* AForm */,
 				C3FD5C4F2236A61300FD6789 /* Products */,
 			);
@@ -418,6 +490,7 @@
 				C37E32D0223B989B0021FB1E /* Configs */,
 				C37E32042238148B0021FB1E /* Manager */,
 				C37E321F223908300021FB1E /* Wrappers */,
+				C37E321422382B950021FB1E /* Layout */,
 				C3FD5C6E2236B1DC00FD6789 /* Views */,
 				C37E32A8223A9A670021FB1E /* Headers */,
 				C3FD5C6D2236B1D600FD6789 /* Cells */,
@@ -445,10 +518,8 @@
 		C3FD5C6D2236B1D600FD6789 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C3A9C49022492C2300D61BB2 /* TextInputs */,
 				C3A9C4802248DFD100D61BB2 /* Label */,
-				C37E320D2238225D0021FB1E /* TextField */,
-				C37E32C8223B95EA0021FB1E /* TextView */,
-				C37E32CA223B95FA0021FB1E /* Selector */,
 				C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */,
 				C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */,
 			);
@@ -459,7 +530,6 @@
 			isa = PBXGroup;
 			children = (
 				C37E343A223FF1840021FB1E /* DatePicker */,
-				C37E321422382B950021FB1E /* Layout */,
 				C37E31EC2237DF160021FB1E /* AFormView.h */,
 				C37E31ED2237DF160021FB1E /* AFormView.m */,
 			);
@@ -549,15 +619,18 @@
 				C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */,
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
 				C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */,
+				C3A9C4A3224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m in Sources */,
 				C37E32DD223B9D380021FB1E /* AFRussianPassportVerifier.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
 				C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
+				C3A9C4A02249765100D61BB2 /* AFTextInputContentView.m in Sources */,
 				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
 				C37E32B4223AC7420021FB1E /* AFTextFieldCellConfig.m in Sources */,
 				C37E31EE2237DF160021FB1E /* AFormView.m in Sources */,
 				C37E320B2238210D0021FB1E /* AFBaseCollectionViewCell.m in Sources */,
+				C3A9C4A5224A235000D61BB2 /* AFBaseTextContainerCellConfig.h in Sources */,
 				C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */,
 				C37E31F62237E5D40021FB1E /* AFSection.m in Sources */,
 				C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */,
@@ -565,11 +638,14 @@
 				C31C33D2224507E600E83D40 /* NSString+AFValue.m in Sources */,
 				C31C33972243CA2700E83D40 /* AFBaseCellConfig.m in Sources */,
 				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
+				C3A9C48F2249258500D61BB2 /* AFTextViewCollectionViewCell.m in Sources */,
 				C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */,
 				C37E32D6223B9CEE0021FB1E /* AFPhoneNumberVerifier.m in Sources */,
 				C3A9C4832248DFEB00D61BB2 /* AFLabelCollectionViewCell.m in Sources */,
+				C3A9C49722492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m in Sources */,
 				C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */,
 				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,
+				C3A9C49C22492E6800D61BB2 /* AFTextViewCellConfig.m in Sources */,
 				C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,4 +16,7 @@
 @property (nonatomic, strong, readonly) NSString *identifier;
 @property (nonatomic, strong) AFLayoutConfig *layoutConfig;
 
+@property (nonatomic, assign) CGFloat minimumDependeciesInterItemSpacing;
+@property (nonatomic, assign) CGFloat minimumDependeciesLineSpacing;
+
 @end

@@ -138,24 +138,8 @@
     self.contentViewHeight.constant = CGRectGetHeight(self.frame);
     self.contentViewHeight.active = YES;
     
-    [config enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
-       
-        AFResourceManager *resourceManager = [AFResourceManager sharedInstance];
-        NSString *identifier = config.identifier;
-        Class cls = [resourceManager classForIdentifier:identifier];
-        
-        if (cls)
-        {
-            [self.collectionView registerClass:cls forCellWithReuseIdentifier:identifier];
-        }
-        
-        UINib *nib = [resourceManager nibForIdentifier:identifier];
-        
-        if (nib)
-        {
-            [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
-        }
-    }];
+    [self registrateNeededCells];
+    [self configFlowLayout];
     
     CGFloat dependeciesHeight = config.dependenciesPreapreHeight;
     CGSize size = self.frame.size;
@@ -220,9 +204,9 @@
 
 - (void)layoutDidUpdatedContentSize
 {
-    CGSize size = self.frame.size;
+    CGFloat contentHeight = self.contentViewHeight.constant;
     CGSize contentSize = self.flowLayout.collectionViewContentSize;
-    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + contentSize.height];
+    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:contentHeight + contentSize.height];
 }
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section
@@ -256,6 +240,34 @@
 }
 
 #pragma mark - utils methods
+
+- (void) configFlowLayout
+{
+    self.flowLayout.minimumInteritemSpacing = self.config.minimumDependeciesInterItemSpacing;
+    self.flowLayout.minimumLineSpacing = self.config.minimumDependeciesLineSpacing;
+}
+
+- (void) registrateNeededCells
+{
+    [self.config enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
+        
+        AFResourceManager *resourceManager = [AFResourceManager sharedInstance];
+        NSString *identifier = config.identifier;
+        Class cls = [resourceManager classForIdentifier:identifier];
+        
+        if (cls)
+        {
+            [self.collectionView registerClass:cls forCellWithReuseIdentifier:identifier];
+        }
+        
+        UINib *nib = [resourceManager nibForIdentifier:identifier];
+        
+        if (nib)
+        {
+            [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
+        }
+    }];
+}
 
 
 //

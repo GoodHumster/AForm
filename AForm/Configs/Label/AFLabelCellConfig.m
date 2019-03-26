@@ -18,6 +18,9 @@
 @implementation AFLabelCellConfig
 
 @synthesize identifier = _identifier;
+@synthesize minimumDependeciesLineSpacing = _minimumDependeciesLineSpacing;
+@synthesize minimumDependeciesInterItemSpacing = _minimumDependeciesInterItemSpacing;
+
 
 - (instancetype)init
 {

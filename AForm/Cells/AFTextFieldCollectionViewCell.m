@@ -143,7 +143,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
 - (void) setupConfigurations:(AFTextFieldCellConfig *)config
 {
     self.backgroundColor = config.backgroundColor;
-    self.underlineView.hidden = config.borderStyle != AFTextFieldBorderUnderline;
+    self.underlineView.hidden = config.borderStyle != AFTextInputBorderUnderline;
     self.underlineView.backgroundColor = config.borderColor;
     self.underlineViewHeightConstraint.constant = config.borderWidth;
     
@@ -177,7 +177,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     textField.textColor = config.textColor;
     textField.font = config.font;
     textField.layer.borderColor = config.borderColor.CGColor;
-    textField.borderStyle = config.borderStyle == AFTextFieldBorderUnderline ?
+    textField.borderStyle = config.borderStyle == AFTextInputBorderUnderline ?
     UITextBorderStyleNone : (UITextBorderStyle)config.borderStyle;
     textField.keyboardType = config.keyboardKeyType;
     textField.returnKeyType = config.returnKeyType;
@@ -229,6 +229,7 @@ NSString *const kAFTextFieldCollectionViewCellIdentifier = @"AFTextFieldCollecti
     
     [self.contentView addSubview:autocompleteView];
     [self.contentView removeConstraint:self.underlineViewBottomConstraint];
+    self.autocompleteView = autocompleteView;
     
     [self.underlineView.bottomAnchor constraintEqualToAnchor:autocompleteView.topAnchor].active = YES;
     [autocompleteView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;

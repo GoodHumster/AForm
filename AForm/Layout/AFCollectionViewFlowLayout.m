@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     
     if (CGRectGetMaxY(lastLayoutAttribute.frame) > _contentSize.height)
     {
-        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + 10;
+        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + self.minimumLineSpacing;
         _contentSize.width = CGRectGetWidth(self.collectionView.frame);
         
         if ([self.delegate respondsToSelector:@selector(layoutDidUpdatedContentSize)])

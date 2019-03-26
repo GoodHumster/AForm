@@ -15,9 +15,6 @@
 @protocol AFRowOutput;
 
 @protocol AFCollectionViewCellOutput<NSObject>
-
-- (AFBaseCollectionViewCell *) dependencyCellWithIdentifier:(NSString *)identifier;
-
 @end
 
 @protocol AFCollectionViewCell <NSObject>
@@ -37,6 +34,7 @@
 
 - (void) setRowValue:(id)value;
 - (void) updateRowValue;
+- (void) initialize;
 
 
 

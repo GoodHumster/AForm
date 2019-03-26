@@ -14,6 +14,9 @@
 @interface AFBaseCellConfig : NSObject<AFCellConfig>
 
 @property (nonatomic, assign) UIEdgeInsets insets;
+@property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, strong) UIColor *borderColor;
+@property (nonatomic, assign) CGFloat borderWidth;
 
 - (void) addDependencyConfig:(AFBaseCellConfig *)config withShowPredicate:(NSPredicate *)predicate;
 
