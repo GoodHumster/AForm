@@ -10,7 +10,7 @@
 
 @interface AFBaseTextContainerCollectionViewCell()
 
-@property (nonatomic, strong) AFTextInputContentView *textContainerContentView;
+@property (nonatomic, strong) AFTextContainerContentView *textContainerContentView;
 @property (nonatomic, weak) UIResponder *textContainer;
 
 @end
@@ -121,7 +121,7 @@
 
 - (void) addInputViewContentView
 {
-    AFTextInputContentView *textContainerContentView = [AFTextInputContentView new];
+    AFTextContainerContentView *textContainerContentView = [AFTextContainerContentView new];
     textContainerContentView.translatesAutoresizingMaskIntoConstraints = NO;
     textContainerContentView.backgroundColor = [UIColor clearColor];
     

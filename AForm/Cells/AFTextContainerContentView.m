@@ -1,14 +1,14 @@
 //
-//  AFTextInputContentView.m
+//  AFTextContainerContentView.m
 //  AForm
 //
 //  Created by Administrator on 25/03/2019.
 //  Copyright © 2019 Administrator. All rights reserved.
 //
 
-#import "AFTextInputContentView.h"
+#import "AFTextContainerContentView.h"
 
-@interface AFTextInputContentView()
+@interface AFTextContainerContentView()
 
 @property (nonatomic, strong) NSLayoutConstraint *underlineViewBottomConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *underlineViewHeightConstraint;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation AFTextInputContentView
+@implementation AFTextContainerContentView
 
 - (instancetype) init
 {

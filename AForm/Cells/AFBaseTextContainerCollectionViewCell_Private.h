@@ -7,7 +7,7 @@
 //
 
 #import "AFBaseTextContainerCollectionViewCell.h"
-#import "AFTextInputContentView.h"
+#import "AFTextContainerContentView.h"
 #import "AFFormLayoutAttributes.h"
 
 @interface AFBaseTextContainerCollectionViewCell()<AFAutocompleteViewDelegate>

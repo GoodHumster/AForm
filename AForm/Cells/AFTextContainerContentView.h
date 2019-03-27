@@ -1,5 +1,5 @@
 //
-//  AFTextInputContentView.h
+//  AFTextContainerContentView.h
 //  AForm
 //
 //  Created by Administrator on 25/03/2019.
@@ -10,7 +10,7 @@
 
 @protocol AFAutocompleteView;
 
-@interface AFTextInputContentView : UIView
+@interface AFTextContainerContentView : UIView
 
 @property (nonatomic, assign) UIEdgeInsets textContainerInsets;
 @property (nonatomic, assign) CGFloat underlineViewHeight;

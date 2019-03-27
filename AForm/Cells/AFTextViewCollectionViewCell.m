@@ -9,7 +9,7 @@
 #import "AFTextViewCollectionViewCell.h"
 #import "AFBaseTextContainerCollectionViewCell_Private.h"
 
-#import "AFTextInputContentView.h"
+#import "AFTextContainerContentView.h"
 
 #import "AFCacheManager.h"
 #import "AFResourceManager.h"
