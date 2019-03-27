@@ -15,5 +15,9 @@
     return self;
 }
 
+- (id)objectByAppendValue:(id)value
+{
+    return [self stringByAppendingFormat:@"%@",value];
+}
 
 @end

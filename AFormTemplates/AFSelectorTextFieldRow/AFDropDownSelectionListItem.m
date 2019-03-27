@@ -21,6 +21,7 @@
     self.title = title;
     self.tag = tag;
     self.other = other;
+    self.otherDescription = [NSString new];
     return self;
 }
 
@@ -30,6 +31,19 @@
 {
     return self.title;
 }
+
+- (id)objectByAppendValue:(id)value
+{
+    if ([value isKindOfClass:[self class]])
+    {
+        return value;
+    }
+        
+    [self.otherDescription stringByAppendingFormat:@"%@",value];
+    return self;
+}
+
+#pragma mark - AFPickerItem protocol methods
 
 - (NSString *) getRowTitle
 {

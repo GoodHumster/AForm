@@ -190,8 +190,15 @@
     NSLog(@"%@ Methods must be ovveride by the subclass",NSStringFromClass(self.class));
 }
 
-- (void)setRowValue:(id<AFValue>)value
+- (void)setRowValue:(id)value
 {
+    id<AFValue> obj = self.cellRow.cellValue;
+    
+    if (obj)
+    {
+        value = [obj objectByAppendValue:value];
+    }
+    
     [super setRowValue:value];
     [self.output textContainerCell:self didChangeValueAtIndexPath:self.layoutAttributes.indexPath];
 }

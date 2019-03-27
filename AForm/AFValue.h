@@ -12,4 +12,6 @@
 
 - (NSString *) getStringValue;
 
+- (id) objectByAppendValue:(id)value;
+
 @end

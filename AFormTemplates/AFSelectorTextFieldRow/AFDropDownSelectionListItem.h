@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) NSInteger tag;
+@property (nonatomic, strong) NSString *otherDescription;
 @property (nonatomic, assign) BOOL other;
 
 - (instancetype) initWithTitle:(NSString *)title tag:(NSInteger)tag other:(BOOL)other;
