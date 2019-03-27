@@ -50,7 +50,7 @@
 
 #pragma mark - Public API methods
 
-- (void)addTextField:(UIView *)view
+- (void)addTextContainer:(UIView *)view
 {
     [self addSubview:view];
     

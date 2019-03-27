@@ -75,7 +75,7 @@
 		C3A9C48F2249258500D61BB2 /* AFTextViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C48E2249258500D61BB2 /* AFTextViewCollectionViewCell.m */; };
 		C3A9C49722492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49622492E3B00D61BB2 /* AFBaseTextContainerCellConfig.m */; };
 		C3A9C49C22492E6800D61BB2 /* AFTextViewCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */; };
-		C3A9C4A02249765100D61BB2 /* AFTextInputContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */; };
+		C3A9C4A02249765100D61BB2 /* AFTextContainerContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49F2249765100D61BB2 /* AFTextContainerContentView.m */; };
 		C3A9C4A3224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */; };
 		C3A9C4A5224A235000D61BB2 /* AFBaseTextContainerCellConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */; };
 		C3A9C4A6224A236F00D61BB2 /* AFBaseTextContainerCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3A9C49522492E3B00D61BB2 /* AFBaseTextContainerCellConfig.h */; };
@@ -214,8 +214,8 @@
 		C3A9C49A22492E6800D61BB2 /* AFTextViewCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextViewCellConfig.h; sourceTree = "<group>"; };
 		C3A9C49B22492E6800D61BB2 /* AFTextViewCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextViewCellConfig.m; sourceTree = "<group>"; };
 		C3A9C49D22492E9400D61BB2 /* AFTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextView.h; sourceTree = "<group>"; };
-		C3A9C49E2249765100D61BB2 /* AFTextInputContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextInputContentView.h; sourceTree = "<group>"; };
-		C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextInputContentView.m; sourceTree = "<group>"; };
+		C3A9C49E2249765100D61BB2 /* AFTextContainerContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTextContainerContentView.h; sourceTree = "<group>"; };
+		C3A9C49F2249765100D61BB2 /* AFTextContainerContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTextContainerContentView.m; sourceTree = "<group>"; };
 		C3A9C4A1224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell.h; sourceTree = "<group>"; };
 		C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFBaseTextContainerCollectionViewCell.m; sourceTree = "<group>"; };
 		C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseTextContainerCollectionViewCell_Private.h; sourceTree = "<group>"; };
@@ -468,8 +468,8 @@
 			children = (
 				C37E320D2238225D0021FB1E /* TextField */,
 				C37E32C8223B95EA0021FB1E /* TextView */,
-				C3A9C49E2249765100D61BB2 /* AFTextInputContentView.h */,
-				C3A9C49F2249765100D61BB2 /* AFTextInputContentView.m */,
+				C3A9C49E2249765100D61BB2 /* AFTextContainerContentView.h */,
+				C3A9C49F2249765100D61BB2 /* AFTextContainerContentView.m */,
 				C3A9C4A1224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.h */,
 				C3A9C4A4224A0F3F00D61BB2 /* AFBaseTextContainerCollectionViewCell_Private.h */,
 				C3A9C4A2224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m */,
@@ -688,7 +688,7 @@
 				C37E32B1223A9BB20021FB1E /* AFDefaultHeaderSectionView.m in Sources */,
 				C3A9C4872248E1FF00D61BB2 /* AFLabelCellConfig.m in Sources */,
 				C37E32E0223B9D620021FB1E /* AFDefaultVerifier.m in Sources */,
-				C3A9C4A02249765100D61BB2 /* AFTextInputContentView.m in Sources */,
+				C3A9C4A02249765100D61BB2 /* AFTextContainerContentView.m in Sources */,
 				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
 				C37E32B4223AC7420021FB1E /* AFTextFieldCellConfig.m in Sources */,
 				C37E31EE2237DF160021FB1E /* AFormView.m in Sources */,

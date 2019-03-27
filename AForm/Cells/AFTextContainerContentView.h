@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UIView *underlineView;
 @property (nonatomic, strong) UIView<AFAutocompleteView> *autocompleteView;
 
-- (void) addTextField:(UIView *)view;
+- (void) addTextContainer:(UIView *)view;
 
 - (void) addAutocomopleteView:(UIView *)view;
 

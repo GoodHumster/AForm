@@ -156,7 +156,7 @@
 
 - (void)addTextContainer:(UIView *)textContainer
 {
-    [self.textContainerContentView addTextField:textContainer];
+    [self.textContainerContentView addTextContainer:textContainer];
     self.textContainer = textContainer;
 }
 
