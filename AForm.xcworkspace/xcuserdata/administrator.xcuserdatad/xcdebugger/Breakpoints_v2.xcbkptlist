@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.2996629"
+            timestampString = "575382219.757291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.29977"
+            timestampString = "575382219.757377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.29985"
+            timestampString = "575382219.757558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.299932"
+            timestampString = "575382219.757653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.300007"
+            timestampString = "575382219.757908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Manager/AFResourceManager.m"
-            timestampString = "575368060.300084"
+            timestampString = "575382219.758039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.300142"
+            timestampString = "575382219.758123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.300215"
+            timestampString = "575382219.758233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.300288"
+            timestampString = "575382219.758338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.30036"
+            timestampString = "575382219.758903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.3004301"
+            timestampString = "575382219.758986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.300658"
+            timestampString = "575382219.759243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "AFormView"
             landmarkType = "3">
          </BreakpointContent>
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.300741"
+            timestampString = "575382219.759338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.30086"
+            timestampString = "575382219.759451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-textContainerCellDidPressReturnKey:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.300934"
+            timestampString = "575382219.7595201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-textContainerCellDidEndEditing:"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.30101"
+            timestampString = "575382219.7595921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.30107"
+            timestampString = "575382219.759642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/AFormView.m"
-            timestampString = "575368060.301183"
+            timestampString = "575382219.7597409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.301257"
+            timestampString = "575382219.759811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.301512"
+            timestampString = "575382219.759989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.301573"
+            timestampString = "575382219.760035"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.301631"
+            timestampString = "575382219.760078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Configs/AFBaseCellConfig.m"
-            timestampString = "575368060.301823"
+            timestampString = "575382219.760208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.301901"
+            timestampString = "575382219.760273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-initWithFrame:"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.302076"
+            timestampString = "575382219.761093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.302251"
+            timestampString = "575382219.762189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "AFBaseCollectionViewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3024811"
+            timestampString = "575382219.763705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-layoutDidUpdatedContentSize"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.302634"
+            timestampString = "575382219.7652299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-collectionView:numberOfItemsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.302786"
+            timestampString = "575382219.7664289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-collectionView:numberOfItemsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.303"
+            timestampString = "575382219.767601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,27 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3031681"
+            timestampString = "575382219.768769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-layoutDidUpdatedContentSize"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.303335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-layoutConfigForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3034869"
+            timestampString = "575382219.769884"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFLabelCollectionViewCell.m"
-            timestampString = "575368060.303638"
+            timestampString = "575382219.771181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "-configWithRow:andConfig:layoutAttributes:"
+            landmarkName = "-configWithRow:andConfig:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.303712"
+            timestampString = "575382219.771301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-layoutAttributesForElementsInRect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
-            timestampString = "575368060.303867"
+            timestampString = "575382219.771603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -730,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
-            timestampString = "575368060.3047251"
+            timestampString = "575382219.772033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -762,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
-            timestampString = "575368060.30531"
+            timestampString = "575382219.7722729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -794,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
-            timestampString = "575368060.305814"
+            timestampString = "575382219.772678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -810,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AFormSample/AFormSample/AFormExample.m"
-            timestampString = "575368060.306288"
+            timestampString = "575382219.772802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
@@ -826,7 +810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.306386"
+            timestampString = "575382219.7729239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -842,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AFormTemplates/AFSelectorTextFieldRow/AFDropDownSelectionListRow.m"
-            timestampString = "575368060.306489"
+            timestampString = "575382219.773036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -858,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.306569"
+            timestampString = "575382219.773132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "-layoutConfigForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -874,12 +858,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3067141"
+            timestampString = "575382219.7741309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-configWithRow:andConfig:layoutAttributes:"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-configWithRow:andConfig:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -890,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.306852"
+            timestampString = "575382219.775018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -906,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.306922"
+            timestampString = "575382219.775117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -922,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFTextFieldCollectionViewCell.m"
-            timestampString = "575368060.306989"
+            timestampString = "575382219.775206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -938,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/DatePicker/AFDatePickerView.m"
-            timestampString = "575368060.307058"
+            timestampString = "575382219.775297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -954,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Views/Picker/AFPickerView.m"
-            timestampString = "575368060.307129"
+            timestampString = "575382219.775381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -970,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3071949"
+            timestampString = "575382219.775465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-showDependenciesIfNeeded"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.307315"
+            timestampString = "575382219.776413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-didChangeRowValue"
             landmarkType = "7">
          </BreakpointContent>
@@ -1002,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Models/Row/AFRow.m"
-            timestampString = "575368060.307438"
+            timestampString = "575382219.777247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -1018,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3074991"
+            timestampString = "575382219.777334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-showDependenciesIfNeeded"
             landmarkType = "7">
          </BreakpointContent>
@@ -1034,44 +1018,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.307611"
+            timestampString = "575382219.778172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "-showDependenciesIfNeeded"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.307724"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "-showDependenciesIfNeeded"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.307833"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-configWithRow:andConfig:layoutAttributes:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1082,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.30794"
+            timestampString = "575382219.779279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-layoutAttributesForElementsInRect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1098,12 +1050,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.308092"
+            timestampString = "575382219.7796021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "-layoutAttributesBuildForceAll:fromIndexPath:inRect:"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-layoutAttributesBuildFromIndexPath:inRect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1114,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.30823"
+            timestampString = "575382219.780021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-layoutConfigForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.308341"
+            timestampString = "575382219.781274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-numberOfSectionsInCollectionView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,13 +1098,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.308463"
+            timestampString = "575382219.782441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
-            landmarkName = "AFCollectionViewFlowLayout"
-            landmarkType = "3">
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "-scrollToFormAttribute:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1162,25 +1114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.308599"
+            timestampString = "575382219.782712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.3087389"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-createFormLayoutAttributesAtIndexPath:elementKind:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1192,11 +1130,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.308875"
+            timestampString = "575382219.782945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440">
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "AFCollectionViewFlowLayout"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1206,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.309024"
+            timestampString = "575382219.78327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-showDependenciesIfNeeded"
             landmarkType = "7">
          </BreakpointContent>
@@ -1222,11 +1162,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.309132"
+            timestampString = "575382219.784209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438">
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "AFCollectionViewFlowLayout"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1236,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.3092721"
+            timestampString = "575382219.784514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-invalidateCellHeightIfNeeded"
             landmarkType = "7">
          </BreakpointContent>
@@ -1252,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.309379"
+            timestampString = "575382219.785349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-invalidateCellHeightIfNeeded"
             landmarkType = "7">
          </BreakpointContent>
@@ -1268,12 +1210,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.30948"
+            timestampString = "575382219.786234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-layoutAttributesBuildForceAll:fromIndexPath:inRect:"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-layoutAttributesBuildFromIndexPath:inRect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1284,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.309618"
+            timestampString = "575382219.7864079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "-enumerateIndexPathsFromIndexPath:withBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1301,12 +1243,12 @@
             condition = "y &gt; 400"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.309757"
+            timestampString = "575382219.786513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
-            landmarkName = "-enumerateIndexPathsFromIndexPath:withBlock:"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "-invalidateLayout:fromRect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1317,11 +1259,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.309883"
+            timestampString = "575382219.786608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-invalidateLayout:withNewSize:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1333,11 +1275,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.309992"
+            timestampString = "575382219.786706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-invalidateLayout:withNewSize:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1349,11 +1291,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.3100981"
+            timestampString = "575382219.786799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-invalidateLayout:withNewSize:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1364,44 +1306,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.310205"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "-layoutDidUpdatedContentSize"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.310281"
+            timestampString = "575382219.786886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
             endingLineNumber = "212"
-            landmarkName = "-createFormLayoutAttributesAtIndexPath:elementKind:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.310385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
             landmarkName = "-sizeForElementKind:atIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1413,7 +1323,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.310506"
+            timestampString = "575382219.786975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -1429,11 +1339,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.310598"
+            timestampString = "575382219.787034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-sizeForElementKind:atIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1445,7 +1355,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.310714"
+            timestampString = "575382219.787118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -1461,7 +1371,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.310789"
+            timestampString = "575382219.787164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -1477,7 +1387,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Wrappers/AFLayoutAttributesDictionary.m"
-            timestampString = "575368060.310867"
+            timestampString = "575382219.787209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -1493,12 +1403,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
-            timestampString = "575368060.31095"
+            timestampString = "575382219.787259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-configWithRow:andConfig:layoutAttributes:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-configWithRow:andConfig:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1509,11 +1419,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.311039"
+            timestampString = "575382219.787667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "AFCollectionViewFlowLayout"
             landmarkType = "3">
          </BreakpointContent>
@@ -1525,11 +1435,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.311201"
+            timestampString = "575382219.78775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442">
+            startingLineNumber = "415"
+            endingLineNumber = "415"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1539,12 +1451,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.311399"
+            timestampString = "575382219.7878259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-layoutAttributesBuildForceAll:fromIndexPath:inRect:"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-layoutAttributesBuildFromIndexPath:inRect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1555,11 +1467,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.311588"
+            timestampString = "575382219.787904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-createFormLayoutAttributesAtIndexPath:elementKind:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1571,27 +1483,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.311699"
+            timestampString = "575382219.787977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-invalidationContextForBoundsChange:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.3118"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-layoutAttributesForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1603,11 +1499,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.3118761"
+            timestampString = "575382219.7880369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-layoutAttributesForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1619,11 +1515,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
-            timestampString = "575368060.31196"
+            timestampString = "575382219.788097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-invalidateLayout:withNewSize:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1635,12 +1531,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
-            timestampString = "575368060.312049"
+            timestampString = "575382219.788563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
             endingLineNumber = "195"
             landmarkName = "-setRowValue:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
+            timestampString = "575382219.788675"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-layoutAttributesForItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
+            timestampString = "575382219.788938"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-layoutAttributesForSupplementaryViewOfKind:atIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Cells/AFBaseTextContainerCollectionViewCell.m"
+            timestampString = "575382219.789039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "AFBaseTextContainerCollectionViewCell"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Layout/AFCollectionViewFlowLayout.m"
+            timestampString = "575382219.789114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-scrollToFormAttribute:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
+            timestampString = "575382219.789194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-layoutDidUpdatedContentSize"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AForm/Cells/AFBaseCollectionViewCell.m"
+            timestampString = "575382219.790131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-setHeight:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

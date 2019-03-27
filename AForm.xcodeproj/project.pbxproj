@@ -230,6 +230,7 @@
 		C3A9C4BA224A4A0800D61BB2 /* AFPickerItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPickerItem.h; sourceTree = "<group>"; };
 		C3A9C4C5224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScreen+AFScreenMetrics.h"; sourceTree = "<group>"; };
 		C3A9C4C6224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+AFScreenMetrics.m"; sourceTree = "<group>"; };
+		C3A9C4CA224B9A2700D61BB2 /* AFBaseCollectionViewCell_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseCollectionViewCell_Private.h; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,8 +310,8 @@
 		C37E32A8223A9A670021FB1E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				C37E32A5223A94360021FB1E /* AFHeaderViewConfig.h */,
 				C37E32AE223A9B930021FB1E /* Default */,
+				C37E32A5223A94360021FB1E /* AFHeaderViewConfig.h */,
 				C37E32A9223A9A810021FB1E /* AFBaseHeaderSectionView.h */,
 				C37E32AA223A9A810021FB1E /* AFBaseHeaderSectionView.m */,
 				C37E32AC223A9AA10021FB1E /* AFHeaderSectionView.h */,
@@ -580,6 +581,7 @@
 				C3A9C49022492C2300D61BB2 /* TextContainers */,
 				C3A9C4802248DFD100D61BB2 /* Label */,
 				C37E32092238210D0021FB1E /* AFBaseCollectionViewCell.h */,
+				C3A9C4CA224B9A2700D61BB2 /* AFBaseCollectionViewCell_Private.h */,
 				C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */,
 			);
 			path = Cells;

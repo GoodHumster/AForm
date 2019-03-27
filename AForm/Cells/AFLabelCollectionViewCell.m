@@ -80,9 +80,9 @@ NSString *const kAFLabelCollectionViewCellIdentifier = @"AFLabelCollectionViewCe
 
 #pragma mark - AFBaseCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config layoutAttributes:(AFFormLayoutAttributes *)attributes
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
 {
-    [super configWithRow:row andConfig:config layoutAttributes:attributes];
+    [super configWithRow:row andConfig:config];
     self.backgroundColor = [UIColor clearColor];
     
     AFLabelCellConfig *cellConfig = self.config;

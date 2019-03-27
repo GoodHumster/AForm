@@ -72,9 +72,9 @@
 
 #pragma mark - AFCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config layoutAttributes:(AFFormLayoutAttributes *)attributes
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
 {
-    [super configWithRow:row andConfig:config layoutAttributes:attributes];
+    [super configWithRow:row andConfig:config];
     
     [self configView];
     [self addAutocompleteView:self.config];
@@ -84,15 +84,15 @@
 
 - (void)formAutocompleteSetHeight:(CGFloat)height
 {
-        CGFloat parentHeight = CGRectGetHeight(self.frame);
-    
-        if (self.autocompleteHeight > 0)
-        {
-            parentHeight -= self.autocompleteHeight;
-        }
-    
-        self.autocompleteHeight = height;
-        [self.layoutAttributes invalidateFlowLayoutWithNewHeight:parentHeight+height];
+    CGFloat parentHeight = self.height;
+
+    if (self.autocompleteHeight > 0)
+    {
+        parentHeight -= self.autocompleteHeight;
+    }
+
+    self.autocompleteHeight = height;
+    self.height = parentHeight + height;
 }
 
 - (void)formAutocompleteHide
@@ -200,7 +200,7 @@
     }
     
     [super setRowValue:value];
-    [self.output textContainerCell:self didChangeValueAtIndexPath:self.layoutAttributes.indexPath];
+    [self.output textContainerCell:self didChangeValueAtIndexPath:self.indexPath];
 }
 
 #pragma mark - Autocomplete view manipulate
@@ -215,8 +215,7 @@
     }
     
     self.autocompleteHeight = height;
-    CGFloat parentHeight = CGRectGetHeight(self.frame);
-    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:parentHeight+height];
+    self.height += height;
 }
 
 - (void) hideAutocompleteView
@@ -226,8 +225,7 @@
         return;
     }
     
-    CGFloat parentHeight = CGRectGetHeight(self.frame);
-    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:parentHeight-self.autocompleteHeight];
+    self.height -= self.autocompleteHeight;
     self.autocompleteHeight = 0;
 }
 

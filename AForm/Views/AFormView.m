@@ -13,7 +13,7 @@
 
 #import "AFCollectionViewFlowLayout.h"
 
-#import "AFBaseCollectionViewCell.h"
+#import "AFBaseCollectionViewCell_Private.h"
 #import "AFTextFieldCollectionViewCell.h"
 #import "AFHeaderSectionView.h"
 
@@ -221,11 +221,6 @@
     return sc.insets;
 }
 
-- (NSIndexPath *)layoutGetCurrentFocusedCellIndexPath
-{
-    return self.currentFocusedCell.layoutAttributes.indexPath;
-}
-
 #pragma mark - UICollectionViewDelegate protocol methods
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -251,11 +246,13 @@
 {
     AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
     id<AFCellConfig> inputViewConig = row.cellConfig;
+    AFFormLayoutAttributes *formAttributes = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
     
-    UICollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
+    AFBaseCollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
     cell.output = self;
-    AFFormLayoutAttributes *formAttribute = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
-    [cell configWithRow:row andConfig:row.cellConfig layoutAttributes:formAttribute];
+    cell.layoutAttributes = formAttributes;
+    
+    [cell configWithRow:row andConfig:row.cellConfig];
     
     return cell;
 }

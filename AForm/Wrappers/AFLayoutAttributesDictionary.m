@@ -200,10 +200,10 @@
     }].allObjects.firstObject floatValue];
 }
 
-- (CGFloat) getSquareForFormAttribute:(AFFormLayoutAttributes *)attribute
+- (CGFloat) getSquareForFormAttribute:(AFFormLayoutAttributes *)attributes
 {
-    CGFloat maxX = CGRectGetMaxX(attribute.collectionLayoutAttributes.frame);
-    CGFloat maxY = CGRectGetMaxY(attribute.collectionLayoutAttributes.frame);
+    CGFloat maxX = CGRectGetMaxX(attributes.frame);
+    CGFloat maxY = CGRectGetMaxY(attributes.frame);
     
     return maxX * maxY;
 }

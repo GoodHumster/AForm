@@ -19,17 +19,17 @@
 
 @protocol AFCollectionViewCell <NSObject>
 
-- (void) configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config layoutAttributes:(AFFormLayoutAttributes *)attributes;
-
 @property (nonatomic, weak) id<AFCollectionViewCellOutput> output;
+
+- (void) configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config;
 
 @end
 
 @interface AFBaseCollectionViewCell : UICollectionViewCell<AFCollectionViewCell>
 
-@property (nonatomic, weak) id<AFCellRow> cellRow;
-@property (nonatomic, weak) AFBaseCellConfig *config;
-@property (nonatomic, weak) AFFormLayoutAttributes *layoutAttributes;
+@property (nonatomic, weak, readonly) NSIndexPath *indexPath;
+@property (nonatomic, weak, readonly) id<AFCellRow> cellRow;
+@property (nonatomic, weak, readonly) AFBaseCellConfig *config;
 @property (nonatomic, assign) CGFloat height;
 
 - (void) setRowValue:(id)value;

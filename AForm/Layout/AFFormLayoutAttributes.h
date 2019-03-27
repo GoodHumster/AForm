@@ -12,21 +12,13 @@
 @class AFLayoutConfig;
 @class AFCollectionViewFlowLayout;
 
-@interface AFFormLayoutAttributes : NSObject
+@interface AFFormLayoutAttributes : UICollectionViewLayoutAttributes
 
 @property (nonatomic, assign) NSUInteger uuid;
-
-@property (nonatomic, strong) NSIndexPath *indexPath;
-
-@property (nonatomic, strong) UICollectionViewLayoutAttributes *collectionLayoutAttributes;
-
-@property (nonatomic, weak) AFLayoutConfig *config;
 
 @property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, assign) CGSize initionalSize;
-
-- (void)setNewFrame:(CGRect)frame;
 
 - (void)invalidateFlowLayoutWithNewHeight:(CGFloat)height;
 

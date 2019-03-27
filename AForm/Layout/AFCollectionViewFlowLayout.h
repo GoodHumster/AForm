@@ -21,8 +21,6 @@
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section;
 
-- (NSIndexPath *) layoutGetCurrentFocusedCellIndexPath;
-
 @optional
 
 - (void) layoutDidUpdatedContentSize;

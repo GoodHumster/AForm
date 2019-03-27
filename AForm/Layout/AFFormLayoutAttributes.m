@@ -12,14 +12,16 @@
 
 @implementation AFFormLayoutAttributes
 
-- (void) setNewFrame:(CGRect)frame
-{
-    self.collectionLayoutAttributes.frame = frame;
-}
-
 - (void)invalidateFlowLayoutWithNewHeight:(CGFloat)height
 {
     [self.flowLayout invalidateLayout:self withNewHeight:height];
+}
+
+#pragma mark - NSObject methods
+
+- (BOOL) isEqual:(id)object
+{
+    return [super isEqual:object];
 }
 
 @end
