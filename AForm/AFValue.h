@@ -12,6 +12,6 @@
 
 - (NSString *) getStringValue;
 
-- (id) objectByAppendValue:(id)value;
+- (id) objectByAppendValue:(id<AFValue>)value;
 
 @end

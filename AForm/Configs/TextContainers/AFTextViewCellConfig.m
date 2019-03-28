@@ -11,8 +11,6 @@
 
 #import "AFDefaultVerifier.h"
 #import "AFEmailVerifier.h"
-#import "AFPhoneNumberVerifier.h"
-#import "AFRussianPassportVerifier.h"
 
 @interface AFTextViewCellConfig()
 
@@ -23,8 +21,6 @@
 @implementation AFTextViewCellConfig
 
 @synthesize identifier = _identifier;
-@synthesize minimumDependeciesLineSpacing = _minimumDependeciesLineSpacing;
-@synthesize minimumDependeciesInterItemSpacing = _minimumDependeciesInterItemSpacing;
 
 - (instancetype) init
 {

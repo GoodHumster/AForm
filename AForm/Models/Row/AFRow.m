@@ -7,12 +7,18 @@
 //
 
 #import "AFRow_Private.h"
-
-#import "AFRowConfig.h"
 #import "AFBaseCellConfig.h"
 #import "AFLayoutConfig.h"
 
+#import "AFSingleRow.h"
+#import "AFMultiplieRow.h"
+#import "AFCompositeRow.h"
+
 @interface AFRow()
+{
+    @private
+    id<AFInputRow> inputRow;
+}
 
 @property (nonatomic, strong) NSString *key;
 
@@ -29,70 +35,77 @@
     return self;
 }
 
-- (instancetype)initWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier
-{
-    if ( ( self = [super init]) == nil )
-    {
-        return nil;
-    }
-    
-    self.key = key;
-    self.value = value;
-    self->identifier = identifier;
-
-    return self;
-}
-
-- (instancetype)initWithKey:(NSString *)key andIdentifier:(NSString *)identifier
-{
-    if ( ( self = [super init]) == nil )
-    {
-        return nil;
-    }
-    
-    self.key = key;
-    self->identifier = identifier;
-    
-    return self;
-}
-
-#pragma mark - AFCellRow protocol methods
-
-- (AFBaseCellConfig *)config
-{
-    return self.cellConfig;
-}
-
-- (id<AFValue>) cellValue
-{
-    return self.value;
-}
-
 #pragma mark - Public API methods
 
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(AFBaseCellConfig *)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
++ (id) rowWithKey:(NSString *)key inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
 {
     AFRow *row = [AFRow new];
-    row->identifier = @"AFRow";
-    row.key = rowConfig.key;
-    row.value = rowConfig.value;
-    row.cellConfig = [(id)ivConfig copy];
-    row.cellConfig.layoutConfig = [(id)layoutConfig copy];
+    row->inputRow = [AFSingleRow rowWithKey:key value:nil viewConfig:ivConfig layoutConfig:layoutConfig];
     
     return row;
 }
-#pragma mark - Get/Set
+
++ (id) compositeRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows
+{
+    AFRow *row = [AFRow new];
+    row->inputRow = [AFCompositeRow rowCompositeWithRows:rows andKey:key];
+    
+    return row;
+}
+
++ (id) multiplieRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows
+{
+    AFRow *row = [AFRow new];
+    row->inputRow = [AFMultiplieRow multiplieRowWithRows:rows andKey:key];
+    
+    return row;
+}
+
+#pragma mark - Private API methods
+
+- (id<AFInputRow>)inputRow
+{
+    return inputRow;
+}
+
+#pragma mark - Get methods
+
+- (id<AFCellConfig>)cellConfig
+{
+    return inputRow.viewConfig;
+}
+
+- (AFLayoutConfig *)layoutConfig
+{
+    return inputRow.layoutConfig;
+}
+
+- (id<AFValue>)value
+{
+    return inputRow.value;
+}
+
+- (NSString *)key
+{
+    return inputRow.key;
+}
+
+#pragma mark - Set methods
+
 
 - (void) setValue:(id<AFValue>)value
 {
-    _value = value;
-    
-    if ( ![self.output respondsToSelector:@selector(didChangeRowValue)] )
-    {
-        return;
-    }
-    
-    [self.output didChangeRowValue];
+    inputRow.value = value;
+}
+
+- (void)setCellConfig:(id<AFCellConfig>)cellConfig
+{
+    inputRow.viewConfig = cellConfig;
+}
+
+- (void)setLayoutConfig:(AFLayoutConfig *)layoutConfig
+{
+    inputRow.layoutConfig = layoutConfig;
 }
 
 

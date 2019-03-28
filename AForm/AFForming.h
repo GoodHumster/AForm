@@ -10,14 +10,11 @@
 #import "AFRow.h"
 #import "AFSection.h"
 
-@protocol AForm <NSObject>
+@protocol AFForming <NSObject>
 
 - (NSUInteger) numberOfSections;
-
-- (NSUInteger) numberOfRowsInSection:(NSUInteger)section;
-
+- (NSArray<AFRow *> *) getRowsInSection:(NSUInteger)section;
 - (AFRow *) getRowAtIndex:(NSUInteger)row inSection:(NSUInteger)seciton;
-
 - (AFSection *) getSection:(NSUInteger)section;
 
 @end

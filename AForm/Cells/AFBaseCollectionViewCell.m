@@ -17,16 +17,12 @@
 #import "AFCacheManager.h"
 #import "AFResourceManager_Private.h"
 
-@interface AFBaseCollectionViewCell()<UICollectionViewDataSource,
-                                      UICollectionViewDelegate,
-                                      AFCollectionViewFlowLayoutDelegate,
-                                      AFRowOutput>
+@interface AFBaseCollectionViewCell()<AFRowOutput>
 
 @property (nonatomic, strong) NSLayoutConstraint *contentViewTop;
 @property (nonatomic, strong) NSLayoutConstraint *contentViewBottom;
 @property (nonatomic, strong) NSLayoutConstraint *contentViewLeading;
 @property (nonatomic, strong) NSLayoutConstraint *contentViewTrailing;
-@property (nonatomic, strong) NSLayoutConstraint *contentViewHeight;
 
 @property (nonatomic, strong) UIView *_contentView;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -35,7 +31,6 @@
 @property (nonatomic, weak) AFRow *inputRow;
 @property (nonatomic, weak) AFBaseCellConfig *config;
 
-@property (nonatomic, assign) CGFloat dependenciesHeight;
 
 @end
 
@@ -79,7 +74,6 @@
 - (void) initialize
 {
     [self addInputContentView];
-    [self addCollectionView];
 }
 
 - (void) addInputContentView
@@ -88,42 +82,15 @@
     contentView.backgroundColor = [UIColor whiteColor];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self._contentView = contentView;
+    __contentView = contentView;
     [self addSubview:contentView];
     
     self.contentViewTop = [contentView.topAnchor constraintEqualToAnchor:self.topAnchor];
     self.contentViewLeading = [contentView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor];
     self.contentViewTrailing = [self.trailingAnchor constraintEqualToAnchor:contentView.trailingAnchor];
-    self.contentViewHeight = [contentView.heightAnchor constraintEqualToConstant:0];
+    self.contentViewBottom =  [self.bottomAnchor constraintEqualToAnchor:contentView.bottomAnchor];
     
-    [NSLayoutConstraint activateConstraints:@[_contentViewTop,_contentViewLeading,_contentViewTrailing]];
-}
-
-- (void) addCollectionView
-{
-    AFCollectionViewFlowLayout *flowLayout = [AFCollectionViewFlowLayout new];
-    flowLayout.delegate = self;
-    flowLayout.invalidateLayoutBoundsChange = NO;
-   
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    collectionView.backgroundColor = [UIColor clearColor];
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
-    collectionView.scrollEnabled = NO;
-    collectionView.collectionViewLayout = flowLayout;
-
-    self.collectionView = collectionView;
-    self.flowLayout = (AFCollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    [self addSubview:collectionView];
- 
-    self.contentViewBottom =  [collectionView.topAnchor constraintEqualToAnchor:self.contentView.bottomAnchor];
-    
-    [collectionView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
-    [self.trailingAnchor constraintEqualToAnchor:collectionView.trailingAnchor].active = YES;
-    [self.bottomAnchor constraintEqualToAnchor:collectionView.bottomAnchor].active = YES;
-    
-    [NSLayoutConstraint activateConstraints:@[_contentViewBottom]];
+    [NSLayoutConstraint activateConstraints:@[_contentViewTop,_contentViewLeading,_contentViewTrailing,_contentViewBottom]];
 }
 
 #pragma mark - UICollectionViewCell methods
@@ -141,13 +108,6 @@
     self.config = config;
     self.inputRow = row;
     self.inputRow.output = self;
-    
-    self.contentViewHeight.constant = self.layoutAttributes.initionalSize.height;
-    self.contentViewHeight.active = YES;
- 
-    [self registrateNeededCells];
-    [self configFlowLayout];
-    [self invalidateCellHeightIfNeeded];
 }
 
 - (void)setRowValue:(id)value
@@ -156,17 +116,18 @@
 }
 
 - (void) updateRowValue
-{}
+{
+    NSLog(@"%@ Must be ovverided",NSStringFromClass(self.class));
+}
 
 - (void)setHeight:(CGFloat)height
 {
-   self.contentViewHeight.constant = height;
-   [self.layoutAttributes invalidateFlowLayoutWithNewHeight:height + self.dependenciesHeight];
+   [self.layoutAttributes invalidateFlowLayoutWithNewHeight:height];
 }
 
 - (CGFloat)height
 {
-    return self.contentViewHeight.constant;
+    return CGRectGetHeight(self.frame);
 }
 
 - (NSIndexPath *)indexPath
@@ -184,163 +145,7 @@
 - (void)didChangeRowValue
 {
     [self updateRowValue];
-    [self showDependenciesIfNeeded];
 }
-
-#pragma mark - UICollectionViewDataSource protocol methods
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    AFBaseCellConfig *cellConfig = self.config;
-    return cellConfig.dependenciesCount;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    AFBaseCellConfig *inputViewConig = [self.config dependencyConfigAtIndex:indexPath.row];
-    AFFormLayoutAttributes *formAttribute = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
-    
-    AFBaseCollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
-    cell.layoutAttributes = formAttribute;
-    [cell configWithRow:self.cellRow andConfig:inputViewConig];
-    
-    self.inputRow.output = self;
-    return cell;
-}
-
-#pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
-
-- (NSIndexPath *)layoutGetCurrentFocusedCellIndexPath
-{
-    return nil;
-}
-
-- (void)layoutDidUpdatedContentSize
-{
-    CGFloat contentHeight = self.height;
-    CGSize contentSize = self.flowLayout.collectionViewContentSize;
-    self.dependenciesHeight = contentSize.height;
-    [self.layoutAttributes invalidateFlowLayoutWithNewHeight:contentHeight + contentSize.height];
-}
-
-- (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section
-{
-    return nil;
-}
-
-- (AFLayoutConfig *)layoutConfigForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    id<AFCellRow> row = self.cellRow;
-    AFBaseCellConfig *cellConfig = self.config;
-    
-    NSPredicate *predicate = [cellConfig dependencyPredicateAtIndex:indexPath.row];
-    AFBaseCellConfig *config = [cellConfig dependencyConfigAtIndex:indexPath.row];
-    
-    if (!predicate || !config)
-    {
-        return nil;
-    }
-    
-    id value = row.cellValue;
-    
-    BOOL shouldShow = [predicate evaluateWithObject:value];
-    
-    if (!shouldShow)
-    {
-        return nil;
-    }
-    
-    return config.layoutConfig;
-}
-
-#pragma mark - utils methods
-
-- (void) configFlowLayout
-{
-    self.flowLayout.minimumInteritemSpacing = self.config.minimumDependeciesInterItemSpacing;
-    self.flowLayout.minimumLineSpacing = self.config.minimumDependeciesLineSpacing;
-    self.flowLayout.prepareCollectionViewContentSize = self.frame.size;
-}
-
-- (void) registrateNeededCells
-{
-    [self.config enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
-        
-        AFResourceManager *resourceManager = [AFResourceManager sharedInstance];
-        NSString *identifier = config.identifier;
-        Class cls = [resourceManager classForIdentifier:identifier];
-        
-        if (cls)
-        {
-            [self.collectionView registerClass:cls forCellWithReuseIdentifier:identifier];
-        }
-        
-        UINib *nib = [resourceManager nibForIdentifier:identifier];
-        
-        if (nib)
-        {
-            [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
-        }
-    }];
-}
-
-- (void) invalidateCellHeightIfNeeded
-{
-    CGFloat collectionHeight = CGRectGetHeight(self.collectionView.frame);
-    CGFloat dependeciesHeight = self.config.dependenciesPreapreHeight;
-    
-    if (collectionHeight < dependeciesHeight)
-    {
-        CGSize size = self.layoutAttributes.initionalSize;
-        [self.layoutAttributes invalidateFlowLayoutWithNewHeight:size.height + dependeciesHeight];
-    }
-}
-
-- (void) showDependenciesIfNeeded
-{
-    AFRow *row = self.inputRow;
-    
-    __block CGFloat height = 0;
-    
-    __weak typeof(self) weakSelf = self;
-    [self.inputRow.cellConfig enumerateDependenciesWithBlock:^(AFBaseCellConfig *config, NSPredicate *predicate, NSInteger index) {
-        __strong typeof(weakSelf) blockSelf = weakSelf;
-        
-        if (!blockSelf)
-        {
-            return;
-        }
-        
-        id value = row.cellValue;
-        BOOL shouldShow = [predicate evaluateWithObject:value];
-        CGSize size = CGSizeZero;
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        AFFormLayoutAttributes *formLayoutAttributes = [blockSelf.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
-        CGSize oldSize = formLayoutAttributes.size;
-        
-        if (shouldShow)
-        {
-            size = [blockSelf.flowLayout sizeForLayoutConfig:config.layoutConfig];
-            height += CGSizeEqualToSize(oldSize, size) ? 0 : size.height;
-        } else {
-            size = CGSizeZero;
-            height -= CGRectGetHeight(formLayoutAttributes.frame);
-        }
-        
-        [formLayoutAttributes invalidateFlowLayoutWithNewHeight:size.height];
-    }];
-    
-    if (height != 0)
-    {
-        [self.layoutAttributes invalidateFlowLayoutWithNewHeight:CGRectGetHeight(self.frame) + height];
-    }
-}
-
 
 
 @end

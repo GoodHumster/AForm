@@ -8,6 +8,8 @@
 
 #import "AFormView.h"
 
+#import "AFForm.h"
+
 #import "AFResourceManager_Private.h"
 #import "AFCacheManager.h"
 
@@ -28,7 +30,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) AFCollectionViewFlowLayout *flowLayout;
 
-@property (nonatomic, strong) id<AForm> formModel;
+@property (nonatomic, strong) AFForm *form;
 
 @property (nonatomic, strong) AFBaseCollectionViewCell *currentFocusedCell;
 
@@ -148,9 +150,9 @@
     [self.collectionView registerClass:cls forCellWithReuseIdentifier:identifier];
 }
 
-- (void) presentForm:(id<AForm>)form animatable:(BOOL)animatable
+- (void) presentForm:(id<AFForming>)form animatable:(BOOL)animatable
 {
-    self.formModel = form;
+    self.form = [[AFForm alloc] initWithForming:form];
     [self.collectionView reloadData];
 }
 
@@ -187,7 +189,7 @@
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section
 {
-    AFSection *sc = [self.formModel getSection:section];
+    AFSection *sc = [self.form getSection:section];
     
     if (!sc)
     {
@@ -199,19 +201,19 @@
 
 - (AFLayoutConfig *)layoutConfigForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
+    AFRow *row = [self.form getRowAtIndex:indexPath.row inSection:indexPath.section];
     
     if (!row)
     {
         return nil;
     }
     
-    return row.cellConfig.layoutConfig;
+    return row.layoutConfig;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    AFSection *sc = [self.formModel getSection:section];
+    AFSection *sc = [self.form getSection:section];
     
     if (!sc)
     {
@@ -235,7 +237,7 @@
         return nil;
     }
     
-    AFSection *section = [self.formModel getSection:indexPath.section];
+    AFSection *section = [self.form getSection:indexPath.section];
     UICollectionReusableView<AFHeaderSectionView> *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:section.headerConfig.identifier forIndexPath:indexPath];
     [headerView configWithSection:section];
 
@@ -244,7 +246,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AFRow *row = [self.formModel getRowAtIndex:indexPath.row inSection:indexPath.section];
+    AFRow *row = [self.form getRowAtIndex:indexPath.row inSection:indexPath.section];
     id<AFCellConfig> inputViewConig = row.cellConfig;
     AFFormLayoutAttributes *formAttributes = [self.flowLayout getFormLayoutAttributesAtIndexPath:indexPath];
     
@@ -259,12 +261,12 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.formModel numberOfSections];
+    return [self.form numberOfSections];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.formModel numberOfRowsInSection:section];
+    return [self.form numberOfRowsInSection:section];
 }
 
 #pragma mark - AFBaseTextContainerCollectionViewCellOutput protocol methods

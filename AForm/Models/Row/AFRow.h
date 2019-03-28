@@ -9,27 +9,28 @@
 #import <Foundation/Foundation.h>
 #import "AFValue.h"
 #import "AFCellRow.h"
+#import "AFCellConfig.h"
 
 @class AFRowConfig;
 @class AFLayoutConfig;
 @class AFBaseCellConfig;
 
-@interface AFRow : NSObject<AFCellRow>
+@interface AFRow : NSObject
 {
     @private
     NSString *identifier;
 }
 
 @property (nonatomic, strong, readonly) NSString *key;
-
 @property (nonatomic, strong) id<AFValue> value;
+@property (nonatomic, strong) id<AFCellConfig> cellConfig;
+@property (nonatomic, strong) AFLayoutConfig *layoutConfig;
 
-@property (nonatomic, strong) AFBaseCellConfig *cellConfig;
++ (id)rowWithKey:(NSString *)key inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
 
-+ (id) rowWithConfig:(AFRowConfig *)rowConfig inputViewConfig:(AFBaseCellConfig *)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
++ (id)compositeRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows;
 
-- (instancetype) initWithKey:(NSString *)key value:(id)value andIdentifier:(NSString *)identifier;
++ (id)multiplieRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows;
 
-- (instancetype) initWithKey:(NSString *)key andIdentifier:(NSString *)identifier;
 
 @end

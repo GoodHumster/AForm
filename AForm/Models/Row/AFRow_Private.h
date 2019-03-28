@@ -7,6 +7,8 @@
 //
 
 #import "AFRow.h"
+#import "AFInputRow.h"
+
 
 @protocol AFRowOutput <NSObject>
 
@@ -18,4 +20,8 @@
 
 @property (nonatomic, weak) id<AFRowOutput> output;
 
+@property (nonatomic, strong, readonly) id<AFInputRow> inputRow;
+
 @end
+
+

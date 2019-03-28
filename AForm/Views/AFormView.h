@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "AForm.h"
+#import "AFForming.h"
 
 @protocol AFAutocompleteView;
 @class AFormView;
@@ -39,7 +38,7 @@
 
 @property (nonatomic, strong) UIView *footerView;
 
-- (void) presentForm:(id<AForm>)form animatable:(BOOL)animatable;
+- (void) presentForm:(id<AFForming>)form animatable:(BOOL)animatable;
 
 - (void) registrateNib:(UINib *)nib withIdentifier:(NSString *)identifier;
 
