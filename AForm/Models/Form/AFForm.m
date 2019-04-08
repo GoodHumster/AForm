@@ -6,19 +6,94 @@
 //  Copyright © 2019 Administrator. All rights reserved.
 //
 
+#import <CoreFoundation/CoreFoundation.h>
+#import <UIKit/UIKit.h>
+
 #import "AFForm.h"
+
+#import "AFIndexPathSet.h"
+#import "AFIndexPath.h"
 
 #import "AFSection.h"
 #import "AFRow_Private.h"
+
+static const void* __rowsAsKeyRetainCallback( CFAllocatorRef __unused allocator, const void *value )
+{
+    return CFBridgingRetain((__bridge id)(value));
+}
+
+
+static void __rowsAsKeyReleaseCallback( CFAllocatorRef __unused allocator, const void *value )
+{
+    CFBridgingRelease(value);
+}
+
+static const void* __rowsAsValueRetainCallback( CFAllocatorRef __unused allocator, const void *value )
+{
+    return value;
+}
+
+static void __rowsAsValueReleaseCallback( CFAllocatorRef __unused allocator, const void *value )
+{
+}
+
+
+///**
+// * Copy description callback for CF dictionary with resource provider references, used as values.
+// *
+// * @param value Reference to a dictionary key to describe.
+// * @return Allocated and initialized key descriptive string.
+// */
+//static CFStringRef __providerAsValueCopyDescriptionCallBack( const void *value )
+//{
+//    DEBUG_ASSERTS_VALID_PROTOCOL(CoreProvider, (__bridge id)(value));
+//    CFMutableStringRef descr = CFStringCreateMutable(kCFAllocatorDefault, 0);
+//    if( descr )
+//    {
+//        const char* className = class_getName([(__bridge id<CoreProvider>)value class]);
+//        CFStringAppendFormat(descr, NULL, CFSTR("%s["), className);
+//        BOOL first = YES;
+//        for( Class cls in [(__bridge id<CoreProvider>)value providedResourceClasses])
+//        {
+//            className = class_getName(cls);
+//            if( first )
+//            {
+//                CFStringAppendCString(descr, className, kCFStringEncodingUTF8);
+//                first = NO;
+//            }
+//            else
+//            {
+//                CFStringAppendFormat(descr, NULL, CFSTR(", %s"), className);
+//
+//            }
+//        }
+//        CFStringAppend(descr, CFSTR("]"));
+//    }
+//    return descr;
+//}
+//
+///**
+// * Copy description callback for CF dictionary with Class type references, used as keys.
+// *
+// * @param value Reference to a dictionary key to describe.
+// * @return Allocated and initialized key descriptive string.
+// */
+//static CFStringRef __classAsKeyCopyDescriptionCallBack( const void *value )
+//{
+//    DEBUG_ASSERTS_NOT_NIL(value);
+//    const char* className = class_getName((__bridge Class)value);
+//    return CFStringCreateWithCString(kCFAllocatorDefault, className, kCFStringEncodingUTF8);
+//}
+
 
 @interface AFForm()
 
 @property (nonatomic, weak) id<AFForming> forming;
 @property (nonatomic, strong) NSMutableDictionary *rowsCountBySection;
-@property (nonatomic, strong) NSMutableDictionary *rowsIndexByAbsouluteIndex;
+@property (nonatomic, strong) AFIndexPathSet *indexPathSet;
 
-@property (nonatomic, assign) NSUInteger lastCachedAbsouluteIndex;
-
+/// Rows providers collection, indexed by indexPath.
+@property (nonatomic, strong) CFMutableDictionaryRef __attribute__((NSObject)) rowsByIndexPath;
 
 @end
 
@@ -30,14 +105,37 @@
     {
         return nil;
     }
+    
+    CFDictionaryKeyCallBacks indexPathAsKeyCallbacks = {
+        .version = 0,
+        .retain = __rowsAsKeyRetainCallback,
+        .release = __rowsAsKeyReleaseCallback,
+        .copyDescription = NULL,
+        .equal = NULL,
+        .hash = NULL
+    };
+
+    CFDictionaryValueCallBacks rowsAsValueCallbacks = {
+        .version = 0,
+        .retain = __rowsAsValueRetainCallback,
+        .release = __rowsAsValueReleaseCallback,
+        .copyDescription = NULL,
+        .equal = NULL
+    };
+
+    CFMutableDictionaryRef dict = CFDictionaryCreateMutable(kCFAllocatorDefault, 16, &indexPathAsKeyCallbacks, &rowsAsValueCallbacks);
+    self.rowsByIndexPath = dict;
+    if( self.rowsByIndexPath == NULL )
+    {
+        return nil;
+    }
+    CFRelease(dict);
+    
+    self.indexPathSet = [[AFIndexPathSet alloc] init];
     self.forming = forming;
-    self.rowsIndexByAbsouluteIndex = [NSMutableDictionary new];
     self.rowsCountBySection = [NSMutableDictionary new];
-    self.lastCachedAbsouluteIndex = 0;
     return self;
 }
-
-
 
 #pragma mark - Public API methods
 
@@ -48,46 +146,31 @@
 
 - (NSUInteger)numberOfRowsInSection:(NSUInteger)section
 {
-    if ([self.rowsCountBySection objectForKey:@(section)])
+    if (![self.rowsCountBySection objectForKey:@(section)])
     {
-        return [[self.rowsCountBySection objectForKey:@(section)] unsignedIntegerValue];
+        NSArray<AFRow *> *rows = [self.forming getRowsInSection:section];
+        NSUInteger rowsCount = [self calculateCountOfRows:rows];
+        
+        if (rowsCount == NSNotFound)
+        {
+            return 0;
+        }
+        
+        [self.rowsCountBySection setObject:@(rowsCount) forKey:@(section)];
     }
     
-    NSArray<AFRow *> *rowsInSection = [self.forming getRowsInSection:section];
-
-    NSUInteger count = [self calculateAbsouluteNumberRows:rowsInSection];
-    [self.rowsCountBySection setObject:@(count) forKey:@(section)];
-    return count;
+    return [[self.rowsCountBySection objectForKey:@(section)] unsignedIntegerValue];
 }
 
 
 - (AFRow *)getRowAtIndex:(NSUInteger)index inSection:(NSUInteger)seciton
 {
-    NSUInteger idx = [self getRealIndexFromAbsoluteIndex:index];
-    BOOL needCache = self.lastCachedAbsouluteIndex < index;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:seciton];
+    AFRow *row = [self getCachedRowAtIndexPath:indexPath];
     
-    AFRow *row = [self.forming getRowAtIndex:idx inSection:seciton];
-    id<AFInputRow> inputRow = row.inputRow;
-
-    if (needCache)
+    if (!row)
     {
-        [self.rowsIndexByAbsouluteIndex setObject:@(idx) forKey:@(index)];
-        
-        NSUInteger numberOfRows = inputRow.numberOfRows - 1;
-        NSUInteger absoluteIndex = index + 1;
-        while (numberOfRows > 0)
-        {
-            [self.rowsIndexByAbsouluteIndex setObject:@(idx) forKey:@(absoluteIndex)];
-            absoluteIndex += 1;
-            numberOfRows -= 1;
-        }
-        self.lastCachedAbsouluteIndex = absoluteIndex;
-    }
-   
-    if (inputRow.numberOfRows > 0)
-    {
-        NSUInteger inIndex = (self.lastCachedAbsouluteIndex - idx) + (inputRow.numberOfRows - 1);
-        return [inputRow getRowAtIndex:inIndex];
+        row = [self getAndCacheRowAtIndexPath:indexPath];
     }
     
     return row;
@@ -95,42 +178,130 @@
 
 - (AFSection *)getSection:(NSUInteger)section
 {
-    return  [self.forming getSection:section];;
+    return  [self.forming getSection:section];
 }
 
 #pragma mark - utils methods
 
-- (NSUInteger) calculateAbsouluteNumberRows:(NSArray<AFRow *> *)rows
+- (NSUInteger) calculateCountOfRows:(NSArray<AFRow *> *)rows
 {
-    NSArray<AFRow *> *mRowsInSection =  [rows filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.inputRow.numberOfRows > 0"]];
-    NSUInteger count = rows.count - mRowsInSection.count ;
-    __block NSUInteger inputRowCount = 0;
+    NSInteger rowsCount = 0;
+    for (AFRow *row in rows)
+    {
+        rowsCount += row.inputRow.attributes.numberOfRows;
+    }
     
-    [mRowsInSection enumerateObjectsUsingBlock:^(AFRow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        inputRowCount += obj.inputRow.numberOfRows;
-    }];
-    
-    count += inputRowCount;
-    
-    return count;
+    return rowsCount;
 }
 
-- (NSUInteger) getRealIndexFromAbsoluteIndex:(NSUInteger)index
+- (AFRow *) getCachedRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger idx = index;
-    if (self.lastCachedAbsouluteIndex > index)
-    {
-        idx = [[self.rowsIndexByAbsouluteIndex objectForKey:@(index)] unsignedIntegerValue];
-    }
-    else if (self.lastCachedAbsouluteIndex > 0)
-    {
-        idx = [[self.rowsIndexByAbsouluteIndex objectForKey:@(self.lastCachedAbsouluteIndex)] unsignedIntegerValue];
-        idx += 1;
-    }
+    return CFDictionaryGetValue(self.rowsByIndexPath, (__bridge const void *)(indexPath));
+}
 
-    return idx;
+- (AFRow *) getAndCacheRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AFIndexPath *realIndexPath = [self.indexPathSet getIntersectIndexPathFromIndexPath:indexPath];
+    
+    if (realIndexPath)
+    {
+        AFRow *row = [self getRowAtIndexPath:realIndexPath withOffset:indexPath.row];
+        [self cacheRow:row atIndexPath:indexPath];
+        return row;
+    }
+    
+    NSIndexPath *nearIndexPath = [self findNearIndexPathFromIndexPath:indexPath];
+    
+    AFRow *row = [self.forming getRowAtIndex:nearIndexPath.row inSection:nearIndexPath.section];;
+    id<AFInputRow> inputRow = row.inputRow;
+    
+    if (!realIndexPath)
+    {
+        NSUInteger numberOfRows = inputRow.attributes.numberOfRows;
+        realIndexPath = [AFIndexPath indexPathWithRow:nearIndexPath.row section:nearIndexPath.section andRangeLenght:numberOfRows];
+        [self.indexPathSet appendIndexPath:realIndexPath];
+    }
+    
+     row = [self getRowAtIndexPath:realIndexPath withOffset:indexPath.row];
+     [self cacheRow:row atIndexPath:indexPath];
+     return row;
+}
+
+- (AFRow *) getRowAtIndexPath:(AFIndexPath *)indexPath withOffset:(NSUInteger)offset
+{
+     AFRow *row = [self.forming getRowAtIndex:indexPath.row inSection:indexPath.section];
+     id<AFInputRow> inputRow = row.inputRow;
+    
+    if (inputRow.attributes.multiplie)
+    {
+        NSUInteger iRow = abs((int)(indexPath.minIndex - offset));
+        row = [inputRow getRowAtIndex:iRow];
+    }
+    return row;
+}
+
+- (NSIndexPath *) findNearIndexPathFromIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *beforeIndexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section];
+    AFIndexPath *beforeRealIndexPath = [self.indexPathSet getIntersectIndexPathFromIndexPath:beforeIndexPath];
+
+    if (beforeRealIndexPath)
+    {
+        return [NSIndexPath indexPathForRow:beforeRealIndexPath.row+1 inSection:beforeRealIndexPath.section];
+    }
+    
+    return indexPath;
 }
 
 
+- (void) cacheRow:(AFRow *)row atIndexPath:(NSIndexPath *)indexPath
+{
+    if (!indexPath || !row)
+    {
+        NSLog(@"%@ ERROR: Failed cahced row",NSStringFromClass(self.class));
+        return;
+    }
+    
+    CFDictionarySetValue(self.rowsByIndexPath, (__bridge const void *)(indexPath), (__bridge const void *)(row));
+}
 
 @end
+
+//    if ([self.rowsCountBySection objectForKey:@(section)])
+//    {
+//        return [[self.rowsCountBySection objectForKey:@(section)] unsignedIntegerValue];
+//    }
+//
+//    NSArray<AFRow *> *rowsInSection = [self.forming getRowsInSection:section];
+//
+//    NSUInteger count = [self calculateAbsouluteNumberRows:rowsInSection];
+//    [self.rowsCountBySection setObject:@(count) forKey:@(section)];
+//    return count;
+//    NSUInteger idx = [self getRealIndexFromAbsoluteIndex:index];
+//    BOOL needCache = self.lastCachedAbsouluteIndex < index;
+//
+//    AFRow *row = [self.forming getRowAtIndex:idx inSection:seciton];
+//    id<AFInputRow> inputRow = row.inputRow;
+//
+//    if (needCache)
+//    {
+//        [self.rowsIndexByAbsouluteIndex setObject:@(idx) forKey:@(index)];
+//
+//        NSUInteger numberOfRows = inputRow.numberOfRows - 1;
+//        NSUInteger absoluteIndex = index + 1;
+//        while (numberOfRows > 0)
+//        {
+//            [self.rowsIndexByAbsouluteIndex setObject:@(idx) forKey:@(absoluteIndex)];
+//            absoluteIndex += 1;
+//            numberOfRows -= 1;
+//        }
+//        self.lastCachedAbsouluteIndex = absoluteIndex;
+//    }
+//
+//    if (inputRow.numberOfRows > 0)
+//    {
+//        NSUInteger inIndex = (self.lastCachedAbsouluteIndex - idx) + (inputRow.numberOfRows - 1);
+//        return [inputRow getRowAtIndex:inIndex];
+//    }
+//
+//    return row;

@@ -197,7 +197,6 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     CGRect lastAttrFrame = lastFormLayoutAttributes.frame;
     
     formLayoutAttributes.uuid = lastFormLayoutAttributes.uuid+1;
-    formLayoutAttributes.indexPath = indexPath;
     formLayoutAttributes.flowLayout = self;
     formLayoutAttributes.initionalSize = formLayoutAttributes.frame.size;
     
@@ -366,7 +365,6 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     NSInteger sectionCounts = [self.collectionView numberOfSections];
     NSInteger section = indexPath ? indexPath.section : 0;
     NSInteger row = indexPath ? indexPath.row+1 : 0;
-    BOOL stop = NO;
     
     if (sectionCounts <= section)
     {
@@ -375,27 +373,48 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     
     while (sectionCounts > section)
     {
-        NSInteger rowCounts = [self.collectionView numberOfItemsInSection:section];
+        [self enumerateRowsInSection:section fromRow:row withBlock:enumerationBlock];
         
-        if (rowCounts <= row)
-        {
-            row = 0;
-            section += 1;
-            continue;
-        }
-        
-        while (row < rowCounts) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-            enumerationBlock(indexPath,&stop);
-            
-            if (stop)
-            {
-                return;
-            }
-            row += 1;
-        }
-        
+        row = 0;
         section += 1;
+    }
+}
+
+- (void) enumerateRowsInSection:(NSUInteger)section fromRow:(NSUInteger)row withBlock:(void(^)(NSIndexPath *indexPath, BOOL *stop))enumerationBlock
+{
+    BOOL stop = NO;
+    BOOL undefiendBuild = NO;
+    
+    NSUInteger rowsCount = [self.collectionView numberOfItemsInSection:section];
+    
+    if (rowsCount == AFCollectionViewUndefindedItemsCount && self.buildWithUndefinedRowsCount)
+    {
+        undefiendBuild = YES;
+        rowsCount = NSIntegerMax;
+    }
+    
+    if (rowsCount <= row)
+    {
+        return;
+    }
+    
+    while (row < rowsCount) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        
+        if (undefiendBuild)
+        {
+            rowsCount = [self.collectionView numberOfItemsInSection:section];
+        }
+        
+        enumerationBlock(indexPath,&stop);
+        
+        if (stop)
+        {
+            return;
+        }
+        
+        row += 1;
     }
 }
 

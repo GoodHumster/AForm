@@ -7,6 +7,7 @@
 //
 
 #import "AFMultiplieRow.h"
+#import "AFRow_Private.h"
 
 @interface AFMultiplieRow()
 
@@ -18,10 +19,10 @@
 @implementation AFMultiplieRow
 
 @synthesize key = _key;
-@synthesize numberOfRows = _numberOfRows;
 @synthesize value = _value;
 @synthesize viewConfig = _viewConfig;
 @synthesize layoutConfig = _layoutConfig;
+@synthesize attributes = _attributes;
 
 #pragma mark - init methods
 
@@ -34,7 +35,9 @@
     self.key = key;
     self.viewConfig = nil;
     self.layoutConfig = nil;
-    
+    self.attributes = [AFRowAttributes new];
+    self.attributes.multiplie = YES;
+
     return self;
 }
 
@@ -44,14 +47,26 @@
 {
     AFMultiplieRow *mRow = [[AFMultiplieRow alloc] initWithKey:key];
     mRow.rows = [rows mutableCopy];
-    mRow.numberOfRows = rows.count;
+    
+    [rows enumerateObjectsUsingBlock:^(AFRow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        mRow.attributes.numberOfRows += obj.inputRow.attributes.numberOfRows;
+    }];
     
     return mRow;
 }
 
 - (AFRow *)getRowAtIndex:(NSInteger)index
 {
-    return [self.rows objectAtIndex:index];
+    NSUInteger count = self.rows.count;
+    AFRow *row = count <= index ? [self.rows objectAtIndex:count-1] : [self.rows objectAtIndex:index];
+    
+    if (row.inputRow.attributes.multiplie)
+    {
+        NSUInteger rlIdx = index - (count - 1);
+        return [row.inputRow getRowAtIndex:rlIdx];
+    }
+    
+    return row;
 }
 
 - (id<AFValue>) value

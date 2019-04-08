@@ -25,6 +25,7 @@
 		C31C33982243CA8000E83D40 /* AFBaseCellConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31C33952243CA2700E83D40 /* AFBaseCellConfig.h */; };
 		C31C33CE2245079300E83D40 /* AFValue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31C33CD224506F200E83D40 /* AFValue.h */; };
 		C31C33D2224507E600E83D40 /* NSString+AFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C33D1224507E600E83D40 /* NSString+AFValue.m */; };
+		C32089DF2254EE0A00B4D13E /* AFInputRowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C32089DE2254EE0A00B4D13E /* AFInputRowTest.m */; };
 		C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C340F1A222412E1E00402742 /* AFormFramework.h */; };
 		C37E31EE2237DF160021FB1E /* AFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31ED2237DF160021FB1E /* AFormView.m */; };
 		C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */; };
@@ -89,8 +90,25 @@
 		C3A9C4D8224BF40C00D61BB2 /* AFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4D7224BF40C00D61BB2 /* AFForm.m */; };
 		C3A9C4DC224CE7D900D61BB2 /* AFMultiplieRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4DB224CE7D900D61BB2 /* AFMultiplieRow.m */; };
 		C3A9C4E0224CE88800D61BB2 /* AFSingleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C4DF224CE88800D61BB2 /* AFSingleRow.m */; };
+		C3A9C514224D1B6D00D61BB2 /* libAForm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FD5C4E2236A61300FD6789 /* libAForm.a */; };
+		C3A9C51B224D1B8000D61BB2 /* AFFormTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C51A224D1B8000D61BB2 /* AFFormTest.m */; };
+		C3A9C51F224D1D9600D61BB2 /* AFTestForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C51E224D1D9600D61BB2 /* AFTestForm.m */; };
+		C3A9C524224D245900D61BB2 /* AFRowAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C523224D245900D61BB2 /* AFRowAttributes.m */; };
+		C3C4169F22576E740013E851 /* AFIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4169E22576E740013E851 /* AFIndexPath.m */; };
+		C3C416A222576FAF0013E851 /* AFIndexPathSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416A122576FAF0013E851 /* AFIndexPathSet.m */; };
+		C3C416A422576FDB0013E851 /* AFIndexPathSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416A322576FDB0013E851 /* AFIndexPathSetTest.m */; };
 		C3FD5C542236A61300FD6789 /* AFForming.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AFForming.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3A9C515224D1B6D00D61BB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3FD5C462236A61300FD6789 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3FD5C4D2236A61300FD6789;
+			remoteInfo = AForm;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C3FD5C4C2236A61300FD6789 /* CopyFiles */ = {
@@ -143,6 +161,7 @@
 		C31C33D0224507E600E83D40 /* NSString+AFValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AFValue.h"; sourceTree = "<group>"; };
 		C31C33D1224507E600E83D40 /* NSString+AFValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AFValue.m"; sourceTree = "<group>"; };
 		C31C33D4224518DC00E83D40 /* AFBaseCellConfig_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFBaseCellConfig_Private.h; sourceTree = "<group>"; };
+		C32089DE2254EE0A00B4D13E /* AFInputRowTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFInputRowTest.m; sourceTree = "<group>"; };
 		C340F1A222412E1E00402742 /* AFormFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormFramework.h; sourceTree = "<group>"; };
 		C37E31EC2237DF160021FB1E /* AFormView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormView.h; sourceTree = "<group>"; };
 		C37E31ED2237DF160021FB1E /* AFormView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFormView.m; sourceTree = "<group>"; };
@@ -226,11 +245,32 @@
 		C3A9C4DE224CE88800D61BB2 /* AFSingleRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFSingleRow.h; sourceTree = "<group>"; };
 		C3A9C4DF224CE88800D61BB2 /* AFSingleRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFSingleRow.m; sourceTree = "<group>"; };
 		C3A9C4E1224CEF4D00D61BB2 /* AFInputRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFInputRow.h; sourceTree = "<group>"; };
+		C3A9C50F224D1B6D00D61BB2 /* AFormTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AFormTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A9C513224D1B6D00D61BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3A9C51A224D1B8000D61BB2 /* AFFormTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFFormTest.m; sourceTree = "<group>"; };
+		C3A9C51D224D1D9600D61BB2 /* AFTestForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTestForm.h; sourceTree = "<group>"; };
+		C3A9C51E224D1D9600D61BB2 /* AFTestForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTestForm.m; sourceTree = "<group>"; };
+		C3A9C522224D245900D61BB2 /* AFRowAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRowAttributes.h; sourceTree = "<group>"; };
+		C3A9C523224D245900D61BB2 /* AFRowAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRowAttributes.m; sourceTree = "<group>"; };
+		C3C4169D22576E740013E851 /* AFIndexPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFIndexPath.h; sourceTree = "<group>"; };
+		C3C4169E22576E740013E851 /* AFIndexPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFIndexPath.m; sourceTree = "<group>"; };
+		C3C416A022576FAF0013E851 /* AFIndexPathSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFIndexPathSet.h; sourceTree = "<group>"; };
+		C3C416A122576FAF0013E851 /* AFIndexPathSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFIndexPathSet.m; sourceTree = "<group>"; };
+		C3C416A322576FDB0013E851 /* AFIndexPathSetTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFIndexPathSetTest.m; sourceTree = "<group>"; };
+		C3C416A7225B41D30013E851 /* AFIndexPath_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFIndexPath_Private.h; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AFForming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFForming.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C3A9C50C224D1B6D00D61BB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A9C514224D1B6D00D61BB2 /* libAForm.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3FD5C4B2236A61300FD6789 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,6 +338,11 @@
 			children = (
 				C37E3220223912A70021FB1E /* AFLayoutAttributesDictionary.h */,
 				C37E3221223912A70021FB1E /* AFLayoutAttributesDictionary.m */,
+				C3C4169D22576E740013E851 /* AFIndexPath.h */,
+				C3C416A7225B41D30013E851 /* AFIndexPath_Private.h */,
+				C3C4169E22576E740013E851 /* AFIndexPath.m */,
+				C3C416A022576FAF0013E851 /* AFIndexPathSet.h */,
+				C3C416A122576FAF0013E851 /* AFIndexPathSet.m */,
 			);
 			path = Wrappers;
 			sourceTree = "<group>";
@@ -350,6 +395,8 @@
 			children = (
 				C382373D224830D7009BA9B7 /* AFCellRow.h */,
 				C3A9C4E1224CEF4D00D61BB2 /* AFInputRow.h */,
+				C3A9C522224D245900D61BB2 /* AFRowAttributes.h */,
+				C3A9C523224D245900D61BB2 /* AFRowAttributes.m */,
 				C3A9C4DD224CE87800D61BB2 /* SingleRow */,
 				C3A9C4D9224CE7C300D61BB2 /* MultiplieRow */,
 				C3A9C4D4224BEA7000D61BB2 /* CompositeRow */,
@@ -537,11 +584,33 @@
 			path = SingleRow;
 			sourceTree = "<group>";
 		};
+		C3A9C510224D1B6D00D61BB2 /* AFormTest */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C51C224D1D7900D61BB2 /* Utils */,
+				C3A9C513224D1B6D00D61BB2 /* Info.plist */,
+				C3A9C51A224D1B8000D61BB2 /* AFFormTest.m */,
+				C32089DE2254EE0A00B4D13E /* AFInputRowTest.m */,
+				C3C416A322576FDB0013E851 /* AFIndexPathSetTest.m */,
+			);
+			path = AFormTest;
+			sourceTree = "<group>";
+		};
+		C3A9C51C224D1D7900D61BB2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C51D224D1D9600D61BB2 /* AFTestForm.h */,
+				C3A9C51E224D1D9600D61BB2 /* AFTestForm.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C3FD5C452236A61300FD6789 = {
 			isa = PBXGroup;
 			children = (
 				C3A9C48B2249254300D61BB2 /* AFormTemplates */,
 				C3FD5C502236A61300FD6789 /* AForm */,
+				C3A9C510224D1B6D00D61BB2 /* AFormTest */,
 				C3FD5C4F2236A61300FD6789 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -550,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				C3FD5C4E2236A61300FD6789 /* libAForm.a */,
+				C3A9C50F224D1B6D00D61BB2 /* AFormTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,6 +683,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C3A9C50E224D1B6D00D61BB2 /* AFormTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3A9C517224D1B6D00D61BB2 /* Build configuration list for PBXNativeTarget "AFormTest" */;
+			buildPhases = (
+				C3A9C50B224D1B6D00D61BB2 /* Sources */,
+				C3A9C50C224D1B6D00D61BB2 /* Frameworks */,
+				C3A9C50D224D1B6D00D61BB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3A9C516224D1B6D00D61BB2 /* PBXTargetDependency */,
+			);
+			name = AFormTest;
+			productName = AFormTest;
+			productReference = C3A9C50F224D1B6D00D61BB2 /* AFormTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C3FD5C4D2236A61300FD6789 /* AForm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3FD5C572236A61300FD6789 /* Build configuration list for PBXNativeTarget "AForm" */;
@@ -642,6 +730,9 @@
 					C37E3447224101A30021FB1E = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					C3A9C50E224D1B6D00D61BB2 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					C3FD5C4D2236A61300FD6789 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -661,9 +752,20 @@
 			targets = (
 				C3FD5C4D2236A61300FD6789 /* AForm */,
 				C37E3447224101A30021FB1E /* AFormFramework */,
+				C3A9C50E224D1B6D00D61BB2 /* AFormTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3A9C50D224D1B6D00D61BB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		C37E344B224101B10021FB1E /* ShellScript */ = {
@@ -686,10 +788,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C3A9C50B224D1B6D00D61BB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A9C51F224D1D9600D61BB2 /* AFTestForm.m in Sources */,
+				C3A9C51B224D1B8000D61BB2 /* AFFormTest.m in Sources */,
+				C32089DF2254EE0A00B4D13E /* AFInputRowTest.m in Sources */,
+				C3C416A422576FDB0013E851 /* AFIndexPathSetTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3FD5C4A2236A61300FD6789 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A9C524224D245900D61BB2 /* AFRowAttributes.m in Sources */,
 				C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */,
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
 				C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */,
@@ -708,8 +822,10 @@
 				C37E321722382BB30021FB1E /* AFFormLayoutAttributes.m in Sources */,
 				C37E32B4223AC7420021FB1E /* AFTextFieldCellConfig.m in Sources */,
 				C37E31EE2237DF160021FB1E /* AFormView.m in Sources */,
+				C3C4169F22576E740013E851 /* AFIndexPath.m in Sources */,
 				C37E320B2238210D0021FB1E /* AFBaseCollectionViewCell.m in Sources */,
 				C3A9C4A5224A235000D61BB2 /* AFBaseTextContainerCellConfig.h in Sources */,
+				C3C416A222576FAF0013E851 /* AFIndexPathSet.m in Sources */,
 				C37E32CF223B98900021FB1E /* AFDatePickerConfig.m in Sources */,
 				C37E31F62237E5D40021FB1E /* AFSection.m in Sources */,
 				C37E3222223912A70021FB1E /* AFLayoutAttributesDictionary.m in Sources */,
@@ -732,6 +848,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C3A9C516224D1B6D00D61BB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3FD5C4D2236A61300FD6789 /* AForm */;
+			targetProxy = C3A9C515224D1B6D00D61BB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		C37E3449224101A30021FB1E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -746,6 +870,42 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C3A9C518224D1B6D00D61BB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/${PROJECT_NAME}";
+				INFOPLIST_FILE = AFormTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gh.AFormTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3A9C519224D1B6D00D61BB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/${PROJECT_NAME}";
+				INFOPLIST_FILE = AFormTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gh.AFormTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -900,6 +1060,15 @@
 			buildConfigurations = (
 				C37E3449224101A30021FB1E /* Debug */,
 				C37E344A224101A30021FB1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3A9C517224D1B6D00D61BB2 /* Build configuration list for PBXNativeTarget "AFormTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3A9C518224D1B6D00D61BB2 /* Debug */,
+				C3A9C519224D1B6D00D61BB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

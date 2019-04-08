@@ -17,10 +17,10 @@
 @implementation AFSingleRow
 
 @synthesize key = _key;
-@synthesize numberOfRows = _numberOfRows;
 @synthesize value = _value;
 @synthesize viewConfig = _viewConfig;
 @synthesize layoutConfig = _layoutConfig;
+@synthesize attributes = _attributes;
 
 - (instancetype) initWithKey:(NSString *)key
 {
@@ -29,7 +29,10 @@
         return nil;
     }
     self.key = key;
-    self.numberOfRows = 0;
+    self.attributes = [AFRowAttributes new];
+    self.attributes.numberOfRows = 1;
+    self.attributes.multiplie = NO;
+
     return self;
 }
 

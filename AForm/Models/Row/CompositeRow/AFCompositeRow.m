@@ -7,6 +7,7 @@
 //
 
 #import "AFCompositeRow.h"
+#import "AFRow_Private.h"
 
 @interface AFCompositeRow()
 
@@ -18,10 +19,10 @@
 @implementation AFCompositeRow
 
 @synthesize key = _key;
-@synthesize numberOfRows = _numberOfRows;
 @synthesize value = _value;
 @synthesize viewConfig = _viewConfig;
 @synthesize layoutConfig = _layoutConfig;
+@synthesize attributes = _attributes;
 
 - (instancetype) initWithKey:(NSString *)key
 {
@@ -32,7 +33,9 @@
     self.key = key;
     self.viewConfig = nil;
     self.layoutConfig = nil;
-    
+    self.attributes = [AFRowAttributes new];
+    self.attributes.multiplie = YES;
+
     return self;
 }
 
@@ -42,16 +45,28 @@
 {
     AFCompositeRow *row = [[AFCompositeRow alloc] initWithKey:key];
     row.rows = [rows mutableCopy];
-    row.numberOfRows = rows.count;
     
-    return rows;
+    [rows enumerateObjectsUsingBlock:^(AFRow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        row.attributes.numberOfRows += obj.inputRow.attributes.numberOfRows;
+    }];
+    
+    return row;
 }
 
 #pragma mark - AFInputRow protocol methods
 
 - (AFRow *)getRowAtIndex:(NSInteger)index
 {
-    return [self.rows objectAtIndex:index];
+    NSUInteger count = self.rows.count;
+    AFRow *row = count <= index ? [self.rows objectAtIndex:count-1] : [self.rows objectAtIndex:index];
+    
+    if (row.inputRow.attributes.multiplie)
+    {
+        NSUInteger rlIdx = index - (count - 1);
+        return [row.inputRow getRowAtIndex:rlIdx];
+    }
+    
+    return row;
 }
 
 - (id<AFValue>) value

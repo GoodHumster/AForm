@@ -41,7 +41,7 @@
 {
     AFRow *row = [AFRow new];
     row->inputRow = [AFSingleRow rowWithKey:key value:nil viewConfig:ivConfig layoutConfig:layoutConfig];
-    
+    row.key = key;
     return row;
 }
 
@@ -49,6 +49,7 @@
 {
     AFRow *row = [AFRow new];
     row->inputRow = [AFCompositeRow rowCompositeWithRows:rows andKey:key];
+    row.key = key;
     
     return row;
 }
@@ -57,6 +58,7 @@
 {
     AFRow *row = [AFRow new];
     row->inputRow = [AFMultiplieRow multiplieRowWithRows:rows andKey:key];
+    row.key = key;
     
     return row;
 }
@@ -83,11 +85,6 @@
 - (id<AFValue>)value
 {
     return inputRow.value;
-}
-
-- (NSString *)key
-{
-    return inputRow.key;
 }
 
 #pragma mark - Set methods

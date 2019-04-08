@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSUInteger AFCollectionViewUndefindedItemsCount = NSNotFound;
+
 @class AFFormLayoutAttributes;
 @class AFLayoutConfig;
 @class AFRow;
@@ -31,14 +33,13 @@
 
 @property (nonatomic, weak) id<AFCollectionViewFlowLayoutDelegate> delegate;
 @property (nonatomic, assign) BOOL invalidateLayoutBoundsChange;
+@property (nonatomic, assign) BOOL buildWithUndefinedRowsCount;
 @property (nonatomic, assign) CGSize prepareCollectionViewContentSize;
 
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewHeight:(CGFloat)height;
-
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewSize:(CGSize)size;
 
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath;
-
 - (CGSize) sizeForLayoutConfig:(AFLayoutConfig *)config;
 
 @end
