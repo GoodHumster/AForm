@@ -35,7 +35,7 @@
     self.key = key;
     self.viewConfig = nil;
     self.layoutConfig = nil;
-    self.attributes = [AFRowAttributes new];
+    self.attributes = [AFInputRowAttributes new];
     self.attributes.multiplie = YES;
 
     return self;

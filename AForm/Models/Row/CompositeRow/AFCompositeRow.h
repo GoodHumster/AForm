@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFInputRow.h"
 
-@interface AFCompositeRow : NSObject<AFInputRow>
+@interface AFCompositeRow : AFInputRow
 
 + (id) rowCompositeWithRows:(NSArray<AFRow *> *)rows andKey:(NSString *)key;
 

@@ -10,9 +10,8 @@
 #import "AFBaseCellConfig.h"
 #import "AFLayoutConfig.h"
 
-#import "AFSingleRow.h"
-#import "AFMultiplieRow.h"
-#import "AFCompositeRow.h"
+#import "AFInputRow.h"
+
 
 @interface AFRow()
 {
@@ -40,7 +39,7 @@
 + (id) rowWithKey:(NSString *)key inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig
 {
     AFRow *row = [AFRow new];
-    row->inputRow = [AFSingleRow rowWithKey:key value:nil viewConfig:ivConfig layoutConfig:layoutConfig];
+    row->inputRow = [AFInputRow singleRowWithKey:key inputViewConfig:ivConfig layoutConfig:layoutConfig];
     row.key = key;
     return row;
 }
@@ -48,7 +47,7 @@
 + (id) compositeRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows
 {
     AFRow *row = [AFRow new];
-    row->inputRow = [AFCompositeRow rowCompositeWithRows:rows andKey:key];
+    row->inputRow = [AFInputRow compositeRowWithKey:key withRows:rows];
     row.key = key;
     
     return row;
@@ -57,7 +56,7 @@
 + (id) multiplieRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows
 {
     AFRow *row = [AFRow new];
-    row->inputRow = [AFMultiplieRow multiplieRowWithRows:rows andKey:key];
+    row->inputRow = [AFInputRow multiplieRowWithKey:key withRows:rows];
     row.key = key;
     
     return row;

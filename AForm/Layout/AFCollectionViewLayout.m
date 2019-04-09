@@ -8,7 +8,7 @@
 
 #import <objc/runtime.h>
 
-#import "AFCollectionViewFlowLayout.h"
+#import "AFCollectionViewLayout.h"
 #import "AFFormLayoutAttributes.h"
 #import "AFLayoutAttributesDictionary.h"
 #import "AFFormLayoutInvalidationContext.h"
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 };
 
 
-@interface AFCollectionViewFlowLayout()
+@interface AFCollectionViewLayout()
 
 @property (nonatomic, strong) AFLayoutAttributesDictionary *cachedLayoutAttributes;
 
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 
 @end
 
-@implementation AFCollectionViewFlowLayout
+@implementation AFCollectionViewLayout
 
 #pragma mark - init methods
 
@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     }
     
     _contentSize = CGSizeZero;
-    self.scrollDirection = UICollectionViewScrollDirectionVertical;
     self.prepareCollectionViewContentSize = CGSizeZero;
     self.invalidateLayoutBoundsChange = NO;
     self.cachedLayoutAttributes = [AFLayoutAttributesDictionary new];
@@ -99,13 +98,8 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     
     if (CGRectGetMaxY(lastLayoutAttribute.frame) > _contentSize.height)
     {
-        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame) + self.minimumLineSpacing;
+        _contentSize.height = CGRectGetMaxY(lastLayoutAttribute.frame);  // CGRectGetMaxY(lastLayoutAttribute.frame) + self.minimumLineSpacing;
         _contentSize.width = CGRectGetWidth(self.collectionView.frame);
-        
-        if ([self.delegate respondsToSelector:@selector(layoutDidUpdatedContentSize)])
-        {
-            [self.delegate layoutDidUpdatedContentSize];
-        }
     }
     
     return layoutesAttibutes;
@@ -258,7 +252,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 {
     CGFloat parentWidth = CGRectGetWidth(self.collectionView.frame);
     CGFloat parentHeight = CGRectGetHeight(self.collectionView.frame);
-    CGFloat minimumInteritemSpacing = self.minimumInteritemSpacing;
+    CGFloat minimumInteritemSpacing = config.minimumInteritemSpacing;
     
     AFLayoutConstraint *heightConstraint = config.height;
     AFLayoutConstraint *widthConstraint = config.width;
@@ -285,7 +279,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 {
     if (![self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)])
     {
-        return self.sectionInset;
+        return UIEdgeInsetsZero;
     }
     
     return [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];

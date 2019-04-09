@@ -13,7 +13,7 @@
 #import "AFResourceManager_Private.h"
 #import "AFCacheManager.h"
 
-#import "AFCollectionViewFlowLayout.h"
+#import "AFCollectionViewLayout.h"
 
 #import "AFBaseCollectionViewCell_Private.h"
 #import "AFTextFieldCollectionViewCell.h"
@@ -27,10 +27,10 @@
 #import "NSObject+AFUtils.h"
 
 
-@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFBaseTextContainerCollectionViewCellOutput,AFCollectionViewCellOutput>
+@interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewLayoutDelegate, AFBaseTextContainerCollectionViewCellOutput,AFCollectionViewCellOutput>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) AFCollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) AFCollectionViewLayout *flowLayout;
 
 @property (nonatomic, strong) AFForm *form;
 
@@ -78,7 +78,7 @@
 {
     self.currentFocusedCell = nil;
     
-    AFCollectionViewFlowLayout *flowLayout = [AFCollectionViewFlowLayout new];
+    AFCollectionViewLayout *flowLayout = [AFCollectionViewLayout new];
     flowLayout.delegate = self;
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -187,7 +187,7 @@
     }];
 }
 
-#pragma mark - AFCollectionViewFlowLayoutDelegate protocol methods
+#pragma mark - AFCollectionViewLayoutDelegate protocol methods
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section
 {
@@ -219,7 +219,7 @@
     
     if (!sc)
     {
-        return UIEdgeInsetsZero;
+        return UIEdgeInsetsMake(5, 0, 5, 0);
     }
     
     return sc.insets;
@@ -255,9 +255,7 @@
     AFBaseCollectionViewCell<AFCollectionViewCell> *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inputViewConig.identifier forIndexPath:indexPath];
     cell.output = self;
     cell.layoutAttributes = formAttributes;
-    
     id<AFCellRow> cellRow = [row af_objectAsProto:@protocol(AFCellRow)];
-    //id<>
     
     [cell configWithRow:cellRow andConfig:row.cellConfig];
     

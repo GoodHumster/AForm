@@ -6,8 +6,7 @@
 //  Copyright © 2019 Administrator. All rights reserved.
 //
 
-#import "AFRowAttributes.h"
+#import "AFInputRowAttributes.h"
 
-@implementation AFRowAttributes
-
+@implementation AFInputRowAttributes
 @end

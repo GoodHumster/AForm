@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFInputRow.h"
 
-@interface AFSingleRow : NSObject<AFInputRow>
+@interface AFSingleRow : AFInputRow
 
 + (id) rowWithKey:(NSString *)key value:(id<AFValue>)value viewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFInputRow.h"
 
-@interface AFMultiplieRow : NSObject<AFInputRow>
+@interface AFMultiplieRow : AFInputRow
 
 + (id) multiplieRowWithRows:(NSArray<AFRow *> *)rows andKey:(NSString *)key;
 

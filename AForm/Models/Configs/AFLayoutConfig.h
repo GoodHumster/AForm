@@ -28,6 +28,8 @@ static CGFloat const AFLayoutConstraintAutomaticDimension = CGFLOAT_MAX;
 
 @property (nonatomic, strong) AFLayoutConstraint *height;
 @property (nonatomic, strong) AFLayoutConstraint *width;
+@property (nonatomic, assign) CGFloat minimumInteritemSpacing;
+@property (nonatomic, assign) CGFloat minimumLineSpacing;
 
 + (id) layoutConfigWithHeightConstrain:(AFLayoutConstraint *)heightConstraint
                andWidthConstrain:(AFLayoutConstraint *)widthConstraint;

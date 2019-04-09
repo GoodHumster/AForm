@@ -8,7 +8,7 @@
 
 #import "AFBaseCollectionViewCell_Private.h"
 
-#import "AFCollectionViewFlowLayout.h"
+#import "AFCollectionViewLayout.h"
 #import "AFFormLayoutAttributes.h"
 
 #import "AFRow_Private.h"
@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong) UIView *_contentView;
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
+@property (nonatomic, weak) AFCollectionViewLayout *flowLayout;
 
 @property (nonatomic, weak) AFRow *inputRow;
 @property (nonatomic, weak) id<AFCellConfig>config;

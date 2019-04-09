@@ -12,7 +12,7 @@
 #import "AFCellConfig.h"
 #import "AFLayoutConfig.h"
 #import "AFRow.h"
-#import "AFRowAttributes.h"
+#import "AFInputRowAttributes.h"
 
 @protocol AFInputRow <NSObject>
 
@@ -20,8 +20,17 @@
 @property (nonatomic, strong) id<AFValue> value;
 @property (nonatomic, strong) id<AFCellConfig> viewConfig;
 @property (nonatomic, strong) AFLayoutConfig *layoutConfig;
-@property (nonatomic, strong) AFRowAttributes *attributes;
+@property (nonatomic, strong) AFInputRowAttributes *attributes;
 
 - (AFRow *) getRowAtIndex:(NSInteger)index;
+
+@end
+
+@interface AFInputRow : NSObject<AFInputRow>
+
++ (id<AFInputRow>)singleRowWithKey:(NSString *)key inputViewConfig:(id<AFCellConfig>)ivConfig layoutConfig:(AFLayoutConfig *)layoutConfig;
++ (id<AFInputRow>)compositeRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows;
++ (id<AFInputRow>)multiplieRowWithKey:(NSString *)key withRows:(NSArray<AFRow *> *)rows;
+
 
 @end

@@ -10,6 +10,7 @@
 
 @implementation AFLayoutConstraint
 
+
 + (id) constrainWithMultiplie:(CGFloat)multiplie andConstant:(CGFloat)constant andEstimate:(CGFloat)estimate
 {
     AFLayoutConstraint *constraint = [AFLayoutConstraint new];
@@ -34,6 +35,21 @@
 
 @implementation AFLayoutConfig
 
+#pragma mark - init methods
+
+- (instancetype) init
+{
+    if ( ( self = [super init]) == nil )
+    {
+        return nil;
+    }
+    self.minimumLineSpacing = 10;
+    self.minimumInteritemSpacing = 10;
+    return self;
+}
+
+#pragma mark - Public API methods
+
 + (id)layoutConfigWithHeightConstrain:(AFLayoutConstraint *)heightConstraint andWidthConstrain:(AFLayoutConstraint *)widthConstraint
 {
     AFLayoutConfig *layoutConfig = [AFLayoutConfig new];
@@ -42,6 +58,8 @@
     
     return layoutConfig;
 }
+
+#pragma mark - NSCopying protocol methods
 
 -(id)copyWithZone:(NSZone *)zone
 {

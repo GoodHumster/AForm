@@ -13,7 +13,7 @@
 @class AFRow;
 @class AFSection;
 
-@protocol AFCollectionViewFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
+@protocol AFCollectionViewLayoutDelegate <UICollectionViewDelegateFlowLayout>
 
 @required
 
@@ -21,15 +21,11 @@
 
 - (AFLayoutConfig *) layoutConfigForHeaderAtSection:(NSUInteger)section;
 
-@optional
-
-- (void) layoutDidUpdatedContentSize;
-
 @end
 
-@interface AFCollectionViewFlowLayout : UICollectionViewFlowLayout
+@interface AFCollectionViewLayout : UICollectionViewLayout
 
-@property (nonatomic, weak) id<AFCollectionViewFlowLayoutDelegate> delegate;
+@property (nonatomic, weak) id<AFCollectionViewLayoutDelegate> delegate;
 @property (nonatomic, assign) BOOL invalidateLayoutBoundsChange;
 @property (nonatomic, assign) CGSize prepareCollectionViewContentSize;
 
@@ -37,7 +33,7 @@
 - (void) invalidateLayout:(AFFormLayoutAttributes *)attribute withNewSize:(CGSize)size;
 
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath;
-- (UIEdgeInsets) sectionInsetsForSection:(NSInteger)section
+- (UIEdgeInsets) sectionInsetsForSection:(NSInteger)section;
 
 @end
 

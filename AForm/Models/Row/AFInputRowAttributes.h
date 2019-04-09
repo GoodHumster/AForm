@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AFRowAttributes : NSObject
+@interface AFInputRowAttributes : NSObject
 
 @property (nonatomic, assign) NSUInteger numberOfRows;
 @property (nonatomic, assign) BOOL multiplie;
+
 
 @end

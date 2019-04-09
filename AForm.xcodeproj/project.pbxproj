@@ -28,10 +28,9 @@
 		C32089DF2254EE0A00B4D13E /* AFInputRowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C32089DE2254EE0A00B4D13E /* AFInputRowTest.m */; };
 		C340F1CD2241314200402742 /* AFormFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C340F1A222412E1E00402742 /* AFormFramework.h */; };
 		C37E31EE2237DF160021FB1E /* AFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31ED2237DF160021FB1E /* AFormView.m */; };
-		C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */; };
+		C37E31F12237DFCA0021FB1E /* AFCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F02237DFCA0021FB1E /* AFCollectionViewLayout.m */; };
 		C37E31F62237E5D40021FB1E /* AFSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F52237E5D40021FB1E /* AFSection.m */; };
 		C37E31F92237E5F10021FB1E /* AFRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31F82237E5F10021FB1E /* AFRow.m */; };
-		C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E31FC2237ED610021FB1E /* AFRowConfig.m */; };
 		C37E32032237ED870021FB1E /* AFLayoutConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E32022237ED870021FB1E /* AFLayoutConfig.m */; };
 		C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E3206223814B90021FB1E /* AFResourceManager.m */; };
 		C37E320B2238210D0021FB1E /* AFBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C37E320A2238210D0021FB1E /* AFBaseCollectionViewCell.m */; };
@@ -51,7 +50,6 @@
 		C37E332E223BC9CB0021FB1E /* AFDefaultVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32DE223B9D620021FB1E /* AFDefaultVerifier.h */; };
 		C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32D7223B9CFE0021FB1E /* AFEmailVerifier.h */; };
 		C37E3332223BC9D70021FB1E /* AFLayoutConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32012237ED870021FB1E /* AFLayoutConfig.h */; };
-		C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31FB2237ED610021FB1E /* AFRowConfig.h */; };
 		C37E3334223BC9DC0021FB1E /* AFRow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31F72237E5F10021FB1E /* AFRow.h */; };
 		C37E3335223BC9DE0021FB1E /* AFSection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E31F42237E5D40021FB1E /* AFSection.h */; };
 		C37E3337223BC9F20021FB1E /* AFHeaderViewConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37E32A5223A94360021FB1E /* AFHeaderViewConfig.h */; };
@@ -93,12 +91,13 @@
 		C3A9C514224D1B6D00D61BB2 /* libAForm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FD5C4E2236A61300FD6789 /* libAForm.a */; };
 		C3A9C51B224D1B8000D61BB2 /* AFFormTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C51A224D1B8000D61BB2 /* AFFormTest.m */; };
 		C3A9C51F224D1D9600D61BB2 /* AFTestForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C51E224D1D9600D61BB2 /* AFTestForm.m */; };
-		C3A9C524224D245900D61BB2 /* AFRowAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C523224D245900D61BB2 /* AFRowAttributes.m */; };
+		C3A9C524224D245900D61BB2 /* AFInputRowAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A9C523224D245900D61BB2 /* AFInputRowAttributes.m */; };
 		C3C4169F22576E740013E851 /* AFIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4169E22576E740013E851 /* AFIndexPath.m */; };
 		C3C416A222576FAF0013E851 /* AFIndexPathSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416A122576FAF0013E851 /* AFIndexPathSet.m */; };
 		C3C416A422576FDB0013E851 /* AFIndexPathSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416A322576FDB0013E851 /* AFIndexPathSetTest.m */; };
 		C3C416E3225C854B0013E851 /* NSObject+AFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416E2225C854B0013E851 /* NSObject+AFUtils.m */; };
 		C3C416E9225C9B1F0013E851 /* AFFormLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416E8225C9B1F0013E851 /* AFFormLayoutInvalidationContext.m */; };
+		C3C416EC225CE1020013E851 /* AFInputRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C416EB225CE1020013E851 /* AFInputRow.m */; };
 		C3FD5C542236A61300FD6789 /* AFForming.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3FD5C512236A61300FD6789 /* AFForming.h */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +148,6 @@
 				C3A9C4892248E4B300D61BB2 /* AFLabelCollectionViewCell.h in CopyFiles */,
 				C37E3335223BC9DE0021FB1E /* AFSection.h in CopyFiles */,
 				C31C33CE2245079300E83D40 /* AFValue.h in CopyFiles */,
-				C37E3333223BC9D90021FB1E /* AFRowConfig.h in CopyFiles */,
 				C37E332F223BC9CE0021FB1E /* AFEmailVerifier.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,14 +164,12 @@
 		C340F1A222412E1E00402742 /* AFormFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormFramework.h; sourceTree = "<group>"; };
 		C37E31EC2237DF160021FB1E /* AFormView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFormView.h; sourceTree = "<group>"; };
 		C37E31ED2237DF160021FB1E /* AFormView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFormView.m; sourceTree = "<group>"; };
-		C37E31EF2237DFCA0021FB1E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		C37E31EF2237DFCA0021FB1E /* AFCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCollectionViewLayout.h; sourceTree = "<group>"; };
+		C37E31F02237DFCA0021FB1E /* AFCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFCollectionViewLayout.m; sourceTree = "<group>"; };
 		C37E31F42237E5D40021FB1E /* AFSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFSection.h; sourceTree = "<group>"; };
 		C37E31F52237E5D40021FB1E /* AFSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFSection.m; sourceTree = "<group>"; };
 		C37E31F72237E5F10021FB1E /* AFRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRow.h; sourceTree = "<group>"; };
 		C37E31F82237E5F10021FB1E /* AFRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRow.m; sourceTree = "<group>"; };
-		C37E31FB2237ED610021FB1E /* AFRowConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRowConfig.h; sourceTree = "<group>"; };
-		C37E31FC2237ED610021FB1E /* AFRowConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRowConfig.m; sourceTree = "<group>"; };
 		C37E31FE2237ED770021FB1E /* AFCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFCellConfig.h; sourceTree = "<group>"; };
 		C37E32012237ED870021FB1E /* AFLayoutConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFLayoutConfig.h; sourceTree = "<group>"; };
 		C37E32022237ED870021FB1E /* AFLayoutConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFLayoutConfig.m; sourceTree = "<group>"; };
@@ -251,8 +247,8 @@
 		C3A9C51A224D1B8000D61BB2 /* AFFormTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFFormTest.m; sourceTree = "<group>"; };
 		C3A9C51D224D1D9600D61BB2 /* AFTestForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTestForm.h; sourceTree = "<group>"; };
 		C3A9C51E224D1D9600D61BB2 /* AFTestForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFTestForm.m; sourceTree = "<group>"; };
-		C3A9C522224D245900D61BB2 /* AFRowAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFRowAttributes.h; sourceTree = "<group>"; };
-		C3A9C523224D245900D61BB2 /* AFRowAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFRowAttributes.m; sourceTree = "<group>"; };
+		C3A9C522224D245900D61BB2 /* AFInputRowAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFInputRowAttributes.h; sourceTree = "<group>"; };
+		C3A9C523224D245900D61BB2 /* AFInputRowAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFInputRowAttributes.m; sourceTree = "<group>"; };
 		C3C4169D22576E740013E851 /* AFIndexPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFIndexPath.h; sourceTree = "<group>"; };
 		C3C4169E22576E740013E851 /* AFIndexPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFIndexPath.m; sourceTree = "<group>"; };
 		C3C416A022576FAF0013E851 /* AFIndexPathSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFIndexPathSet.h; sourceTree = "<group>"; };
@@ -263,6 +259,7 @@
 		C3C416E2225C854B0013E851 /* NSObject+AFUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AFUtils.m"; sourceTree = "<group>"; };
 		C3C416E7225C9B1F0013E851 /* AFFormLayoutInvalidationContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFFormLayoutInvalidationContext.h; sourceTree = "<group>"; };
 		C3C416E8225C9B1F0013E851 /* AFFormLayoutInvalidationContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFFormLayoutInvalidationContext.m; sourceTree = "<group>"; };
+		C3C416EB225CE1020013E851 /* AFInputRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFInputRow.m; sourceTree = "<group>"; };
 		C3FD5C4E2236A61300FD6789 /* libAForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAForm.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FD5C512236A61300FD6789 /* AFForming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFForming.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,8 +329,8 @@
 		C37E321422382B950021FB1E /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				C37E31EF2237DFCA0021FB1E /* AFCollectionViewFlowLayout.h */,
-				C37E31F02237DFCA0021FB1E /* AFCollectionViewFlowLayout.m */,
+				C37E31EF2237DFCA0021FB1E /* AFCollectionViewLayout.h */,
+				C37E31F02237DFCA0021FB1E /* AFCollectionViewLayout.m */,
 				C37E321522382BB30021FB1E /* AFFormLayoutAttributes.h */,
 				C37E321622382BB30021FB1E /* AFFormLayoutAttributes.m */,
 				C3C416E7225C9B1F0013E851 /* AFFormLayoutInvalidationContext.h */,
@@ -391,8 +388,6 @@
 		C37E32C5223B95970021FB1E /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				C37E31FB2237ED610021FB1E /* AFRowConfig.h */,
-				C37E31FC2237ED610021FB1E /* AFRowConfig.m */,
 				C37E32012237ED870021FB1E /* AFLayoutConfig.h */,
 				C37E32022237ED870021FB1E /* AFLayoutConfig.m */,
 			);
@@ -402,13 +397,8 @@
 		C37E32C6223B95A70021FB1E /* Row */ = {
 			isa = PBXGroup;
 			children = (
-				C3A9C4DD224CE87800D61BB2 /* SingleRow */,
-				C3A9C4D9224CE7C300D61BB2 /* MultiplieRow */,
-				C3A9C4D4224BEA7000D61BB2 /* CompositeRow */,
+				C3C416EA225C9BE80013E851 /* Input */,
 				C382373D224830D7009BA9B7 /* AFCellRow.h */,
-				C3A9C4E1224CEF4D00D61BB2 /* AFInputRow.h */,
-				C3A9C522224D245900D61BB2 /* AFRowAttributes.h */,
-				C3A9C523224D245900D61BB2 /* AFRowAttributes.m */,
 				C37E31F72237E5F10021FB1E /* AFRow.h */,
 				C37E320C2238217D0021FB1E /* AFRow_Private.h */,
 				C37E31F82237E5F10021FB1E /* AFRow.m */,
@@ -621,6 +611,20 @@
 			name = ContentView;
 			sourceTree = "<group>";
 		};
+		C3C416EA225C9BE80013E851 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9C4E1224CEF4D00D61BB2 /* AFInputRow.h */,
+				C3C416EB225CE1020013E851 /* AFInputRow.m */,
+				C3A9C522224D245900D61BB2 /* AFInputRowAttributes.h */,
+				C3A9C523224D245900D61BB2 /* AFInputRowAttributes.m */,
+				C3A9C4DD224CE87800D61BB2 /* SingleRow */,
+				C3A9C4D9224CE7C300D61BB2 /* MultiplieRow */,
+				C3A9C4D4224BEA7000D61BB2 /* CompositeRow */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
 		C3FD5C452236A61300FD6789 = {
 			isa = PBXGroup;
 			children = (
@@ -819,12 +823,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A9C524224D245900D61BB2 /* AFRowAttributes.m in Sources */,
+				C3A9C524224D245900D61BB2 /* AFInputRowAttributes.m in Sources */,
 				C37E3207223814B90021FB1E /* AFResourceManager.m in Sources */,
 				C37E3213223825000021FB1E /* AFTextFieldCollectionViewCell.m in Sources */,
 				C37E32D9223B9CFE0021FB1E /* AFEmailVerifier.m in Sources */,
 				C3A9C4A3224A0F1500D61BB2 /* AFBaseTextContainerCollectionViewCell.m in Sources */,
 				C3A9C4B3224A36E400D61BB2 /* AFPickerView.m in Sources */,
+				C3C416EC225CE1020013E851 /* AFInputRow.m in Sources */,
 				C3A9C4E0224CE88800D61BB2 /* AFSingleRow.m in Sources */,
 				C37E343D223FF1960021FB1E /* AFDatePickerView.m in Sources */,
 				C3A9C4BE224A4C9C00D61BB2 /* AFPickerItem.h in Sources */,
@@ -850,7 +855,7 @@
 				C3A9C4C7224A5E7200D61BB2 /* UIScreen+AFScreenMetrics.m in Sources */,
 				C31C33D2224507E600E83D40 /* NSString+AFValue.m in Sources */,
 				C31C33972243CA2700E83D40 /* AFBaseCellConfig.m in Sources */,
-				C37E31F12237DFCA0021FB1E /* AFCollectionViewFlowLayout.m in Sources */,
+				C37E31F12237DFCA0021FB1E /* AFCollectionViewLayout.m in Sources */,
 				C3A9C48F2249258500D61BB2 /* AFTextViewCollectionViewCell.m in Sources */,
 				C37E34412240C6A70021FB1E /* AFCacheManager.m in Sources */,
 				C3A9C4832248DFEB00D61BB2 /* AFLabelCollectionViewCell.m in Sources */,
@@ -859,7 +864,6 @@
 				C3C416E3225C854B0013E851 /* NSObject+AFUtils.m in Sources */,
 				C37E32AB223A9A810021FB1E /* AFBaseHeaderSectionView.m in Sources */,
 				C3A9C49C22492E6800D61BB2 /* AFTextViewCellConfig.m in Sources */,
-				C37E31FD2237ED610021FB1E /* AFRowConfig.m in Sources */,
 				C3A9C4D3224BEA6800D61BB2 /* AFCompositeRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

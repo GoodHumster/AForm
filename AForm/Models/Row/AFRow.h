@@ -11,7 +11,6 @@
 #import "AFCellRow.h"
 #import "AFCellConfig.h"
 
-@class AFRowConfig;
 @class AFLayoutConfig;
 @class AFBaseCellConfig;
 

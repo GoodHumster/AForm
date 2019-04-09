@@ -29,7 +29,7 @@
         return nil;
     }
     self.key = key;
-    self.attributes = [AFRowAttributes new];
+    self.attributes = [AFInputRowAttributes new];
     self.attributes.numberOfRows = 1;
     self.attributes.multiplie = NO;
 
@@ -46,11 +46,6 @@
     sRow.viewConfig = ivConfig;
     
     return sRow;
-}
-
-- (AFRow *)getRowAtIndex:(NSInteger)index
-{
-    return nil;
 }
 
 @end

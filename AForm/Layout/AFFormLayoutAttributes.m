@@ -7,8 +7,9 @@
 //
 
 
-#import "AFCollectionViewFlowLayout.h"
+#import "AFCollectionViewLayout.h"
 #import "AFFormLayoutAttributes.h"
+#import "AFLayoutConfig.h"
 
 @implementation AFFormLayoutAttributes
 
@@ -21,8 +22,8 @@
 {
     UICollectionView *collectionView = self.flowLayout.collectionView;
     UIEdgeInsets sectionInsets = [self.flowLayout sectionInsetsForSection:self.indexPath.section];
-    CGFloat minInteritemSpacing = self.flowLayout.minimumInteritemSpacing;
-    CGFloat minLineSpacing = self.flowLayout.minimumLineSpacing;
+    CGFloat minInteritemSpacing = self.layoutConfig.minimumInteritemSpacing;
+    CGFloat minLineSpacing = self.layoutConfig.minimumInteritemSpacing;
     CGFloat collectionWidth = CGRectGetWidth(collectionView.frame);
 
     CGFloat yOffset = CGRectEqualToRect(afterFrame, CGRectZero) ? sectionInsets.top : 0;

@@ -19,7 +19,6 @@
 @interface AFRow()
 
 @property (nonatomic, weak) id<AFRowOutput> output;
-
 @property (nonatomic, strong, readonly) id<AFInputRow> inputRow;
 
 @end

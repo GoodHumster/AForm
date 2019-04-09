@@ -10,11 +10,12 @@
 #import <UIKit/UIKit.h>
 
 @class AFLayoutConfig;
-@class AFCollectionViewFlowLayout;
+@class AFCollectionViewLayout;
 
 @interface AFFormLayoutAttributes : UICollectionViewLayoutAttributes
 
-@property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
+@property (nonatomic, weak) AFCollectionViewLayout *flowLayout;
+@property (nonatomic, weak) AFLayoutConfig *layoutConfig;
 
 @property (nonatomic, assign) NSUInteger uuid;
 @property (nonatomic, assign) CGSize initionalSize;
