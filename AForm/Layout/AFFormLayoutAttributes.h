@@ -14,13 +14,14 @@
 
 @interface AFFormLayoutAttributes : UICollectionViewLayoutAttributes
 
-@property (nonatomic, assign) NSUInteger uuid;
-
 @property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, assign) NSUInteger uuid;
 @property (nonatomic, assign) CGSize initionalSize;
 
 - (void)invalidateFlowLayoutWithNewHeight:(CGFloat)height;
+
+- (void)setPositionAfterFrame:(CGRect)afterFrame;
 
 @end
 

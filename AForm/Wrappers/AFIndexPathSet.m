@@ -20,60 +20,6 @@
 #import "AFIndexPathSet.h"
 #import "AFIndexPath_Private.h"
 
-@interface AFIndexPathAttribute : NSObject<NSCoding, NSCopying>
-
-@property (nonatomic, assign) NSUInteger minIndex;
-@property (nonatomic, assign) NSUInteger maxIndex;
-
-@property (nonatomic, assign) NSUInteger section;
-@end
-
-@implementation AFIndexPathAttribute
-
-- (instancetype) initWithCoder:(NSCoder *)aDecoder
-{
-    if ( (self = [super init]) == nil )
-    {
-        return nil;
-    }
-    self.maxIndex = [[aDecoder valueForKey:@"maxIndex"] integerValue];
-    self.minIndex = [[aDecoder valueForKey:@"minIndex"] integerValue];
-    self.section = [[aDecoder valueForKey:@"section"] integerValue];
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder
-{
-    [coder encodeInteger:self.maxIndex forKey:@"maxIndex"];
-    [coder encodeInteger:self.minIndex forKey:@"minIndex"];
-    [coder encodeInteger:self.section forKey:@"section"];
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    AFIndexPathAttribute *copy = [AFIndexPathAttribute new];
-    copy.maxIndex = self.maxIndex;
-    copy.minIndex = self.minIndex;
-    copy.section = self.section;
-    
-    return copy;
-}
-
-- (BOOL) isEqual:(id)object
-{
-    AFIndexPathAttribute *range = (AFIndexPathAttribute *)object;
-    return range.minIndex == self.minIndex &&
-           range.maxIndex == self.maxIndex &&
-           range.section == self.section;
-}
-
-- (NSUInteger) hash
-{
-    return self.minIndex + self.maxIndex + self.section;
-}
-
-@end
-
 @interface AFIndexPathSet()
 
 @property (nonatomic, assign) NSUInteger count;

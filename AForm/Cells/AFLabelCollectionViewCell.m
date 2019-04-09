@@ -24,6 +24,7 @@ NSString *const kAFLabelCollectionViewCellIdentifier = @"AFLabelCollectionViewCe
 @implementation AFLabelCollectionViewCell
 
 @synthesize output = _output;
+@synthesize config = _config;
 
 #pragma mark - init methods
 
@@ -80,7 +81,7 @@ NSString *const kAFLabelCollectionViewCellIdentifier = @"AFLabelCollectionViewCe
 
 #pragma mark - AFBaseCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(id<AFCellConfig>)config
 {
     [super configWithRow:row andConfig:config];
     self.backgroundColor = [UIColor clearColor];

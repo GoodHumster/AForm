@@ -65,7 +65,7 @@ NSString *const kAFTextViewCollectionViewCellIdentifier = @"AFTextViewCollection
 
 #pragma mark - AFCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(id<AFCellConfig>)config
 {
     [self setupConfiguration:(AFTextViewCellConfig *)config];
     [super configWithRow:row andConfig:config];

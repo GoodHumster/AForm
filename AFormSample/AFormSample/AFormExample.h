@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import <AForm/AForm.h>
+#import <AForm/AFForming.h>
 
-@interface AFormExample : NSObject<AForm>
+@interface AFormExample : NSObject<AFForming>
 
 @end

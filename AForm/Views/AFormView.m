@@ -24,6 +24,8 @@
 #import "AFHeaderViewConfig.h"
 #import "AFBaseCellConfig.h"
 
+#import "NSObject+AFUtils.h"
+
 
 @interface AFormView()<UICollectionViewDelegate,UICollectionViewDataSource,AFCollectionViewFlowLayoutDelegate, AFBaseTextContainerCollectionViewCellOutput,AFCollectionViewCellOutput>
 
@@ -254,7 +256,10 @@
     cell.output = self;
     cell.layoutAttributes = formAttributes;
     
-    [cell configWithRow:row andConfig:row.cellConfig];
+    id<AFCellRow> cellRow = [row af_objectAsProto:@protocol(AFCellRow)];
+    //id<>
+    
+    [cell configWithRow:cellRow andConfig:row.cellConfig];
     
     return cell;
 }

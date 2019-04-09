@@ -12,10 +12,11 @@
 #import "AFFormLayoutAttributes.h"
 
 #import "AFRow_Private.h"
-#import "AFBaseCellConfig_Private.h"
 
 #import "AFCacheManager.h"
 #import "AFResourceManager_Private.h"
+
+#import "NSObject+AFUtils.h"
 
 @interface AFBaseCollectionViewCell()<AFRowOutput>
 
@@ -29,7 +30,7 @@
 @property (nonatomic, weak) AFCollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, weak) AFRow *inputRow;
-@property (nonatomic, weak) AFBaseCellConfig *config;
+@property (nonatomic, weak) id<AFCellConfig>config;
 
 
 @end
@@ -102,11 +103,10 @@
 
 #pragma mark - Public API methods
 
-- (void) configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
+- (void) configWithRow:(id<AFCellRow>)row andConfig:(id<AFCellConfig>)config
 {
-    self.inputRow = row;
+    self.inputRow = [(id)row af_objectAsClass:[AFRow class]];
     self.config = config;
-    self.inputRow = row;
     self.inputRow.output = self;
 }
 
@@ -137,7 +137,7 @@
 
 - (id<AFCellRow>)cellRow
 {
-    return self.inputRow;
+    return [self.inputRow af_objectAsProto:@protocol(AFCellRow)];
 }
 
 #pragma mark - AFRowOutput protocol methods

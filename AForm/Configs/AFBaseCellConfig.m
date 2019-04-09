@@ -6,7 +6,7 @@
 //  Copyright © 2019 Administrator. All rights reserved.
 //
 
-#import "AFBaseCellConfig_Private.h"
+#import "AFBaseCellConfig.h"
 
 #import "AFLayoutConfig.h"
 

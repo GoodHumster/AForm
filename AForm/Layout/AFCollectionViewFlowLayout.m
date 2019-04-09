@@ -11,6 +11,7 @@
 #import "AFCollectionViewFlowLayout.h"
 #import "AFFormLayoutAttributes.h"
 #import "AFLayoutAttributesDictionary.h"
+#import "AFFormLayoutInvalidationContext.h"
 
 
 #import "AFLayoutConfig.h"
@@ -55,12 +56,12 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     return [AFFormLayoutAttributes class];
 }
 
-#pragma mark - UICollectionViewFlowLayout methods
-
-- (void)prepareLayout
+ + (Class)invalidationContextClass
 {
-    [super prepareLayout];
+    return [AFFormLayoutInvalidationContext class];
 }
+
+#pragma mark - UICollectionViewFlowLayout methods
 
 - (CGSize)collectionViewContentSize
 {
@@ -117,7 +118,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     
     void (^createIfNeededAndCachedBlock) (NSIndexPath *indexPath, AFCollectionViewElementKind elementKind) = ^(NSIndexPath *indexPath, AFCollectionViewElementKind elementKind) {
         
-        AFFormLayoutAttributes *attr = [self createFormLayoutAttributesAtIndexPath:indexPath elementKind:elementKind];
+        AFFormLayoutAttributes *attr = [self formLayoutAttributesAtIndexPath:indexPath elementKind:elementKind];
         
         if (!attr)
         {
@@ -147,27 +148,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     return mAttributes;
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
-    attributes.size = [self sizeForElementKind:AFCollectionViewElementKind_Cell atIndexPath:indexPath];
-    
-    return attributes;
-}
-
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
-{
-    AFCollectionViewElementKind element = [elementKind isEqualToString:UICollectionElementKindSectionHeader] ? AFCollectionViewElementKind_Header : AFCollectionViewElementKind_Footer;
-    
-    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind atIndexPath:indexPath];
-    attributes.size = [self sizeForElementKind:element atIndexPath:indexPath];
-    
-    return attributes;
-}
-
-#pragma mark - Layout create helpers
-
-- (AFFormLayoutAttributes *) createFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath elementKind:(AFCollectionViewElementKind)kind
+- (AFFormLayoutAttributes *) formLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath elementKind:(AFCollectionViewElementKind)kind
 {
     AFFormLayoutAttributes *formLayoutAttributes = nil;
     NSString *elementKind = nil;
@@ -199,11 +180,30 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     formLayoutAttributes.uuid = lastFormLayoutAttributes.uuid+1;
     formLayoutAttributes.flowLayout = self;
     formLayoutAttributes.initionalSize = formLayoutAttributes.frame.size;
-    
-    [self invalidateLayout:formLayoutAttributes fromRect:lastAttrFrame];
+    [formLayoutAttributes setPositionAfterFrame:lastAttrFrame];
     
     return formLayoutAttributes;
 }
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+    attributes.size = [self sizeForElementKind:AFCollectionViewElementKind_Cell atIndexPath:indexPath];
+    
+    return attributes;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+{
+    AFCollectionViewElementKind element = [elementKind isEqualToString:UICollectionElementKindSectionHeader] ? AFCollectionViewElementKind_Header : AFCollectionViewElementKind_Footer;
+    
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind atIndexPath:indexPath];
+    attributes.size = [self sizeForElementKind:element atIndexPath:indexPath];
+    
+    return attributes;
+}
+
+#pragma mark - Layout helpers methods
 
 - (CGSize) sizeForElementKind:(AFCollectionViewElementKind)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -225,7 +225,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         return CGSizeZero;
     }
     
-    UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:indexPath.section];
+    UIEdgeInsets sectionInsets = [self sectionInsetsForSection:indexPath.section];
     AFLayoutConfig *config = [self.delegate layoutConfigForHeaderAtSection:indexPath.section];
     
     if (!config)
@@ -243,7 +243,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
         return CGSizeZero;
     }
     
-    UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:indexPath.section];
+    UIEdgeInsets sectionInsets = [self sectionInsetsForSection:indexPath.section];
     AFLayoutConfig *config = [self.delegate layoutConfigForItemAtIndexPath:indexPath];
     
     if (!config)
@@ -278,7 +278,10 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     return CGSizeMake(width, height);
 }
 
-- (UIEdgeInsets) sectionInsetsAtIndex:(NSInteger)section
+
+#pragma mark - Public API methods
+
+- (UIEdgeInsets) sectionInsetsForSection:(NSInteger)section
 {
     if (![self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)])
     {
@@ -288,41 +291,39 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     return [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];
 }
 
-
-#pragma mark - Public API methods
-
 - (void) invalidateLayout:(AFFormLayoutAttributes *)formLayoutAttributes withNewHeight:(CGFloat)height
 {
-    CGSize size = formLayoutAttributes.size;
-    size.height = height;
-    
-    [self invalidateLayout:formLayoutAttributes withNewSize:size];
+//    CGSize size = formLayoutAttributes.size;
+//    size.height = height;
+//
+//    [self invalidateLayout:formLayoutAttributes withNewSize:size];
 }
 
 - (void) invalidateLayout:(AFFormLayoutAttributes *)formLayoutAttributes withNewSize:(CGSize)size
 {
-    __block CGRect prevFrame = CGRectZero;
-    
-    prevFrame = formLayoutAttributes.frame;
-    prevFrame.size = size;
-    formLayoutAttributes.frame = prevFrame;
-    
-    NSMutableArray *replacedAttributes = [NSMutableArray new];
-    [replacedAttributes addObject:formLayoutAttributes];
-    [self.cachedLayoutAttributes enumerateFormAttributeStartFrom:formLayoutAttributes.uuid wihtBlock:^(AFFormLayoutAttributes *formLayoutAttributes) {
-        
-        [self invalidateLayout:formLayoutAttributes fromRect:prevFrame];
-        prevFrame = formLayoutAttributes.frame;
-        
-        [replacedAttributes addObject:formLayoutAttributes];
-    }];
-    
-    [self.cachedLayoutAttributes replaceFormAttributes:[replacedAttributes copy]];
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        [self scrollToFormAttribute:formLayoutAttributes];
-        [self invalidateLayout];
-    }];
+//    __block CGRect prevFrame = CGRectZero;
+//
+//    prevFrame = formLayoutAttributes.frame;
+//    prevFrame.size = size;
+//    formLayoutAttributes.frame = prevFrame;
+//
+//    NSMutableArray *replacedAttributes = [NSMutableArray new];
+//    [replacedAttributes addObject:formLayoutAttributes];
+//    [self.cachedLayoutAttributes enumerateFormAttributeStartFrom:formLayoutAttributes.uuid wihtBlock:^(AFFormLayoutAttributes *formLayoutAttributes) {
+//
+//        [formLayoutAttributes setPositionAfterFrame:prevFrame];
+//       // [self invalidateLayout:formLayoutAttributes fromRect:prevFrame];
+//        prevFrame = formLayoutAttributes.frame;
+//
+//        [replacedAttributes addObject:formLayoutAttributes];
+//    }];
+//
+//    [self.cachedLayoutAttributes replaceFormAttributes:[replacedAttributes copy]];
+//
+//    [UIView animateWithDuration:0.4 animations:^{
+//        [self scrollToFormAttribute:formLayoutAttributes];
+//        [self invalidateLayout];
+//    }];
 }
 
 - (AFFormLayoutAttributes *) getFormLayoutAttributesAtIndexPath:(NSIndexPath *)indexPath
@@ -330,35 +331,7 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     return [self.cachedLayoutAttributes getFormAttributeByIndexPath:indexPath];
 }
 
-- (CGSize)sizeForLayoutConfig:(AFLayoutConfig *)config
-{
-    return [self sizeForLayoutConfig:config wihtSectionInsets:UIEdgeInsetsZero];
-}
-
 #pragma mark - utils methods
-
-- (void) invalidateLayout:(UICollectionViewLayoutAttributes *)attributes fromRect:(CGRect)fromFrame
-{
-    UIEdgeInsets sectionInsets = [self sectionInsetsAtIndex:attributes.indexPath.section];
-    CGFloat yOffset = CGRectEqualToRect(fromFrame, CGRectZero) ? sectionInsets.top : 0;
-    CGFloat minimumInteritemSpacing = self.minimumInteritemSpacing;
-    CGFloat x = CGRectGetMaxX(fromFrame) + minimumInteritemSpacing;
-    CGFloat y = CGRectGetMinY(fromFrame) + yOffset;
-    
-    CGFloat width = CGRectGetWidth(attributes.frame);
-    CGFloat parentWidth = CGRectGetWidth(self.collectionView.frame);
-    
-    if ((width+x) > parentWidth)
-    {
-        x = minimumInteritemSpacing;
-        y = CGRectGetMaxY(fromFrame) + self.minimumLineSpacing;
-    }
-    
-    CGRect frame = attributes.frame;
-    frame.origin = CGPointMake(x, y);
-    
-    attributes.frame = frame;
-}
 
 - (void) enumerateIndexPathsFromIndexPath:(NSIndexPath *)indexPath withBlock:(void(^)(NSIndexPath *indexPath, BOOL *stop))enumerationBlock
 {
@@ -383,15 +356,8 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
 - (void) enumerateRowsInSection:(NSUInteger)section fromRow:(NSUInteger)row withBlock:(void(^)(NSIndexPath *indexPath, BOOL *stop))enumerationBlock
 {
     BOOL stop = NO;
-    BOOL undefiendBuild = NO;
     
     NSUInteger rowsCount = [self.collectionView numberOfItemsInSection:section];
-    
-    if (rowsCount == AFCollectionViewUndefindedItemsCount && self.buildWithUndefinedRowsCount)
-    {
-        undefiendBuild = YES;
-        rowsCount = NSIntegerMax;
-    }
     
     if (rowsCount <= row)
     {
@@ -401,12 +367,6 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     while (row < rowsCount) {
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-        
-        if (undefiendBuild)
-        {
-            rowsCount = [self.collectionView numberOfItemsInSection:section];
-        }
-        
         enumerationBlock(indexPath,&stop);
         
         if (stop)
@@ -418,17 +378,18 @@ typedef NS_ENUM(NSInteger, AFCollectionViewElementKind)
     }
 }
 
-- (void)scrollToFormAttribute:(AFFormLayoutAttributes *)formLayoutAttributes
-{
-    CGFloat height = CGRectGetHeight(self.collectionView.frame);
-    
-    CGPoint proposedContentOffset = self.collectionView.contentOffset;
-    proposedContentOffset.y = (CGRectGetMaxY(formLayoutAttributes.frame) + self.minimumLineSpacing) - height;
-    
-    [self.collectionView setContentOffset:proposedContentOffset];
-}
-
 
 @end
+
+//- (void)scrollToFormAttribute:(AFFormLayoutAttributes *)formLayoutAttributes
+//{
+//    CGFloat height = CGRectGetHeight(self.collectionView.frame);
+//
+//    CGPoint proposedContentOffset = self.collectionView.contentOffset;
+//    proposedContentOffset.y = (CGRectGetMaxY(formLayoutAttributes.frame) + self.minimumLineSpacing) - height;
+//
+//    [self.collectionView setContentOffset:proposedContentOffset];
+//}
+//
 
 

@@ -21,7 +21,7 @@
 
 @property (nonatomic, weak) id<AFCollectionViewCellOutput> output;
 
-- (void) configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config;
+- (void) configWithRow:(id<AFCellRow>)row andConfig:(id<AFCellConfig>)config;
 
 @end
 
@@ -29,7 +29,7 @@
 
 @property (nonatomic, weak, readonly) NSIndexPath *indexPath;
 @property (nonatomic, weak, readonly) id<AFCellRow> cellRow;
-@property (nonatomic, weak, readonly) AFBaseCellConfig *config;
+@property (nonatomic, weak, readonly) id<AFCellConfig> config;
 @property (nonatomic, assign) CGFloat height;
 
 - (void) setRowValue:(id)value;

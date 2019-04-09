@@ -72,7 +72,7 @@
 
 #pragma mark - AFCollectionViewCell protocol methods
 
-- (void)configWithRow:(id<AFCellRow>)row andConfig:(AFBaseCellConfig *)config
+- (void)configWithRow:(id<AFCellRow>)row andConfig:(id<AFCellConfig>)config
 {
     [super configWithRow:row andConfig:config];
     
